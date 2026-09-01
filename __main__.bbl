@@ -100,6 +100,14 @@ Sebastian Mika, Gunnar R{\"a}tsch, Jason Weston, Bernhard Sch{\"o}lkopf, and
   1999 IEEE Signal Processing Society Workshop (Cat. No.98TH8468)}, pages
   41--48, 1999.
 
+\bibitem[MSR19]{mroueh2019sobolev}
+Youssef Mroueh, Tom Sercu, and Anant Raj.
+\newblock Sobolev descent.
+\newblock In Kamalika Chaudhuri and Masashi Sugiyama, editors, {\em Proceedings
+  of the Twenty-Second International Conference on Artificial Intelligence and
+  Statistics}, volume~89 of {\em Proceedings of Machine Learning Research},
+  pages 2976--2985. PMLR, 2019.
+
 \bibitem[OT11]{ohta2011displacement}
 Shin-ichi Ohta and Asuka Takatsu.
 \newblock Displacement convexity of generalized relative entropies.

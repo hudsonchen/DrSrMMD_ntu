@@ -659,7 +659,7 @@ Let $(\mu_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
 \section{SrMMD}
 \begin{frame}{SrMMD: motivation}
     \begin{itemize}
-        \item Revisit DrMMD: 
+        \item Recall DrMMD. 
     \end{itemize}
     \begin{align*}
         \operatorname{DrMMD}(\mu, \pi)=\sup _{f \in \mathcal{H}:\|f\|_{L_2(\mu)}^2+\lambda\|f\|_{\mathcal{H}}^2 \leq 1} \int f \mathrm{~d}(\mu-\pi) . 
@@ -670,14 +670,73 @@ Let $(\mu_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
     \end{align*}
     \end{defi}
     \begin{itemize}
-        \item DrMMD is $L_2$ norm penalty on $f$, and SrMMD is $L_2^d$ norm penalty on $\nabla f$. 
-        \item SrMMD is proposed in \citep{}. 
+        \item This was first proposed in \citep{mroueh2019sobolev}.
     \end{itemize}
 \end{frame}
 
 
-\begin{frame}[SrMMD: SrMMD flow]
-    
+\begin{frame}[SrMMD: motivation]
+    \begin{itemize}
+        \item Define $S_\mu: L_2(\mu)\to L_2(\mu)$ as the \red{gradient covariance} operator: 
+        \begin{align*}
+            S_\mu f(\cdot)=\int \nabla f(x)^{\top} \nabla_1 k(x, \cdot) \; \dd \mu(x) .
+        \end{align*}
+        \item $\operatorname{SrMMD}(\mu, \pi)=(S_\mu + \lambda \Id)^{-1}(m_\mu - m_\pi)$. 
+    \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{SrMMD: SrMMD gradient flow}
+    \begin{defi}[SrMMD gradient flow]
+    The SrMMD flow is $(\mu_t)_{t\geq0}$ with
+    \begin{align*}
+        \partial_t \mu_t+\nabla \cdot\left(\mu_t(1+\lambda) \nabla h_{\mu_t, \pi}\right)=0 . 
+    \end{align*}
+    where $h_{\mu,\pi} = \left(T_\pi+\lambda \mathrm{I}\right)^{-1} T_\pi\left(\frac{\dd \mu}{\dd \pi}-1\right)$. 
+    \end{defi}
+    \begin{itemize}
+        \item MMD goes to grad school, becomes DrMMD, then drives a new Wasserstein gradient flow.
+    \end{itemize}
+
+
+\vspace{-4pt}
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=0.8cm]
+    \fill[DarkBlue] (0,-0.65) rectangle (5.20,0.05);
+    \fill[DarkBlue]
+        (0.80,0.05) -- (1.60,1.18) -- (3.90,1.18) -- (4.75,0.05) -- cycle;
+
+    \fill[blue!8]
+        (1.10,0.15) -- (1.70,1.03) -- (2.60,1.03) -- (2.60,0.15) -- cycle;
+    \fill[blue!8]
+        (2.75,0.15) -- (2.75,1.03) -- (3.78,1.03) -- (4.45,0.15) -- cycle;
+
+    % MMD, now a graduate, sits in the front window.
+    \fill[black] (3.00,0.78) -- (3.60,0.98) -- (4.20,0.78) -- (3.60,0.58) -- cycle;
+    \fill[black] (3.25,0.64) rectangle (3.95,0.50);
+    \draw[black, line width=0.8pt] (4.20,0.78) -- (4.20,0.58);
+    \fill[black] (4.20,0.54) circle (0.045);
+    \node[black, font=\bfseries\scriptsize] at (3.60,0.30) {MMD};
+
+    \fill[black] (1.05,-0.68) circle (0.25);
+    \fill[black] (4.25,-0.68) circle (0.25);
+    \fill[gray!35] (1.05,-0.68) circle (0.10);
+    \fill[gray!35] (4.25,-0.68) circle (0.10);
+
+    % The remote target is the final checkpoint.
+    \draw[DarkBlue, thick, dashed, ->] (5.40,-0.15) -- (7.70,-0.15);
+    \draw[black, thick] (7.85,-0.55) -- (7.85,1.00);
+    \draw[black, thin] (7.85,0.40) rectangle (8.85,1.00);
+    \fill[black] (7.85,0.70) rectangle (8.10,1.00);
+    \fill[black] (8.35,0.70) rectangle (8.60,1.00);
+    \fill[black] (8.10,0.40) rectangle (8.35,0.70);
+    \fill[black] (8.60,0.40) rectangle (8.85,0.70);
+    \node[font=\bfseries\large] at (7.85,-0.87) {$\pi$};
+\end{tikzpicture}
+\end{center}
+\vspace{-6pt}
 \end{frame}
 
 \section{Conclusions}
