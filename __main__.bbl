@@ -14,6 +14,13 @@ Michael Arbel, Anna Korba, Adil Salim, and Arthur Gretton.
   E.~Fox, and R.~Garnett, editors, {\em Advances in Neural Information
   Processing Systems}, volume~32. Curran Associates, Inc., 2019.
 
+\bibitem[BBG25]{balasubramanian2024improved}
+Sayan Banerjee, Krishna Balasubramanian, and Promit Ghosal.
+\newblock Improved finite-particle convergence rates for {S}tein variational
+  gradient descent.
+\newblock In {\em The Thirteenth International Conference on Learning
+  Representations}, 2025.
+
 \bibitem[BGL{\etalchar{+}}14]{bakry2014analysis}
 Dominique Bakry, Ivan Gentil, Michel Ledoux, et~al.
 \newblock {\em Analysis and geometry of Markov diffusion operators}, volume
@@ -63,12 +70,23 @@ Arthur Gretton, Karsten~M. Borgwardt, Malte~J. Rasch, Bernhard Sch{\"o}lkopf,
 \newblock A kernel two-sample test.
 \newblock {\em Journal of Machine Learning Research}, 13(1):723--773, 2012.
 
+\bibitem[GM17]{gorham2017measuring}
+Jackson Gorham and Lester Mackey.
+\newblock Measuring sample quality with kernels.
+\newblock In D.~Precup and Y.~W. Teh, editors, {\em International Conference on
+  Machine Learning}, pages 1292--1301. PMLR, PMLR, 2017.
+
 \bibitem[HBM07]{eric2007testing}
 Za{\"\i}d Harchaoui, Francis Bach, and Eric Moulines.
 \newblock Testing for homogeneity with kernel {F}isher discriminant analysis.
 \newblock In J.~Platt, D.~Koller, Y.~Singer, and S.~Roweis, editors, {\em
   Advances in Neural Information Processing Systems}, volume~20. Curran
   Associates, Inc., 2007.
+
+\bibitem[HBSL24]{he2022regularized}
+Ye~He, Krishna Balasubramanian, Bharath~K. Sriperumbudur, and Jianfeng Lu.
+\newblock Regularized {S}tein variational gradient flow.
+\newblock {\em Foundations of Computational Mathematics}, pages 1--59, 2024.
 
 \bibitem[HKSL24]{hagrass2022spectral}
 Omar Hagrass, Bharath K.~Sriperumbudur, and Bing Li.
@@ -91,6 +109,11 @@ Anna Korba, Pierre-Cyril Aubin-Frankowski, Szymon Majewski, and Pierre Ablin.
 \newblock Kernel {S}tein discrepancy descent.
 \newblock In M.~Meila and T.~Zhang, editors, {\em International Conference on
   Machine Learning}, pages 5719--5730. PMLR, 2021.
+
+\bibitem[KBGM25]{kanagawa2025controlling}
+Heishiro Kanagawa, Alessandro Barp, Arthur Gretton, and Lester Mackey.
+\newblock Controlling moments with kernel {S}tein discrepancies.
+\newblock {\em The Annals of Applied Probability}, 35(6):3818--3843, 2025.
 
 \bibitem[MRW{\etalchar{+}}99]{mika99fisher}
 Sebastian Mika, Gunnar R{\"a}tsch, Jason Weston, Bernhard Sch{\"o}lkopf, and
@@ -135,5 +158,13 @@ Viktor Stein, Sebastian Neumayer, Nicolaj Rux, and Gabriele Steidl.
 Simo S{\"a}rkk{\"a} and Arno Solin.
 \newblock {\em Applied stochastic differential equations}, volume~10.
 \newblock Cambridge University Press, 2019.
+
+\bibitem[VW19]{vempala2019rapid}
+Santosh Vempala and Andre Wibisono.
+\newblock Rapid convergence of the unadjusted {L}angevin algorithm:
+  {I}soperimetry suffices.
+\newblock In H.~Wallach, H.~Larochelle, A.~Beygelzimer, F.~d'Alché Buc,
+  E.~Fox, and R.~Garnett, editors, {\em Advances in Neural Information
+  Processing Systems}, volume~32. Curran Associates, Inc., 2019.
 
 \end{thebibliography}

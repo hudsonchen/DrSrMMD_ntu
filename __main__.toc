@@ -2,5 +2,5 @@
 \beamer@sectionintoc {2}{Examples of WGF}{8}{0}{2}
 \beamer@sectionintoc {3}{DrMMD}{12}{0}{3}
 \beamer@sectionintoc {4}{SrMMD}{24}{0}{4}
-\beamer@sectionintoc {5}{Conclusions}{26}{0}{5}
-\beamer@sectionintoc {6}{Personal}{27}{0}{6}
+\beamer@sectionintoc {5}{Conclusions}{29}{0}{5}
+\beamer@sectionintoc {6}{Personal}{30}{0}{6}

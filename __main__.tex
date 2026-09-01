@@ -392,8 +392,8 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
         {\scriptsize\href{https://arxiv.org/abs/2409.14980}{\texttt{arXiv:2409.14980}}}\\[0.38cm]
         {\Large\green{\textbf{2. Sobolev-regularized MMD gradient flow}}}\\[0.08cm]
         {\scriptsize\href{https://arxiv.org/abs/2605.11884}{\texttt{arXiv:2605.11884}}}\\[0.38cm]
-        {\Large\orange{\textbf{3. Powerful learned feature encoder}}}\\[0.08cm]
-        {\scriptsize}{\emph{Work in progress}}
+        {\Large\orange{\textbf{3. Applications: 1) Minimum MMD estimation; 2) Generative model}}}\\[0.08cm]
+        {\scriptsize}{\texttt{arXiv:2607.03871}, \emph{Work in progress}}
     \end{center}
 \end{frame}
 
@@ -477,9 +477,9 @@ $\lim _{\lambda \rightarrow 0} \operatorname{DrMMD}(\mu, \pi)=\chi^2(\mu, \pi), 
     where $h_{\mu,\pi} = \left(T_\pi+\lambda \mathrm{I}\right)^{-1} T_\pi\left(\frac{\dd \mu}{\dd \pi}-1\right)$. 
     \end{defi}
     \begin{itemize}
-        \item MMD goes to grad school, becomes DrMMD, then drives a new Wasserstein gradient flow.
+        \item Implementation: $h_{\mu,\pi} = \left(T_\pi + \lambda \mathrm{I}\right)^{-1}(m_\mu - m_\pi)$ with $m_\mu, m_\pi$ the mean embeddings. 
+        \item MMD goes to grad school, becomes DrMMD, then drives a new Wasserstein gradient flow. 
     \end{itemize}
-
 
 \vspace{-4pt}
 \begin{center}
@@ -584,21 +584,21 @@ Suppose the target distribution $\pi$ \text satisfies a Poincaré inequality wit
     \centering
     \begin{tikzpicture}[x=1cm,y=1cm]
         \path[fill=DarkBlue!8, even odd rule]
-            (0,0) ellipse (6.9 and 2.00)
-            (0,0) ellipse (3.65 and 1.18);
+            (0,0) ellipse (6.2 and 2.00)
+            (0,0) ellipse (3.75 and 1.15);
         \path[fill=darkgreen!12, even odd rule]
-            (0,0) ellipse (3.65 and 1.18)
-            (0,0) ellipse (1.65 and 0.52);
+            (0,0) ellipse (3.75 and 1.15)
+            (0,0) ellipse (1.15 and 0.42);
 
-        \draw[DarkBlue, very thick] (0,0) ellipse (6.9 and 2.00);
-        \draw[darkgreen, very thick] (0,0) ellipse (3.65 and 1.18);
-        \draw[orange, very thick] (0,0) ellipse (1.65 and 0.52);
+        \draw[DarkBlue, very thick] (0,0) ellipse (6.2 and 2.00);
+        \draw[darkgreen, very thick] (0,0) ellipse (3.75 and 1.15);
+        \draw[orange, very thick] (0,0) ellipse (1.15 and 0.42);
 
-        \node[DarkBlue, fill=white, inner xsep=3pt, inner ysep=1pt] at (-4.80,1.44)
+        \node[DarkBlue, inner xsep=3pt, inner ysep=1pt] at (-6.12,0.32)
             {$L_2(\pi)\cong\operatorname{Ran}(T_\pi^0)$};
-        \node[DarkBlue, fill=DarkBlue!8, inner sep=2pt] at (5.45,0.72) {$0<r<\frac12$};
+        \node[DarkBlue, fill=DarkBlue!8, inner sep=2pt] at (4.75,0.72) {$0<r<\frac12$};
 
-        \node[darkgreen, fill=white, inner xsep=3pt, inner ysep=1pt] at (-2.50,0.86)
+        \node[darkgreen, inner xsep=3pt, inner ysep=1pt] at (-3.65,-0.26)
             {$\mathcal H\cong\operatorname{Ran}(T_\pi^{1/2})$};
         \node[darkgreen] at (2.55,0.12) {$\frac12<r<1$};
 
@@ -675,13 +675,23 @@ Let $(\mu_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
 \end{frame}
 
 
-\begin{frame}[SrMMD: motivation]
+\begin{frame}{SrMMD: motivation}
     \begin{itemize}
         \item Define $S_\mu: L_2(\mu)\to L_2(\mu)$ as the \red{gradient covariance} operator: 
         \begin{align*}
             S_\mu f(\cdot)=\int \nabla f(x)^{\top} \nabla_1 k(x, \cdot) \; \dd \mu(x) .
         \end{align*}
-        \item $\operatorname{SrMMD}(\mu, \pi)=(S_\mu + \lambda \Id)^{-1}(m_\mu - m_\pi)$. 
+        \item Define $m_\mu=\int k(x,\cdot) \dd\mu(x)$ as the kernel mean embedding. 
+    \end{itemize}    
+    \begin{defi}[SrMMD gradient flow]
+    The SrMMD flow is $(\mu_t)_{t\geq0}$ that satisfies
+    \begin{align*}
+        \partial_t \mu_t+\nabla \cdot\left(\mu_t(1+\lambda) \nabla f_{\mu_t, \pi}\right)=0 . 
+    \end{align*}
+    where $f_{\mu,\pi} = \red{\left(S_\mu+\lambda \mathrm{I}\right)^{-1}} \left(m_\mu - m_\pi \right)$. 
+    \end{defi}
+    \begin{itemize}
+        \item For comparison, $f_{\mu,\pi} = \green{\left(T_\pi+ \lambda \mathrm{I}\right)^{-1}} \left(m_\mu - m_\pi \right)$ for DrMMD flow. 
     \end{itemize}
 \end{frame}
 
@@ -689,55 +699,132 @@ Let $(\mu_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
 
 
 \begin{frame}{SrMMD: SrMMD gradient flow}
-    \begin{defi}[SrMMD gradient flow]
-    The SrMMD flow is $(\mu_t)_{t\geq0}$ with
-    \begin{align*}
-        \partial_t \mu_t+\nabla \cdot\left(\mu_t(1+\lambda) \nabla h_{\mu_t, \pi}\right)=0 . 
-    \end{align*}
-    where $h_{\mu,\pi} = \left(T_\pi+\lambda \mathrm{I}\right)^{-1} T_\pi\left(\frac{\dd \mu}{\dd \pi}-1\right)$. 
-    \end{defi}
-    \begin{itemize}
-        \item MMD goes to grad school, becomes DrMMD, then drives a new Wasserstein gradient flow.
-    \end{itemize}
 
+    \begin{itemize}
+        \item MMD gets old: becomes SrMMD, then drives a new Wasserstein gradient flow.
+    \end{itemize}
 
 \vspace{-4pt}
 \begin{center}
-\begin{tikzpicture}[x=0.8cm,y=0.8cm]
-    \fill[DarkBlue] (0,-0.65) rectangle (5.20,0.05);
+\begin{tikzpicture}[x=1.0cm,y=1.0cm]
+    % The remote target is the final checkpoint on the right.
+    \draw[black, thick] (8.40,-1.15) -- (8.40,2.00);
+    \draw[black, thin] (8.40,1.40) rectangle (9.40,2.00);
+    \fill[black] (8.40,1.70) rectangle (8.65,2.00);
+    \fill[black] (8.90,1.70) rectangle (9.15,2.00);
+    \fill[black] (8.65,1.40) rectangle (8.90,1.70);
+    \fill[black] (9.15,1.40) rectangle (9.40,1.70);
+    \node[font=\bfseries\large] at (8.40,-1.47) {$\pi$};
+
+    % DrMMD drives in the upper lane.
+    \begin{scope}[yshift=0.28cm]
+    \draw[DarkBlue, thick, dashed, ->] (5.35,0.75) -- (8.20,0.75);
     \fill[DarkBlue]
-        (0.80,0.05) -- (1.60,1.18) -- (3.90,1.18) -- (4.75,0.05) -- cycle;
-
+        (0.20,0.45) -- (0.20,1.05) -- (4.80,1.05) --
+        (5.20,0.74) -- (4.80,0.45) -- cycle;
+    \fill[DarkBlue]
+        (0.85,1.05) -- (1.60,2.00) -- (3.65,2.00) -- (4.40,1.05) -- cycle;
     \fill[blue!8]
-        (1.10,0.15) -- (1.70,1.03) -- (2.60,1.03) -- (2.60,0.15) -- cycle;
+        (1.10,1.15) -- (1.70,1.85) -- (2.65,1.85) -- (2.65,1.15) -- cycle;
     \fill[blue!8]
-        (2.75,0.15) -- (2.75,1.03) -- (3.78,1.03) -- (4.45,0.15) -- cycle;
+        (2.80,1.15) -- (2.80,1.85) -- (3.55,1.85) -- (4.28,1.15) -- cycle;
 
-    % MMD, now a graduate, sits in the front window.
-    \fill[black] (3.00,0.78) -- (3.60,0.98) -- (4.20,0.78) -- (3.60,0.58) -- cycle;
-    \fill[black] (3.25,0.64) rectangle (3.95,0.50);
-    \draw[black, line width=0.8pt] (4.20,0.78) -- (4.20,0.58);
-    \fill[black] (4.20,0.54) circle (0.045);
-    \node[black, font=\bfseries\scriptsize] at (3.60,0.30) {MMD};
+    % MMD with its graduate cap sits in DrMMD's front window.
+    \fill[black] (3.02,1.63) -- (3.32,1.74) -- (3.62,1.63) -- (3.32,1.52) -- cycle;
+    \fill[black] (3.14,1.55) rectangle (3.50,1.47);
+    \draw[black, line width=0.7pt] (3.62,1.63) -- (3.62,1.50);
+    \fill[black] (3.62,1.47) circle (0.035);
+    \node[black, font=\bfseries\scriptsize] at (3.32,1.27) {MMD};
+    \fill[black] (1.00,0.42) circle (0.23);
+    \fill[black] (4.20,0.42) circle (0.23);
+    \fill[gray!35] (1.00,0.42) circle (0.09);
+    \fill[gray!35] (4.20,0.42) circle (0.09);
+    \end{scope}
 
-    \fill[black] (1.05,-0.68) circle (0.25);
-    \fill[black] (4.25,-0.68) circle (0.25);
-    \fill[gray!35] (1.05,-0.68) circle (0.10);
-    \fill[gray!35] (4.25,-0.68) circle (0.10);
+    % SrMMD drives in the lower lane.
+    \begin{scope}[yshift=-0.28cm]
+    \draw[darkgreen, thick, dashed, ->] (5.35,-0.85) -- (8.20,-0.85);
+    \fill[darkgreen]
+        (0.20,-1.15) -- (0.20,-0.55) -- (4.80,-0.55) --
+        (5.20,-0.86) -- (4.80,-1.15) -- cycle;
+    \fill[darkgreen]
+        (0.85,-0.55) -- (1.60,0.40) -- (3.65,0.40) -- (4.40,-0.55) -- cycle;
+    \fill[green!8]
+        (1.10,-0.45) -- (1.70,0.25) -- (2.65,0.25) -- (2.65,-0.45) -- cycle;
+    \fill[green!8]
+        (2.80,-0.45) -- (2.80,0.25) -- (3.55,0.25) -- (4.28,-0.45) -- cycle;
 
-    % The remote target is the final checkpoint.
-    \draw[DarkBlue, thick, dashed, ->] (5.40,-0.15) -- (7.70,-0.15);
-    \draw[black, thick] (7.85,-0.55) -- (7.85,1.00);
-    \draw[black, thin] (7.85,0.40) rectangle (8.85,1.00);
-    \fill[black] (7.85,0.70) rectangle (8.10,1.00);
-    \fill[black] (8.35,0.70) rectangle (8.60,1.00);
-    \fill[black] (8.10,0.40) rectangle (8.35,0.70);
-    \fill[black] (8.60,0.40) rectangle (8.85,0.70);
-    \node[font=\bfseries\large] at (7.85,-0.87) {$\pi$};
+    % MMD with short, side-parted white hair sits in SrMMD's front window.
+    \filldraw[fill=orange!18, draw=gray!70, line width=0.45pt]
+        (3.30,0.01) circle (0.15);
+    \filldraw[fill=white, draw=gray!70, line width=0.45pt]
+        (3.15,0.04) .. controls (3.15,0.16) and (3.25,0.21) .. (3.38,0.18)
+        .. controls (3.47,0.16) and (3.50,0.10) .. (3.46,0.05)
+        .. controls (3.39,0.11) and (3.30,0.12) .. (3.15,0.04) -- cycle;
+    \draw[gray!70, line width=0.4pt] (3.31,0.18) .. controls (3.34,0.14) and (3.39,0.11) .. (3.46,0.08);
+    \fill[black] (3.40,0.00) circle (0.012);
+    \node[black, font=\bfseries\scriptsize] at (3.30,-0.28) {MMD};
+    \fill[black] (1.00,-1.18) circle (0.23);
+    \fill[black] (4.20,-1.18) circle (0.23);
+    \fill[gray!35] (1.00,-1.18) circle (0.09);
+    \fill[gray!35] (4.20,-1.18) circle (0.09);
+    \end{scope}
 \end{tikzpicture}
 \end{center}
 \vspace{-6pt}
 \end{frame}
+
+\begin{frame}{SrMMD: Convergence}
+    \begin{thm}[Convergence of SrMMD flow]
+        Let $(\mu_t)_{t\geq0}$ be the SrMMD flow. Suppose that there exists $0<\alpha \leq 1$ such that $m_{\mu_t}-m_\pi \in \operatorname{Ran} (S_{\mu_t}^{\alpha / 2})$ for all $t$. 
+        Then, for any $T\geq 0$, 
+        \begin{align*}
+            \operatorname{MMD}^2\left(\mu_T, \pi\right) \leq \exp{(-2 T)} \operatorname{MMD}^2\left(\mu_0, \pi\right)+ \textcolor{red}{\calO(\lambda^\alpha)} .
+        \end{align*}
+    \end{thm}        
+    \begin{thm}[Convergence of SrMMD descent]
+        Let $(\mu_n)_{n\in\N}$ be the SrMMD descent. Suppose that there exists $0<\alpha \leq 1$ such that $m_{\mu_n}-m_\pi \in \operatorname{Ran} (S_{\mu_n}^{\alpha / 2})$ for all $n$. 
+        Take $\lambda\propto d \gamma$. 
+        Then, for any $n_{\max} \geq 0$, 
+        \begin{align*}
+            \operatorname{MMD}^2\left(\mu_{n_{\max}}, \pi\right) \leq \exp{(-2 n_{\max} \gamma)} \operatorname{MMD}^2\left(\mu_0, \pi\right)+ \calO(\gamma^\alpha) .
+        \end{align*}
+    \end{thm}
+    \begin{itemize}
+        \item $\operatorname{Ran}(S_\mu^{\alpha / 2}) \cong H^{r(\alpha+1)-\alpha}$ on a torus. 
+        \item $\lambda\propto d \gamma$ balances \red{smoothness error $\calO(\lambda^\alpha \gamma)$} and \green{discretization error $\calO(\lambda^{\alpha-1} \gamma^2)$}. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{SrMMD: Iteration complexity}
+    \begin{itemize}
+        \item Number of iterations sufficient to reach $\delta$-closeness to $\pi$.
+    \end{itemize}
+\begin{table}[t]
+\centering
+\captionsetup{font=normalsize,justification=centering}
+\begin{tabular}{lll}
+\toprule
+Algorithm & Metric & Iteration complexity \\
+\midrule
+LMC~\citep{chewi2024analysis,vempala2019rapid} & KL / $\chi^2$ & $\tilde{\calO}(\delta^{-1} \beta)$ \\
+SVGD~\citep{balasubramanian2024improved} & $\mathrm{KSD}^2$ & $\calO(\delta^{-1})$ \\
+R-SVGD~\citep{he2022regularized} & Fisher & $\calO(\delta^{-1})$ \\
+DrMMD & $\kl$ & $\tilde{\calO}(\delta^{-(\alpha+1)/\alpha} \beta)$ \\
+SrMMD & $\mmd^2$ / $\mathrm{KSD}^2$ & $\tilde{\calO}(\delta^{-1/\alpha})$ \\
+\bottomrule
+\end{tabular}
+\caption{Here, $\beta$ denotes the isoperimetric constant of $\pi$.\\
+$\alpha$ denotes the regularity parameter of the flow.}
+\label{tab:iteration-complexity}
+\vspace{-15pt}
+\end{table}
+\begin{itemize}
+    \item Different metrics: $\chi^2$ stronger than KL and both are stronger than MMD/KSD~\citep{gorham2017measuring,kanagawa2025controlling}. 
+    \item SrMMD rate is \red{independent} of isoperimetric constant of $\pi$. 
+\end{itemize}
+\end{frame}
+
 
 \section{Conclusions}
 \begin{frame}{Conclusions}
