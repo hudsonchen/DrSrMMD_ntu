@@ -406,10 +406,10 @@ Given empirical distributions $\hat{\mu} = \frac{1}{N} \sum_{i=1}^N x_i$ and $\h
     \begin{talign*}
         \operatorname{Var}_\pi [f] \leq C_P \mathbb{E}_\pi \left[\|\nabla f\|^2\right] .
     \end{talign*} 
-    Furthermore, $\pi$ satisfies a Poincar\'{e} with constant $\alpha$ if $\pi$ is $\alpha$-log concave. 
 \end{defi}
 \begin{itemize}
-    \item By ``Gaussian-like,'' we mean that $\pi$ satisfies a Poincar\'{e} inequality, which in particular implies sub-exponential tails~\citep{bakry2014analysis}.
+\item By ``Gaussian-like,'' we mean that $\pi$ satisfies a Poincar\'{e} inequality, which in particular implies sub-exponential tails~\citep{bakry2014analysis}.
+\item For example, if $\pi=\calN(0,a \cdot \Id)$, then $C_P=a^{-1}$.
 \end{itemize}
 \begin{prop}[Convergence of $\calF_{\chi^2}$ flow]
 Suppose that $\pi$ satisfies the  Poincar\'{e} inequality. Let $(\mu_t)_{t\geq 0}$ follow the $\calF_{\chi^2}$ flow. Then, for any $T \geq 0$,
