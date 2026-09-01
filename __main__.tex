@@ -293,13 +293,13 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
             \end{scope}
         \end{tikzpicture}
     \end{columns}
-    \begin{block}{MMD admits a closed-form expression}
+    \begin{thm}{MMD admits a closed-form expression}
         \begin{align*}
             \mathrm{MMD}^2(\Pb, \Qb)
             = \E_{X,X'\sim\Pb}[k(X,X')]
             + \E_{Y,Y'\sim\Qb}[k(Y,Y')] - 2\E_{X\sim\Pb,\,Y\sim\Qb}[k(X,Y)] .
         \end{align*}
-    \end{block}
+    \end{thm}
     \begin{itemize}
         \item MMD is a probability divergence ($\mathrm{MMD}(\Pb, \Qb)=0 \iff \Pb=\Qb$) if $k$ is characteristic (Gaussian)~\citep{sriperumbudur2011universality}.
     \end{itemize}
@@ -307,13 +307,11 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
 
 \begin{frame}{Example 2: MMD gradient flow~\citep{arbel2019maximum}}
 \begin{itemize}
-    \item Given $M$ i.i.d samples $\{y_i\}_{i=1}^M$ from a target distribution $\pi$. 
-    \item The functional \textcolor{blue}{$\calF_\mmd = \frac{1}{2}\mmd^2(\cdot \| \pi)$}  
+    \item The functional \textcolor{blue}{$\calF_\mmd = \frac{1}{2}\mmd^2(\cdot \| \pi)$} 
     \item Its Wasserstein gradient 
-    \begin{talign*}
-        \red{[\nabla_{W_2} \calF_\mmd(\mu)](\cdot)} &= \nabla \left( \smallint k(x, \cdot) \; \dd \mu(x) - \smallint k(x, \cdot) \; \dd \pi(x) \right) \\
-        &\approx \smallint \nabla_2 k(x, \cdot) \; \dd \mu(x) - \frac{1}{M}\sum_{i=1}^M \nabla_2 k(y_i, \cdot).
-    \end{talign*}
+    \begin{align*}
+        \red{[\nabla_{W_2} \calF_\mmd(\mu)](\cdot)} &= \nabla \Big( \smallint k(x, \cdot) \; \dd \mu(x) - \smallint k(x, \cdot) \; \dd \pi(x) \Big) .  
+    \end{align*}
     \item The Wasserstein gradient flow of $\calF_\mmd$,
     \begin{talign*}
         \partial_t \mu_t=\nabla \cdot \left(\mu_t \nabla_{W_2} \calF_\mmd(\mu_t) \right), \quad  \dd x_t = -[\nabla_{W_2} \calF_\mmd(\mu_t)](x_t) \, \dd t .
@@ -322,6 +320,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \[
     x_{n+1} = x_n - \gamma \nabla_{W_2} \calF_\mmd(\mu_n)(x_n) , \quad \text{Law}(x_n)=\mu_n. 
     \]
+    \item The same holds for $\calF_\ksd = \frac{1}{2}\mmd^2(\cdot \| \pi)$ with a Stein kernel $k_\pi$~\citep{korba2021kernel}. 
 \end{itemize}
 \end{frame}
 
@@ -338,10 +337,10 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
         \item When $\pi\propto\exp(-V)$ is \red{strongly log-concave, i.e., $\bH V \geq \alpha\Id$}, then $\calF_\kl$ is \green{$\alpha$-convex}. 
         \item Convergence in discrete time 
         \begin{talign*}
-            \calF_\kl\left(\mu_n\| \pi\right) \leq \exp(-\alpha \gamma n) \calF_\kl\left(\mu_n\| \pi\right) + \frac{\gamma n \beta^2}{\alpha}.
+            \kl\left(\mu_n\| \pi\right) \leq \exp(-\alpha \gamma n) \kl\left(\mu_n\| \pi\right) + \frac{\gamma n \beta^2}{\alpha}.
         \end{talign*}
         \item $\beta$ is the Lipschitz continuity of $V$. 
-        \item It takes $\calO(\frac{1}{\alpha \delta} \log \frac{1}{\delta})$ to reach $\delta$ error.
+        \item \blue{$\lim_{n\to\infty} \kl(\mu_n, \pi) = 0$!}. 
     \end{itemize}
 
     \column{0.48\textwidth}
@@ -352,10 +351,10 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
         \item When $k$ is bounded and has bounded derivatives, then $\calF_\mmd$ is \green{$M$-smooth and $-M$-convex}. 
         \item \textcolor{blue}{Non-}convergence in discrete time
         \begin{talign*}
-            \calF_\mmd(\mu_n, \pi) \leq \frac{W_2^2(\mu_0,\pi)}{\gamma n} + \bar{K}.
+            \mmd^2(\mu_n, \pi) \leq \frac{W_2^2(\mu_0,\pi)}{\gamma n} + \bar{K}.
         \end{talign*}
         \item $\bar{K}$ is a positive barrier term that does not vanish. 
-        \item \blue{$\lim_{n\to\infty} \calF_\mmd(\mu_n, \pi) \neq 0$!}
+        \item \blue{$\lim_{n\to\infty} \mmd(\mu_n, \pi) \neq 0$!}
     \end{itemize}
 \end{columns}
 \end{frame}
@@ -380,14 +379,22 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \end{itemize}
 \end{frame}
 
-
+\begin{frame}{Non-convexity of MMD prevents global convergence}
+    \begin{exampleblock}{}
+\centering
+    \textbf{Question}: How to resolve this non-convexity issue of $\calF_\mmd$?
+\end{exampleblock}
+\begin{itemize}
+    \item Solutions
+    1. De-regularized MMD gradient flow
+    2. Sobolev Regularized MMD Gradient Flow
+    3. Use a powerful feature encoder. 
+\end{itemize}
+\end{frame}
 
 
 \begin{frame}{Convexity and Smoothness}
-\begin{exampleblock}{}
-\centering
-    \textbf{Question}: Can we find a new objective $\calF$ such that it enjoys \blue{convergence}, similar to $\calF_\kl$, in the \blue{generative modelling} setting where only samples are available?
-\end{exampleblock}
+
 \begin{prop}[MMD and $\chi^2$-divergence]
 Suppose $\mu$ is absolutely continuous with respect to $\pi$, i.e., $\mu \ll \pi$. Then
 \vspace{-10pt}
