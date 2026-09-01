@@ -1,131 +1,113 @@
-\begin{thebibliography}{18}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{MRW{\etalchar{+}}99}
 
-\bibitem[Altekr{\"u}ger et~al.(2023)Altekr{\"u}ger, Hertrich, and
-  Steidl]{altekruger2023neural}
-F.~Altekr{\"u}ger, J.~Hertrich, and G.~Steidl.
+\bibitem[AHS23]{altekruger2023neural}
+Fabian Altekr{\"u}ger, Johannes Hertrich, and Gabriele Steidl.
 \newblock Neural wasserstein gradient flows for maximum mean discrepancies with
   riesz kernels.
-\newblock \emph{arXiv preprint arXiv:2301.11624}, 2023.
+\newblock {\em arXiv preprint arXiv:2301.11624}, 2023.
 
-\bibitem[Arbel et~al.(2019)Arbel, Korba, Salim, and Gretton]{arbel2019maximum}
-M.~Arbel, A.~Korba, A.~Salim, and A.~Gretton.
+\bibitem[AKSG19]{arbel2019maximum}
+Michael Arbel, Anna Korba, Adil Salim, and Arthur Gretton.
 \newblock Maximum mean discrepancy gradient flow.
 \newblock In H.~Wallach, H.~Larochelle, A.~Beygelzimer, F.~d'Alché Buc,
-  E.~Fox, and R.~Garnett, editors, \emph{Advances in Neural Information
+  E.~Fox, and R.~Garnett, editors, {\em Advances in Neural Information
   Processing Systems}, volume~32. Curran Associates, Inc., 2019.
 
-\bibitem[Bakry et~al.(2014)Bakry, Gentil, Ledoux, et~al.]{bakry2014analysis}
-D.~Bakry, I.~Gentil, M.~Ledoux, et~al.
-\newblock \emph{Analysis and geometry of Markov diffusion operators}, volume
+\bibitem[BGL{\etalchar{+}}14]{bakry2014analysis}
+Dominique Bakry, Ivan Gentil, Michel Ledoux, et~al.
+\newblock {\em Analysis and geometry of Markov diffusion operators}, volume
   103.
 \newblock Springer, 2014.
 
-\bibitem[Belhadji et~al.(2025)Belhadji, Sharp, and
-  Marzouk]{belhadji2025weighted}
-A.~Belhadji, D.~Sharp, and Y.~Marzouk.
+\bibitem[BSM25]{belhadji2025weighted}
+Ayoub Belhadji, Daniel Sharp, and Youssef Marzouk.
 \newblock Weighted quantization using mmd: From mean field to mean shift via
   gradient flows.
-\newblock \emph{arXiv preprint arXiv:2502.10600}, 2025.
+\newblock {\em arXiv preprint arXiv:2502.10600}, 2025.
 
-\bibitem[Boyd and Vandenberghe(2004)]{boyd2004convex}
-S.~P. Boyd and L.~Vandenberghe.
-\newblock \emph{Convex Optimization}.
+\bibitem[BV04]{boyd2004convex}
+Stephen~P. Boyd and Lieven Vandenberghe.
+\newblock {\em Convex Optimization}.
 \newblock Cambridge University Press, 2004.
 
-\bibitem[Chen et~al.(2025)Chen, Karvonen, Kanagawa, Briol, and
-  Oates]{chen2025stationary}
-Z.~Chen, T.~Karvonen, H.~Kanagawa, F.-X. Briol, and C.~Oates.
-\newblock Stationary {MMD} points for cubature.
-\newblock 2025.
-\newblock URL \url{https://arxiv.org/abs/2505.20754}.
-
-\bibitem[Chewi et~al.(2024)Chewi, Erdogdu, Li, Shen, and
-  Zhang]{chewi2024analysis}
-S.~Chewi, M.~A. Erdogdu, M.~Li, R.~Shen, and M.~S. Zhang.
+\bibitem[CEL{\etalchar{+}}24]{chewi2024analysis}
+Sinho Chewi, Murat~A. Erdogdu, Mufan Li, Ruoqi Shen, and Matthew~S. Zhang.
 \newblock Analysis of {L}angevin {M}onte {C}arlo from {P}oincare to
   log-{S}obolev.
-\newblock \emph{Foundations of Computational Mathematics}, pages 1--51, 2024.
+\newblock {\em Foundations of Computational Mathematics}, pages 1--51, 2024.
 
-\bibitem[Galashov et~al.(2025)Galashov, Bortoli, and Gretton]{galashov2024deep}
-A.~Galashov, V.~D. Bortoli, and A.~Gretton.
-\newblock Deep {MMD} gradient flow without adversarial training.
-\newblock In \emph{The Thirteenth International Conference on Learning
-  Representations}, 2025.
-\newblock URL \url{https://openreview.net/forum?id=Pf85K2wtz8}.
+\bibitem[CKK{\etalchar{+}}25]{chen2025stationary}
+Zonghao Chen, Toni Karvonen, Heishiro Kanagawa, Fran{\c{c}}ois-Xavier Briol,
+  and Chris Oates.
+\newblock Stationary {MMD} points for cubature.
+\newblock 2025.
 
-\bibitem[Glaser et~al.(2021)Glaser, Arbel, and Gretton]{glaser2021kale}
-P.~Glaser, M.~Arbel, and A.~Gretton.
+\bibitem[GAG21]{glaser2021kale}
+Pierre Glaser, Michael Arbel, and Arthur Gretton.
 \newblock K{ALE} flow: A relaxed {KL} gradient flow for probabilities with
   disjoint support.
-\newblock In M.~Ranzato, A.~Beygelzimer, Y.~Dauphin, P.~Liang, and J.~W.
-  Vaughan, editors, \emph{Advances in Neural Information Processing Systems},
+\newblock In M.~Ranzato, A.~Beygelzimer, Y.~Dauphin, P.S. Liang, and J.~Wortman
+  Vaughan, editors, {\em Advances in Neural Information Processing Systems},
   volume~34, pages 8018--8031. Curran Associates, Inc., 2021.
 
-\bibitem[Hagrass et~al.(2024)Hagrass, K.~Sriperumbudur, and
-  Li]{hagrass2022spectral}
-O.~Hagrass, B.~K.~Sriperumbudur, and B.~Li.
-\newblock Spectral regularized kernel two-sample tests.
-\newblock \emph{The Annals of Statistics}, 52\penalty0 (3):\penalty0
-  1076--1101, 2024.
+\bibitem[GBG25]{galashov2024deep}
+Alexandre Galashov, Valentin~De Bortoli, and Arthur Gretton.
+\newblock Deep {MMD} gradient flow without adversarial training.
+\newblock In {\em The Thirteenth International Conference on Learning
+  Representations}, 2025.
 
-\bibitem[Harchaoui et~al.(2007)Harchaoui, Bach, and Moulines]{eric2007testing}
-Z.~Harchaoui, F.~Bach, and E.~Moulines.
+\bibitem[HBM07]{eric2007testing}
+Za{\"\i}d Harchaoui, Francis Bach, and Eric Moulines.
 \newblock Testing for homogeneity with kernel {F}isher discriminant analysis.
-\newblock In J.~Platt, D.~Koller, Y.~Singer, and S.~Roweis, editors,
-  \emph{Advances in Neural Information Processing Systems}, volume~20. Curran
+\newblock In J.~Platt, D.~Koller, Y.~Singer, and S.~Roweis, editors, {\em
+  Advances in Neural Information Processing Systems}, volume~20. Curran
   Associates, Inc., 2007.
 
-\bibitem[Hertrich et~al.(2024)Hertrich, Wald, Altekr{\"u}ger, and
-  Hagemann]{hertrich2023generative}
-J.~Hertrich, C.~Wald, F.~Altekr{\"u}ger, and P.~Hagemann.
+\bibitem[HKSL24]{hagrass2022spectral}
+Omar Hagrass, Bharath K.~Sriperumbudur, and Bing Li.
+\newblock Spectral regularized kernel two-sample tests.
+\newblock {\em The Annals of Statistics}, 52(3):1076--1101, 2024.
+
+\bibitem[HWAH24]{hertrich2023generative}
+Johannes Hertrich, Christian Wald, Fabian Altekr{\"u}ger, and Paul Hagemann.
 \newblock Generative sliced {MMD} flows with riesz kernels.
-\newblock In \emph{The Twelfth International Conference on Learning
+\newblock In {\em The Twelfth International Conference on Learning
   Representations}, 2024.
-\newblock URL \url{https://openreview.net/forum?id=VdkGRV1vcf}.
 
-\bibitem[Jordan et~al.(1998)Jordan, Kinderlehrer, and
-  Otto]{jordan1998variational}
-R.~Jordan, D.~Kinderlehrer, and F.~Otto.
+\bibitem[JKO98]{jordan1998variational}
+Richard Jordan, David Kinderlehrer, and Felix Otto.
 \newblock The variational formulation of the {F}okker--{P}lanck equation.
-\newblock \emph{SIAM Journal on Mathematical Analysis}, 29\penalty0
-  (1):\penalty0 1--17, 1998.
+\newblock {\em SIAM Journal on Mathematical Analysis}, 29(1):1--17, 1998.
 
-\bibitem[Mika et~al.(1999)Mika, R{\"a}tsch, Weston, Sch{\"o}lkopf, and
-  M{\"u}ller]{mika99fisher}
-S.~Mika, G.~R{\"a}tsch, J.~Weston, B.~Sch{\"o}lkopf, and K.-R. M{\"u}ller.
+\bibitem[MRW{\etalchar{+}}99]{mika99fisher}
+Sebastian Mika, Gunnar R{\"a}tsch, Jason Weston, Bernhard Sch{\"o}lkopf, and
+  Klaus-Robert M{\"u}ller.
 \newblock Fisher discriminant analysis with kernels.
-\newblock In \emph{Neural Networks for Signal Processing IX: Proceedings of the
+\newblock In {\em Neural Networks for Signal Processing IX: Proceedings of the
   1999 IEEE Signal Processing Society Workshop (Cat. No.98TH8468)}, pages
   41--48, 1999.
 
-\bibitem[Ohta and Takatsu(2011)]{ohta2011displacement}
-S.-i. Ohta and A.~Takatsu.
+\bibitem[OT11]{ohta2011displacement}
+Shin-ichi Ohta and Asuka Takatsu.
 \newblock Displacement convexity of generalized relative entropies.
-\newblock \emph{Advances in Mathematics}, 228\penalty0 (3):\penalty0
-  1742--1787, 2011.
+\newblock {\em Advances in Mathematics}, 228(3):1742--1787, 2011.
 
-\bibitem[Otto(2001)]{otto2001geometry}
-F.~Otto.
+\bibitem[Ott01]{otto2001geometry}
+Felix Otto.
 \newblock The geometry of dissipative evolution equations: the porous medium
   equation.
 \newblock 2001.
 
-\bibitem[S{\"a}rkk{\"a} and Solin(2019)]{sarkka2019applied}
-S.~S{\"a}rkk{\"a} and A.~Solin.
-\newblock \emph{Applied stochastic differential equations}, volume~10.
-\newblock Cambridge University Press, 2019.
-
-\bibitem[Stein et~al.(2026)Stein, Neumayer, Rux, and
-  Steidl]{stein2026wasserstein}
-V.~Stein, S.~Neumayer, N.~Rux, and G.~Steidl.
+\bibitem[SNRS26]{stein2026wasserstein}
+Viktor Stein, Sebastian Neumayer, Nicolaj Rux, and Gabriele Steidl.
 \newblock Wasserstein gradient flows for moreau envelopes of f-divergences in
   reproducing kernel hilbert spaces.
-\newblock \emph{Analysis and Applications}, 24\penalty0 (01):\penalty0 21--65,
-  2026.
+\newblock {\em Analysis and Applications}, 24(01):21--65, 2026.
+
+\bibitem[SS19]{sarkka2019applied}
+Simo S{\"a}rkk{\"a} and Arno Solin.
+\newblock {\em Applied stochastic differential equations}, volume~10.
+\newblock Cambridge University Press, 2019.
 
 \end{thebibliography}

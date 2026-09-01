@@ -62,12 +62,10 @@ Pierre Glaser \and Anna Korba \\
 \definecolor{graytext}{gray}{0.5} % Customize the grey level if needed
 % Save the original versions
 \let\oldcitep\citep
-\let\oldcitet\citet
 
-% Redefine with grey color
-\renewcommand{\citep}[1]{\textcolor{graytext}{\oldcitep{#1}}}
-\renewcommand{\citet}[1]{\textcolor{graytext}{\oldcitet{#1}}}
-\renewcommand{\cite}[1]{\textcolor{graytext}{\oldcitep{#1}}} % you can choose oldcitet if preferred
+% Use compact, unobtrusive citations throughout the slides.
+\renewcommand{\citep}[1]{{\scriptsize\textcolor{graytext}{\oldcitep{#1}}}}
+\renewcommand{\cite}[1]{{\scriptsize\textcolor{graytext}{\oldcitep{#1}}}}
 \newcommand{\red}[1]{\textcolor{red}{#1}}
 \newcommand{\green}[1]{\textcolor{green!60!black}{#1}}
 \newcommand{\orange}[1]{\textcolor{orange}{#1}}
@@ -314,11 +312,11 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \begin{figure}
         \centering
         \includegraphics[width=0.6\linewidth]{figures/blurry_images_mmd.png}
-        \caption{\citet{belhadji2025weighted}}
+        \caption{\citep{belhadji2025weighted}}
     \end{figure}
     \vspace{-10pt}
     \begin{itemize}
-        \item \citet{arbel2019maximum,chen2025stationary} proves convergence of MMD flow, yet under noise injection and stringent conditions on the scale of noise. 
+        \item Convergence of MMD flow has been proved under noise injection and stringent conditions on the noise scale~\citep{arbel2019maximum,chen2025stationary}.
         \item Disclaimer: There exists many papers where MMD flow \green{empirically} generate high-quality images with adversarial training of kernels~\citep{galashov2024deep}, or with non-smooth kernels plus deep network distillation~\citep{hertrich2023generative,altekruger2023neural}. 
     \end{itemize}
 \end{frame}
@@ -593,7 +591,7 @@ Let $(\mu_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
 \end{frame}
 
 
-\bibliographystyle{abbrvnat}
+\bibliographystyle{alpha}
 \bibliography{reference}
 
 \end{document}

@@ -1,49 +1,49 @@
 This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: __main__.aux
-The style file: abbrvnat.bst
+The style file: alpha.bst
 Database file #1: reference.bib
 Warning--empty journal in chen2025stationary
 Warning--empty journal in otto2001geometry
 You've used 18 entries,
-            2773 wiz_defined-function locations,
-            701 strings with 8140 characters,
-and the built_in function-call counts, 9062 in all, are:
+            2543 wiz_defined-function locations,
+            664 strings with 7915 characters,
+and the built_in function-call counts, 8025 in all, are:
 = -- 752
-> -- 633
-< -- 12
-+ -- 210
-- -- 192
-* -- 770
-:= -- 1417
-add.period$ -- 60
+> -- 520
+< -- 9
++ -- 187
+- -- 185
+* -- 612
+:= -- 1379
+add.period$ -- 57
 call.type$ -- 18
-change.case$ -- 109
+change.case$ -- 127
 chr.to.int$ -- 18
-cite$ -- 38
-duplicate$ -- 411
-empty$ -- 699
-format.name$ -- 216
-if$ -- 1886
+cite$ -- 20
+duplicate$ -- 293
+empty$ -- 520
+format.name$ -- 200
+if$ -- 1600
 int.to.chr$ -- 1
-int.to.str$ -- 1
+int.to.str$ -- 0
 missing$ -- 21
-newline$ -- 101
-num.names$ -- 78
-pop$ -- 241
+newline$ -- 94
+num.names$ -- 60
+pop$ -- 135
 preamble$ -- 1
-purify$ -- 94
+purify$ -- 148
 quote$ -- 0
-skip$ -- 313
+skip$ -- 245
 stack$ -- 0
-substring$ -- 212
+substring$ -- 304
 swap$ -- 50
-text.length$ -- 8
-text.prefix$ -- 0
+text.length$ -- 9
+text.prefix$ -- 1
 top$ -- 0
-type$ -- 183
+type$ -- 132
 warning$ -- 2
-while$ -- 73
-width$ -- 0
-write$ -- 242
+while$ -- 72
+width$ -- 21
+write$ -- 232
 (There were 2 warnings)
