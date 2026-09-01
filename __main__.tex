@@ -356,6 +356,8 @@ Given any $T \in \calT_\mu\calP_2(\R^d)$ and a curve (constant-speed geodesic) $
 \end{columns}
 \end{frame}
 
+\section{DrMMD}
+
 \begin{frame}{Non-convexity of MMD prevents global convergence}
     \begin{figure}
         \centering
@@ -373,6 +375,9 @@ Given any $T \in \calT_\mu\calP_2(\R^d)$ and a curve (constant-speed geodesic) $
         \item Disclaimer: There exists many papers where MMD flow \green{empirically} generate high-quality images on with adversarial training of kernels~\citep{galashov2024deep}, or with non-smooth kernels plus deep neural network distillation~\citep{hertrich2023generative,altekruger2023neural}. 
     \end{itemize}
 \end{frame}
+
+
+
 
 \begin{frame}{Convexity and Smoothness}
 \begin{exampleblock}{}
@@ -397,7 +402,7 @@ Here, $T_\pi: L^2(\pi)\to L^2(\pi)$ is the kernel \red{integral operator} define
 \end{itemize}
 \end{frame}
 
-\section{DrMMD}
+
 \begin{frame}{DrMMD: An interpolation of MMD and $\chi^2$-divergence}
 \begin{defi}[De-regularized Maximum Mean Discrepancy (DrMMD)]
 Suppose $\mu\ll\pi$ where $\mu, \pi \in \calP_2(\R^d)$. Then the (de)-regularized maximum mean discrepancy (DrMMD) between $\mu, \pi$ is defined as, for $\lambda>0$,
@@ -415,7 +420,7 @@ Suppose $k$ is bounded, continuous, and $c_0$-universal.
 \end{prop}
 \begin{itemize}
     \item Similar idea of spectral regularization has been done for kernel hypothesis testing~\citep{mika99fisher, eric2007testing, hagrass2022spectral}. 
-    \item This is known as Tikhonov regularization.
+    \item Interpolation between MMD and general f-divergences~\citep{glaser2021kale,stein2026wasserstein}.
 \end{itemize}
 \end{frame}
 
