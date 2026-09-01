@@ -590,8 +590,17 @@ Suppose the target distribution $\pi$ \text satisfies a Poincaré inequality wit
             (0,0) ellipse (3.75 and 1.15)
             (0,0) ellipse (1.15 and 0.42);
 
-        \draw[DarkBlue, very thick] (0,0) ellipse (6.2 and 2.00);
-        \draw[darkgreen, very thick] (0,0) ellipse (3.75 and 1.15);
+        % Leave gaps in the perimeters so the labels are embedded in the outlines.
+        \draw[DarkBlue, very thick]
+            (6.2,0) arc[start angle=0,end angle=164,x radius=6.2cm,y radius=2.00cm];
+        \draw[DarkBlue, very thick]
+            ({6.2*cos(178)},{2.00*sin(178)})
+            arc[start angle=178,end angle=360,x radius=6.2cm,y radius=2.00cm];
+        \draw[darkgreen, very thick]
+            (3.75,0) arc[start angle=0,end angle=184,x radius=3.75cm,y radius=1.15cm];
+        \draw[darkgreen, very thick]
+            ({3.75*cos(202)},{1.15*sin(202)})
+            arc[start angle=202,end angle=360,x radius=3.75cm,y radius=1.15cm];
         \draw[orange, very thick] (0,0) ellipse (1.15 and 0.42);
 
         \node[DarkBlue, inner xsep=3pt, inner ysep=1pt] at (-6.12,0.32)
