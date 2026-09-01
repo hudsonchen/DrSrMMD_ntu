@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex __main__"] 1788235764 "__main__.aux" "__main__.bbl" "__main__" 1788235765
+["bibtex __main__"] 1788238042 "__main__.aux" "__main__.bbl" "__main__" 1788238043
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "__main__.aux" 1788235765 8736 931630c92b37a9deb1024adcb4bfda8f "pdflatex"
+  "__main__.aux" 1788238043 8096 b8c88394c7260829df0d53c33497dab9 "pdflatex"
   "reference.bib" 1788235744 40599 89177eb05353cd2002697db0794c09d1 ""
   (generated)
   "__main__.bbl"
   "__main__.blg"
-["pdflatex"] 1788235764 "__main__.tex" "__main__.pdf" "__main__" 1788235765
+["pdflatex"] 1788238042 "__main__.tex" "__main__.pdf" "__main__" 1788238043
   "/etc/texmf/web2c/texmf.cnf" 1691084906 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/zongchen/texmf/fonts/pk/ljfour/public/bbm/bbm10.657pk" 1788235075 7808 44727eabc0bb770cb34e090fa7cf930b ""
   "/home/zongchen/texmf/fonts/tfm/public/bbm/bbm10.tfm" 1788235072 560 39fd35b5e4a6aca3672660cc548ba860 ""
@@ -63,7 +63,6 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb" 1248133631 24393 3b7eb51a67a0a62aec5849271bdb9c2e ""
@@ -275,11 +274,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1781392677 412563 db61d7d2177dee6340dcfa89b660dbf6 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1781392682 1503855 bb3b237899f15e72fded17b9c951fbf4 ""
-  "__main__.aux" 1788235765 8736 931630c92b37a9deb1024adcb4bfda8f "pdflatex"
-  "__main__.bbl" 1788235764 5530 25747062bc16c902f8dba9454fe0d066 "bibtex __main__"
-  "__main__.nav" 1788235765 3973 3adc71607ea6c4b0fb6ac60c43fdb24e "pdflatex"
-  "__main__.out" 1788235765 657 08d446c08db5cc6b1c945cef39a8b27c "pdflatex"
-  "__main__.tex" 1788235749 33966 5345040cc27b44db147b94c5a99c30cf ""
+  "__main__.aux" 1788238043 8096 b8c88394c7260829df0d53c33497dab9 "pdflatex"
+  "__main__.bbl" 1788238042 5640 4339ac2819723d608fb557aa5ccaed1d "bibtex __main__"
+  "__main__.nav" 1788238043 3511 ae224aa2d988733fd2edf24a001b7574 "pdflatex"
+  "__main__.out" 1788238043 657 08d446c08db5cc6b1c945cef39a8b27c "pdflatex"
+  "__main__.tex" 1788238037 27070 54e0690fc806679a7dc2b33e1a6b0dfe ""
   "beamercolorthemeSimpleDarkBlue.sty" 1788234685 1519 0fb483013d61269173c77458b49f793b ""
   "beamerfontthemeSimpleDarkBlue.sty" 1788234685 1415 7f3c6b511b7db0d7ad2ec03af90863b5 ""
   "beamerinnerthemeSimpleDarkBlue.sty" 1788234685 2393 f22e69a0c8325624047edfa537865049 ""
@@ -289,6 +288,7 @@
   "figures/nonceonvxity_mmd.png" 1788234685 64645 f9298164690ea07f7cff8e5c1a0ac988 ""
   "figures/ot_wasserstein_gradient_illustration.pdf" 1788235288 272517 a00bcd36a64e85357b78c68f8bf9c43b ""
   "figures/personal.png" 1788234685 324645 6daa4b18f32390d21f65d06ec5765ed8 ""
+  "figures/tangent.png" 1788234685 47494 b8ae39762894b084b626bc2fbc1c655a ""
   "include/macros.tex" 1788234685 1405 7e919f08914a4d571ea89cd675fa11db ""
   (generated)
   "__main__.aux"

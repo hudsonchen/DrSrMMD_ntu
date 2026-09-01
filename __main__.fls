@@ -1461,14 +1461,15 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT ./figures/tangent.png
+INPUT ./figures/tangent.png
+INPUT figures/tangent.png
+INPUT ./figures/tangent.png
+INPUT ./figures/tangent.png
 INPUT ./figures/ot_wasserstein_gradient_illustration.pdf
 INPUT ./figures/ot_wasserstein_gradient_illustration.pdf
 INPUT figures/ot_wasserstein_gradient_illustration.pdf
 INPUT ./figures/ot_wasserstein_gradient_illustration.pdf
-INPUT ./figures/ot_wasserstein_gradient_illustration.pdf
-INPUT ./figures/ot_wasserstein_gradient_illustration.pdf
-INPUT ./figures/ot_wasserstein_gradient_illustration.pdf
-INPUT figures/ot_wasserstein_gradient_illustration.pdf
 INPUT ./figures/ot_wasserstein_gradient_illustration.pdf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
@@ -1509,9 +1510,6 @@ INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm10.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm8.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm6.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm12.tfm
-INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm10.tfm
-INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm7.tfm
-INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm12.tfm
 INPUT ./figures/interpolation.png
 INPUT ./figures/interpolation.png
 INPUT figures/interpolation.png
@@ -1528,6 +1526,9 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm9.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm5.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi9.tfm
+INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm12.tfm
+INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm10.tfm
+INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./figures/personal.png
 INPUT ./figures/personal.png
@@ -1553,7 +1554,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb

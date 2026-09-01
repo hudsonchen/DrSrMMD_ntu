@@ -168,18 +168,21 @@ Pierre Glaser \and Anna Korba \\
         \item $(\calP_2, W_2)$ can be 'treated` as a Riemann manifold under Otto's calculus~\citep{otto2001geometry}. 
         \item The \green{tangent space} $\calT_\mu\calP_2(\R^d)$ at $\mu\in\calP_2(\R^d)$ is a dense subset of $L^2(\mu)$. 
     \end{itemize}
-    \vspace{-0.08cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.40\linewidth]{figures/ot_wasserstein_gradient_illustration.pdf}
+        \includegraphics[width=0.28\linewidth]{figures/tangent.png}
     \end{figure}
 \end{frame}
 
 \begin{frame}{Background: Wasserstein gradient flow}
-    \vspace{-0.12cm}
+    \vspace{-0.18cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.47\linewidth]{figures/ot_wasserstein_gradient_illustration.pdf}
+        \includegraphics[
+            width=0.27\linewidth,
+            trim=315bp 0 0 0,
+            clip
+        ]{figures/ot_wasserstein_gradient_illustration.pdf}
     \end{figure}
 \begin{defi}[Wasserstein gradient]
 Let $\calF: \calP_2(\R^d) \rightarrow \R$.
@@ -369,7 +372,7 @@ Suppose $k$ is bounded, continuous, and $c_0$-universal.
 \end{frame}
 
 \begin{frame}{DrMMD: An interpolation of MMD and $\chi^2$}
-    \begin{exampleblock}{}
+\begin{exampleblock}{}
 \centering
     \textbf{Question}: Does $\dmmd$ inherit the advantages of $\mmd^2$ and $\chi^2$?
     \begin{itemize}
@@ -377,11 +380,30 @@ Suppose $k$ is bounded, continuous, and $c_0$-universal.
         \item Does  $\calF_\dmmd$ flow \blue{convergence} when $\pi$ is Gaussian-like? 
     \end{itemize}
 \end{exampleblock}
-\begin{ass}
-    $k: \R^d \times \R^d \rightarrow \R$ is a continuous and $c_0$-universal kernel. The kernel is bounded by $K$, its first order derivatives bounded by $K_{1d}$ and second order derivatives bounded by $K_{2d}$. 
+\end{frame}
+
+\begin{frame}{Kernel assumptions}
+\begin{ass}[Growth I]
+There exists a constant $M>0$ such that, for every $x\in\R^d$,
+\begin{align*}
+    \lvert k(x,x)\rvert
+    &\leq M\left(1+\lvert x\rvert^4\right), \\
+    \left\lvert \partial_{1,i}\partial_{2,i}k(x,x)\right\rvert
+    &\leq M\left(1+\lvert x\rvert^2\right), \qquad i\in[d].
+\end{align*}
+\end{ass}
+
+\begin{ass}[Local Boundedness]
+For $R>0$, let $\mathcal K=B(0,R)\subset\R^d$. There exists a constant $B_R>0$ such that, for every $i,j\in[d]$,
+\begin{align*}
+    \sup_{x\in\mathcal K}
+    \left\lVert \partial_{1,i}\partial_{1,j}k(x,\cdot)\right\rVert_{\mathcal H}
+    \leq B_R.
+\end{align*}
 \end{ass}
 \begin{itemize}
-    \item This condition is satisfied by Gaussian kernels, Mat\'{e}rn kernels and inverse multiquadratic kernels. 
+    \item Gaussian, Mat\'{e}rn, and inverse multiquadratic kernels. 
+    \item 
 \end{itemize}
 \end{frame}
 

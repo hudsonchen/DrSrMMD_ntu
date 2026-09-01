@@ -3,46 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: __main__.aux
 The style file: abbrvnat.bst
 Database file #1: reference.bib
+Warning--empty journal in chen2025stationary
 Warning--empty journal in otto2001geometry
 You've used 18 entries,
             2773 wiz_defined-function locations,
-            702 strings with 8040 characters,
-and the built_in function-call counts, 8892 in all, are:
-= -- 738
-> -- 605
-< -- 14
-+ -- 201
-- -- 183
-* -- 745
-:= -- 1388
-add.period$ -- 59
+            701 strings with 8140 characters,
+and the built_in function-call counts, 9062 in all, are:
+= -- 752
+> -- 633
+< -- 12
++ -- 210
+- -- 192
+* -- 770
+:= -- 1417
+add.period$ -- 60
 call.type$ -- 18
-change.case$ -- 104
+change.case$ -- 109
 chr.to.int$ -- 18
-cite$ -- 37
+cite$ -- 38
 duplicate$ -- 411
-empty$ -- 700
-format.name$ -- 208
-if$ -- 1857
+empty$ -- 699
+format.name$ -- 216
+if$ -- 1886
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 22
-newline$ -- 100
+missing$ -- 21
+newline$ -- 101
 num.names$ -- 78
-pop$ -- 235
+pop$ -- 241
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 94
 quote$ -- 0
-skip$ -- 311
+skip$ -- 313
 stack$ -- 0
 substring$ -- 212
-swap$ -- 52
-text.length$ -- 9
+swap$ -- 50
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 178
-warning$ -- 1
+type$ -- 183
+warning$ -- 2
 while$ -- 73
 width$ -- 0
 write$ -- 242
-(There was 1 warning)
+(There were 2 warnings)

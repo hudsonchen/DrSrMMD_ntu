@@ -37,6 +37,13 @@ S.~P. Boyd and L.~Vandenberghe.
 \newblock \emph{Convex Optimization}.
 \newblock Cambridge University Press, 2004.
 
+\bibitem[Chen et~al.(2025)Chen, Karvonen, Kanagawa, Briol, and
+  Oates]{chen2025stationary}
+Z.~Chen, T.~Karvonen, H.~Kanagawa, F.-X. Briol, and C.~Oates.
+\newblock Stationary {MMD} points for cubature.
+\newblock 2025.
+\newblock URL \url{https://arxiv.org/abs/2505.20754}.
+
 \bibitem[Chewi et~al.(2024)Chewi, Erdogdu, Li, Shen, and
   Zhang]{chewi2024analysis}
 S.~Chewi, M.~A. Erdogdu, M.~Li, R.~Shen, and M.~S. Zhang.
@@ -120,10 +127,5 @@ V.~Stein, S.~Neumayer, N.~Rux, and G.~Steidl.
   reproducing kernel hilbert spaces.
 \newblock \emph{Analysis and Applications}, 24\penalty0 (01):\penalty0 21--65,
   2026.
-
-\bibitem[Villani et~al.(2009)]{villani2009optimal}
-C.~Villani et~al.
-\newblock \emph{Optimal {T}ransport: {O}ld and {N}ew}, volume 338.
-\newblock Springer, 2009.
 
 \end{thebibliography}
