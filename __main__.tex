@@ -106,13 +106,6 @@ Pierre Glaser \and Anna Korba \\
     \item Sampling (e.g: $\pi\propto\exp(-V)$ is the posterior distribution in Bayesian inference). 
     \item Generative models (e.g: $\pi$ is the distribution of an image dataset). 
 \end{itemize}
-% \begin{figure}
-% \centering
-% \begin{subfigure}[t]{0.45\linewidth}
-%     \centering
-%     \includegraphics[width=\linewidth]{figures/transport_1.png}
-% \end{subfigure}
-% \end{figure}
 \end{frame}
 
 
@@ -156,20 +149,6 @@ Pierre Glaser \and Anna Korba \\
 
 
 
-
-% \begin{frame}{Background: Wasserstein gradient flow}
-%     \begin{exampleblock}{}
-%     \centering
-%         \textbf{Problem}: Transport an initial probability distribution $\mu_0$ on $\R^d$ \\
-%         to a target probability distribution $\pi$ on $\R^d$.
-%     \end{exampleblock}
-%     \begin{figure}
-%         \centering
-%         \includegraphics[width=0.6\linewidth]{figures/torus.png}
-%         \caption{Transporting from a source  (mixture of Gaussians) to a target  (torus)~\citep{carrillo2022primal}.}
-%     \end{figure}
-% \end{frame}
-
 \begin{frame}{Background: Wasserstein gradient flow}
     \begin{exampleblock}{}
     \centering
@@ -189,16 +168,18 @@ Pierre Glaser \and Anna Korba \\
         \item $(\calP_2, W_2)$ can be 'treated` as a Riemann manifold under Otto's calculus~\citep{otto2001geometry}. 
         \item The \green{tangent space} $\calT_\mu\calP_2(\R^d)$ at $\mu\in\calP_2(\R^d)$ is a dense subset of $L^2(\mu)$. 
     \end{itemize}
+    \vspace{-0.08cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.3\linewidth]{figures/tangent.png}
+        \includegraphics[width=0.40\linewidth]{figures/ot_wasserstein_gradient_illustration.pdf}
     \end{figure}
 \end{frame}
 
 \begin{frame}{Background: Wasserstein gradient flow}
+    \vspace{-0.12cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.3\linewidth]{figures/tangent.png}
+        \includegraphics[width=0.47\linewidth]{figures/ot_wasserstein_gradient_illustration.pdf}
     \end{figure}
 \begin{defi}[Wasserstein gradient]
 Let $\calF: \calP_2(\R^d) \rightarrow \R$.
@@ -454,23 +435,6 @@ Given empirical distributions $\hat{\mu} = \frac{1}{N} \sum_{i=1}^N x_i$ and $\h
 \end{prop}
 \end{frame}
 
-\begin{frame}{Wasserstein Hessian and convexity}
-\begin{prop}[Wasserstein Hessian of  $\calF_{\chi^2}$]
-Suppose $k$ satisfies Assumption 1. Let $\mu, \pi \in \calP_2(\R^d)$. 
-\begin{talign*}
-    \left|\left\langle\operatorname{Hess} \mathcal{F}_{\mathrm{DrMMD} \mid \mu} T, T \right\rangle_{L^2(\mu)}\right| \leq 2(1+\lambda) \blue{\lambda^{-1}} \|T\|_{L^2(\mu)}^2 , \quad \forall T\in \calT_\mu\calP_2(\R^d) . 
-\end{talign*}
-Let $\pi$ be $\alpha$-strongly log-concave, i.e., $\pi \propto \exp (-V)$, $\mathbf{H} V \succeq \alpha \mathrm{I}$. Then for all $\mu$ such that $x \mapsto \nabla \log \mu(x)$ is continuous and \orange{$\frac{\dd \mu}{\dd \pi}-1 \in \mathcal{H}$}, 
-\vspace{-5pt}
-\begin{talign*}
-    \left\langle\operatorname{Hess} \mathcal{F}_{\mathrm{DrMMD} \mid \mu} T, T \right\rangle_{L^2(\mu)} \geq \alpha(1+\lambda) \int \frac{\dd \mu}{\dd \pi}(x) \|T(x)\|^2 \dd \mu - o(\lambda),
-\end{talign*}
-\end{prop}
-\begin{itemize}
-    \item $\dmmd$ is \orange{more convex when $\lambda\to 0$ and more smooth when $\lambda\to\infty$}. 
-    \item Unfortunately, \green{$\frac{\dd \mu}{\dd \pi}-1 \in \mathcal{H}$ is too strong} in practice. 
-\end{itemize}
-\end{frame}
 
 
 \begin{frame}{Poincar\'{e} inequality}
