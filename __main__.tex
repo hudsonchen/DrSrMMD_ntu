@@ -72,6 +72,17 @@ Pierre Glaser \and Anna Korba \\
 \newcommand{\orange}[1]{\textcolor{orange}{#1}}
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
+\newcommand{\authorportrait}[2]{%
+    \begin{minipage}[t]{0.155\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \clip (0,0) circle (0.72cm);
+            \node at (0,0) {\includegraphics[width=1.44cm,height=1.44cm]{#1}};
+        \end{tikzpicture}\\[-1pt]
+        {\scriptsize #2}
+    \end{minipage}%
+}
+
 \newenvironment{talign*}
  {\let\displaystyle\textstyle\csname align*\endcsname}
  {\endalign}
@@ -87,9 +98,18 @@ Pierre Glaser \and Anna Korba \\
 
 \input{include/macros}
 
-\begin{frame}
-    % Print the title page as the first slide
-    \titlepage
+\begin{frame}[plain]
+    \centering
+    \vspace{0.35cm}
+    {\usebeamerfont{title}\color{DarkBlue}\inserttitle\par}
+    \vspace{0.75cm}
+
+    \authorportrait{figures/authors/zonghao.jpg}{Zonghao\\Chen}\hfill
+    \authorportrait{figures/authors/aratrika.jpg}{Aratrika\\Mustafi}\hfill
+    \authorportrait{figures/authors/pierre.jpg}{Pierre\\Glaser}\hfill
+    \authorportrait{figures/authors/anna.jpg}{Anna\\Korba}\hfill
+    \authorportrait{figures/authors/arthur.png}{Arthur\\Gretton}\hfill
+    \authorportrait{figures/authors/bharath.jpg}{Bharath K.\\Sriperumbudur}
 \end{frame}
 
 
