@@ -265,45 +265,8 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Convexity and Smoothness}
-\begin{exampleblock}{}
-\centering
-    \textbf{Question}: When does Wasserstein gradient flow find $\arg\min_{\mu \in \calP_2(\R^d)} D(\mu \mid \pi)$?
-\end{exampleblock}
-\begin{defi}[Wasserstein Hessian~\citep{villani2009optimal}]
-Given any $T \in \calT_\mu\calP_2(\R^d)$ and a curve (constant-speed geodesic) $\rho_t=(\Id + t T)_{\#}\mu$ for $0 \leq t \leq 1$, the \red{Wasserstein Hessian} of a functional $\calF: \calP_2(\R^d) \rightarrow \R$ at $\mu$, \blue{denoted as Hess $\calF_{\mid \mu}$, is an operator from $L^2(\mu)$ to $L^2(\mu)$}: 
-\vspace{-15pt}
-\begin{talign*}
-    \left\langle \operatorname{Hess} \calF_{\mid \mu} T, T \right\rangle_{L^2(\mu)} = \left.\frac{d^2}{d t^2}\right|_{t=0} \calF\left(\rho_t\right) . 
-\end{talign*} 
-\end{defi}
-\begin{itemize}
-    \item A functional $\calF$ is said to be (geodesically) \orange{$M$-smooth} at $\mu$ if 
-    \begin{talign*}
-        \left\langle\operatorname{Hess} \mathcal{\mathcal { F } _ { | \mu }} T,  T\right\rangle_{L^2(\mu)} \leq M\|T \|_{L^2(\mu)}^2 . 
-    \end{talign*}
-    \item A functional $\calF$ is said to be (geodesically) \orange{$\Lambda$-convex} at $\mu$ if \begin{talign*}
-        \left\langle\operatorname{Hess} \calF_{\mid \mu} T, T \right\rangle_{L^2(\mu)} \geq \Lambda \|T\|_{L^2(\mu)}^2 .
-    \end{talign*} 
-    \item If $\calF$ is both (geodesically) $M$-smooth and $\Lambda$-convex, then $M \geq \Lambda$. 
-\end{itemize}
-\end{frame}
 
-\begin{frame}{Convexity and Smoothness}
-    \begin{itemize}
-        \item Let $(\mu_t)_{t\geq 0}$ be the Wasserstein gradient \orange{flow} of $\calF$ 
-        \item If $\calF$ is $\Lambda$-convex with $\Lambda > 0$, 
-        \begin{talign*}
-            \calF(\mu_t) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu)  \leq \exp(-2 \Lambda t) \Big(\calF(\mu_0) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu) \Big) . 
-        \end{talign*}
-        \item Let $(\mu_n)_{n\in \N}$ be the Wasserstein gradient \orange{descent} of $\calF$. 
-        \item If $\calF$ is $\Lambda$-convex with $\Lambda > 0$ and $M$-smooth, and the step size $0 < \gamma \leq \frac{1}{M}$, 
-        \begin{talign*}
-            \calF(\mu_n) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu) \leq \exp(- \gamma \Lambda n) \Big(\calF(\mu_0) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu) \Big) . 
-        \end{talign*}
-        \item This is the same as convex optimization in Euclidean space~\citep{boyd2004convex}. 
-    \end{itemize}
-\end{frame}
+
 
 \begin{frame}{Convexity and Smoothness}
     \begin{columns}[T]
@@ -327,7 +290,7 @@ Given any $T \in \calT_\mu\calP_2(\R^d)$ and a curve (constant-speed geodesic) $
         \item $\{y_i\}_{i=1}^M$ i.i.d samples from $\pi$ 
         \item Generative modelling 
         \item When $k$ is bounded and has bounded derivatives, then $\calF_\mmd$ is \green{$M$-smooth and $-M$-convex}. 
-        \item Convergence in discrete time
+        \item \textcolor{blue}{Non-}convergence in discrete time
         \begin{talign*}
             \calF_\mmd(\mu_n, \pi) \leq \frac{W_2^2(\mu_0,\pi)}{\gamma n} + \bar{K}.
         \end{talign*}
@@ -352,8 +315,8 @@ Given any $T \in \calT_\mu\calP_2(\R^d)$ and a curve (constant-speed geodesic) $
     \end{figure}
     \vspace{-10pt}
     \begin{itemize}
-        \item \citet{arbel2019maximum} proves convergence of MMD flow, yet under noise injection and stringent conditions on the scale of noise. 
-        \item Disclaimer: There exists many papers where MMD flow \green{empirically} generate high-quality images on with adversarial training of kernels~\citep{galashov2024deep}, or with non-smooth kernels plus deep neural network distillation~\citep{hertrich2023generative,altekruger2023neural}. 
+        \item \citet{arbel2019maximum,chen2025stationary} proves convergence of MMD flow, yet under noise injection and stringent conditions on the scale of noise. 
+        \item Disclaimer: There exists many papers where MMD flow \green{empirically} generate high-quality images with adversarial training of kernels~\citep{galashov2024deep}, or with non-smooth kernels plus deep network distillation~\citep{hertrich2023generative,altekruger2023neural}. 
     \end{itemize}
 \end{frame}
 
@@ -363,7 +326,7 @@ Given any $T \in \calT_\mu\calP_2(\R^d)$ and a curve (constant-speed geodesic) $
 \begin{frame}{Convexity and Smoothness}
 \begin{exampleblock}{}
 \centering
-    \textbf{Question}: Can we find a new objective $\calF$ such that it enjoys \blue{(geodesic) convexity}, similar to $\calF_\kl$, in the \blue{generative modelling} setting where only samples are available?
+    \textbf{Question}: Can we find a new objective $\calF$ such that it enjoys \blue{convergence}, similar to $\calF_\kl$, in the \blue{generative modelling} setting where only samples are available?
 \end{exampleblock}
 \begin{prop}[MMD and $\chi^2$-divergence]
 Suppose $\mu$ is absolutely continuous with respect to $\pi$, i.e., $\mu \ll \pi$. Then
@@ -378,7 +341,7 @@ Here, $T_\pi: L^2(\pi)\to L^2(\pi)$ is the kernel \red{integral operator} define
 \end{talign*}
 \end{prop}
 \begin{itemize}
-    \item Similar to $\calF_\kl$, $\calF_{\chi^2}(\cdot)=\chi^2(\cdot\|\pi)$ is (geodesic) strong convex when $\pi$ is strongly log-concave~\citep{ohta2011displacement}. 
+    \item Similar to $\calF_\kl$ flow, $\calF_{\chi^2}(\cdot)=\chi^2(\cdot\|\pi)$ flow enjoys convergence for Gaussian-like $\pi$~\citep{ohta2011displacement}. 
     \item An \green{interpolation} between $\mmd^2$ and $\chi^2$? 
 \end{itemize}
 \end{frame}
@@ -410,8 +373,8 @@ Suppose $k$ is bounded, continuous, and $c_0$-universal.
 \centering
     \textbf{Question}: Does $\dmmd$ inherit the advantages of $\mmd^2$ and $\chi^2$?
     \begin{itemize}
-        \item Does $\calF_\dmmd$ admit \blue{finite sample implementation} of its Wasserstein gradient flow?
-        \item Is $\calF_\dmmd$ \blue{(geodesic) strongly convex} when $\pi$ is strongly log-concave? 
+        \item Does $\calF_\dmmd$ flow admit \blue{finite sample implementation} of its Wasserstein gradient flow?
+        \item Does  $\calF_\dmmd$ flow \blue{convergence} when $\pi$ is Gaussian-like? 
     \end{itemize}
 \end{exampleblock}
 \begin{ass}
@@ -422,7 +385,7 @@ Suppose $k$ is bounded, continuous, and $c_0$-universal.
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Finite-sample estimate}
+\begin{frame}{Finite-sample implementation}
 \begin{prop}[Finite-sample estimate of the Wasserstein gradient of $\calF_\dmmd$]
 The Wasserstein gradient of $\calF_\dmmd(\cdot) = \dmmd(\cdot\|\pi)$ at $\mu$ is \blue{$(1+\lambda)\nabla h_{\mu,\pi}(\cdot) : \R^d\to\R^d$}, where 
 \begin{talign*}
@@ -437,15 +400,7 @@ Given empirical distributions $\hat{\mu} = \frac{1}{N} \sum_{i=1}^N x_i$ and $\h
 
 
 
-\begin{frame}{Poincar\'{e} inequality}
-\begin{itemize}
-    \item Exponential convergence to the global minima (not necessarily unique) still hold under a \red{Polyak-Łojasiewicz inequality}, \blue{a strict relaxation of strong convexity}.
-    \item $\calF_{\chi^2}=\chi^2(\cdot\|\pi)$  satisfies a (modified) PL inequality with $\alpha$ if, for all $\mu\in\calP_2(\R^d)$,  
-    \begin{talign*}
-        \chi^2(\mu \|\pi) \leq \frac{1}{2 \alpha} \left\|\nabla_{W_2} \calF_{\chi^2} (\cdot) \right\|_{\blue{L^2(\pi)}}^2 = \frac{1}{2 \alpha} \left\|\nabla \left(\frac{\dd \mu}{\dd \pi} \right)(x) \right\|_{\blue{L^2(\pi)}}^2 . 
-    \end{talign*}
-    \item It is implied by $\pi$ satisfying the  Poincar\'{e} inequality ($f=\frac{\dd \mu}{\dd \pi} - 1$). 
-\end{itemize}
+\begin{frame}{Convergence}
 \begin{defi}[Poincar\'{e} inequality]
     We say that $\pi$ satisfies a \red{Poincaré inequality} with constant $C_{P}$ if for all $f , \nabla f \in L^2(\pi)$,
     \begin{talign*}
@@ -454,8 +409,12 @@ Given empirical distributions $\hat{\mu} = \frac{1}{N} \sum_{i=1}^N x_i$ and $\h
     Furthermore, $\pi$ satisfies a Poincar\'{e} with constant $\alpha$ if $\pi$ is $\alpha$-log concave. 
 \end{defi}
 \begin{itemize}
-    \item Poincar\'{e} inequality is a \blue{strict relaxation of strong log concavity}. It is satisfied by mixture of Gaussians~\citep{bakry2014analysis}. 
+    \item By ``Gaussian-like,'' we mean that $\pi$ satisfies a Poincar\'{e} inequality, which in particular implies sub-exponential tails~\citep{bakry2014analysis}.
 \end{itemize}
+\begin{prop}[Convergence of $\calF_{\chi^2}$ flow]
+Suppose that $\pi$ satisfies the  Poincar\'{e} inequality. Let $(\mu_t)_{t\geq 0}$ follow the $\calF_{\chi^2}$ flow. Then, for any $T \geq 0$,
+$\kl\left(\mu_T \| \pi\right) \leq \exp \left(-2 C_P^{-1} T\right) \kl\left(\mu_0 \| \pi\right)$. 
+\end{prop}
 \end{frame}
 
 % \begin{frame}{Poincar\'{e} inequality}
@@ -475,65 +434,9 @@ Given empirical distributions $\hat{\mu} = \frac{1}{N} \sum_{i=1}^N x_i$ and $\h
 % \end{itemize}
 % \end{frame}
 
-\begin{frame}{DrMMD: An interpolation of MMD and $\chi^2$}
-\begin{exampleblock}{}
-\centering
-    \textbf{Question}: Does $\dmmd$ inherit the advantages of $\mmd^2$ and $\chi^2$ ?
-    \begin{itemize}
-        \item Does $\calF_\dmmd$ admit finite sample implementation of its Wasserstein gradient flow?
-        \item \sout{Is $\calF_\dmmd$ (geodesic) convex when $\pi$ is log-concave?} 
-        \item Does $\calF_\dmmd$ satisfy a (modified) PL condition when $\pi$ satisfies a Poincar\'{e} inequality? 
-    \end{itemize}
-\end{exampleblock}
-\begin{itemize}
-    \item Let $(\mu_t)_{t\geq 0}$ be the Wasserstein gradient flow of $\calF_{\dmmd}$ with a \red{continuity equation} 
-    \begin{align*}
-        \partial_t \mu_t+\nabla \cdot\left(\mu_t (1+\lambda) \nabla h_{\mu_t,\pi} \right)=0 , \quad h_{\mu_t,\pi} = \left(T_\pi+\lambda \mathrm{I}\right)^{-1} T_\pi\left(\frac{\dd \mu_t}{\dd \pi}-1\right) . 
-    \end{align*} 
-\end{itemize}
-\end{frame}
 
-\begin{frame}{PL condition of $\calF_{\dmmd}$}
-\begin{align*}
-& \frac{\dd}{\dd t} \kl\left(\mu_t \| \pi\right) \\
-= & -\int \nabla h_{\mu_t, \pi}(x)^{\top} \nabla \log \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \mu_t \\
-= & -\int \nabla h_{\mu_t, \pi}(x)^{\top} \nabla \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \pi \\
-= & -\int\left(\nabla h_{\mu_t, \pi}(x)- \nabla \frac{\dd \mu_t}{\dd \pi}(x)\right)^{\top} \nabla \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \pi - \int \left\|\nabla \frac{\dd \mu_t}{\dd \pi}(x)\right\|^2 \; \dd \pi \\
-= & - \int\left(\nabla h_{\mu_t, \pi}(x)- \nabla\left(\frac{\dd \mu_t}{\dd \pi}(x)-1\right)\right)^{\top} \nabla \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \pi - \int \left\|\nabla \frac{\dd \mu_t}{\dd \pi}(x)\right\|^2 \; \dd \pi .
-\end{align*}
-Apply integration by parts for the first term.
-\end{frame}
 
-\begin{frame}{PL condition of $\calF_{\dmmd}$}
-\begin{talign*}
-    &\quad \frac{\dd}{\dd t} \kl\left(\mu_t \| \pi\right) \\
-    &= \int\left(h_{\mu_t, \pi}(x)-\left(\frac{\dd \mu_t}{\dd \pi}(x)-1\right)\right) \nabla \cdot\left(\pi(x) \nabla \frac{\dd \mu_t}{\dd \pi}(x)\right) \dd x - \int \left\|\nabla \frac{\dd \mu_t}{\dd \pi}(x)\right\|^2 \; \dd \pi \\
-    &\leq \left\|h_{\mu_t, \pi} - \left(\frac{\dd \mu_t}{\dd \pi} -1 \right) \right\|_{L^2(\pi)} \left\|\frac{\nabla \cdot\left(\pi \nabla \frac{\dd \mu_t}{\dd \pi}\right)}{\pi}\right\|_{L^2(\pi)}-\frac{1}{C_P} \kl\left(\mu_t \| \pi\right),
-\end{talign*}
-\begin{itemize}
-    \item The first term is bounded by Cauchy-Schwartz inequality, and the second term is bounded by the Poincar\'{e} inequality with $C_P$. 
-    \item Suppose $\frac{\dd \mu_t}{\dd \pi}-1 \in \operatorname{Ran}(T_\pi^r)$ with $r>0$. 
-    \begin{talign*}
-        \left\|h_{\mu_t, \pi}- \left(\frac{\dd \mu_t}{\dd \pi}-1\right)\right\|_{L^2(\pi)} \leq \blue{\lambda^r} \left\|q_t\right\|_{L^2(\pi)} , \text{ where } h_{\mu_t, \pi} = T_\pi^r q_t . 
-    \end{talign*}
-    \item $h_{\mu_t, \pi}=(T_\pi+\lambda \mathrm{I})^{-1} T_\pi(\frac{\dd \mu_t}{\dd \pi}-1)$
-    % \item Similar results have been established in kernel ridge regression~\citep{cucker2007learning}.
-\end{itemize}
-\end{frame}
 
-\begin{frame}{PL condition of $\calF_{\dmmd}$}
-\begin{prop}[PL condition of $\calF_{\dmmd}$]
-    Let $(\mu_t)_{t\geq0}$ be the Wasserstein gradient flow of $\calF_{\dmmd}$. 
-    Suppose the kernel satisfied Assumption 1. Suppose the target distribution $\pi$ \text satisfies a Poincaré inequality with constant $C_P$. Suppose that \orange{$\frac{\dd \mu_t}{\dd \pi}-1 \in \operatorname{Ran}(T_\pi^r)$ with $r>0$}. 
-    Then, we have \begin{align*}
-        \frac{\dd}{\dd t} \kl\left(\mu_t \| \pi\right) \leq -\frac{1}{C_P} \kl\left(\mu_t \| \pi\right) + \calO(\lambda^r) . 
-    \end{align*}
-\end{prop}
-\begin{itemize}
-    \item When $\lambda=0$, we recover the PL condition of $\chi^2$ divergence. 
-    \item Compared with the initial regularity condition $\frac{\dd \mu_t}{\dd \pi}-1 \in \calH$ required for the (geodesic) convexity of $\calF_{\dmmd}$, \orange{$\frac{\dd \mu_t}{\dd \pi}-1 \in \operatorname{Ran}(T_\pi^r)$ is a strict relaxation when $0< r < \frac{1}{2}$}. 
-\end{itemize}
-\end{frame}
 
 \begin{frame}{Interpolation space $\operatorname{Ran}(T_\pi^r)$}
 \begin{figure}
