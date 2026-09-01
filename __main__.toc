@@ -1,6 +1,6 @@
 \beamer@sectionintoc {1}{Background}{2}{0}{1}
 \beamer@sectionintoc {2}{Examples of WGF}{8}{0}{2}
-\beamer@sectionintoc {3}{DrMMD}{12}{0}{3}
-\beamer@sectionintoc {4}{Convergence}{19}{0}{4}
-\beamer@sectionintoc {5}{Conclusions}{24}{0}{5}
-\beamer@sectionintoc {6}{Personal}{25}{0}{6}
+\beamer@sectionintoc {3}{DrMMD}{14}{0}{3}
+\beamer@sectionintoc {4}{Convergence}{24}{0}{4}
+\beamer@sectionintoc {5}{Conclusions}{29}{0}{5}
+\beamer@sectionintoc {6}{Personal}{30}{0}{6}

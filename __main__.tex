@@ -4,6 +4,7 @@
 
 \documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
 \usetheme{SimpleDarkBlue}
+\setbeamercovered{transparent=25}
 
 \usepackage{hyperref}
 \usepackage{graphicx} % Allows including images
@@ -293,13 +294,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
             \end{scope}
         \end{tikzpicture}
     \end{columns}
-    \begingroup
-    \setbeamercolor{block title}{fg=black!25,bg=black!5}
-    \setbeamercolor{block body}{fg=black!25,bg=black!2}
-    \setbeamercolor{itemize item}{fg=black!25}
-    \setbeamercolor{normal text}{fg=black!25}
-    \hypersetup{citecolor=black!25}
-    \color{black!25}
+    \uncover<2->{%
     \begin{block}{MMD admits a closed-form expression}
         \begin{align*}
             \mathrm{MMD}^2(\Pb, \Qb)
@@ -308,9 +303,9 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
         \end{align*}
     \end{block}
     \begin{itemize}
-        \item \textcolor{black!25}{MMD is a probability divergence ($\mathrm{MMD}(\Pb, \Qb)=0 \iff \Pb=\Qb$) if $k$ is characteristic (Gaussian)~{\scriptsize\oldcitep{sriperumbudur2011universality}}.}
+        \item<2-> MMD is a probability divergence ($\mathrm{MMD}(\Pb, \Qb)=0 \iff \Pb=\Qb$) if $k$ is characteristic (Gaussian)~\citep{sriperumbudur2011universality}.
     \end{itemize}
-    \endgroup
+    }
 \end{frame}
 
 \begin{frame}{Example 2: MMD gradient flow~\citep{arbel2019maximum}}
@@ -322,11 +317,11 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
         \red{[\nabla_{W_2} \calF_\mmd(\mu)](\cdot)} &= \nabla \left( \smallint k(x, \cdot) \; \dd \mu(x) - \smallint k(x, \cdot) \; \dd \pi(x) \right) \\
         &\approx \smallint \nabla_2 k(x, \cdot) \; \dd \mu(x) - \frac{1}{M}\sum_{i=1}^M \nabla_2 k(y_i, \cdot).
     \end{talign*}
-    \item The Wasserstein gradient flow of $\calF_\mmd$, 
+    \item<2-> The Wasserstein gradient flow of $\calF_\mmd$,
     \begin{talign*}
         \partial_t \mu_t=\nabla \cdot \left(\mu_t \nabla_{W_2} \calF_\mmd(\mu_t) \right), \quad  \dd x_t = -[\nabla_{W_2} \calF_\mmd(\mu_t)](x_t) \, \dd t .
     \end{talign*}
-    \item A standard time-discretization (Euler--Maruyama scheme) is:
+    \item<2-> A standard time-discretization (Euler--Maruyama scheme) is:
     \[
     x_{n+1} = x_n - \gamma \nabla_{W_2} \calF_\mmd(\mu_n)(x_n) , \quad \text{Law}(x_n)=\mu_n. 
     \]
@@ -424,6 +419,7 @@ Suppose $\mu\ll\pi$ where $\mu, \pi \in \calP_2(\R^d)$. Then the (de)-regularize
 \end{talign*}
 \end{defi}
 
+\uncover<2->{%
 \begin{prop}[Interpolation of $\mmd^2$ and $\chi^2$]
 Suppose $k$ is bounded, continuous, and $c_0$-universal.
 \begin{talign*}
@@ -431,9 +427,10 @@ Suppose $k$ is bounded, continuous, and $c_0$-universal.
 \end{talign*}
 \end{prop}
 \begin{itemize}
-    \item Similar idea of spectral regularization has been done for kernel hypothesis testing~\citep{mika99fisher, eric2007testing, hagrass2022spectral}. 
-    \item Interpolation between MMD and general f-divergences~\citep{glaser2021kale,stein2026wasserstein}.
+    \item<2-> Similar ideas based on spectral regularization have been used for kernel hypothesis testing~\citep{mika99fisher, eric2007testing, hagrass2022spectral}.
+    \item<2-> Interpolation between MMD and general f-divergences~\citep{glaser2021kale,stein2026wasserstein}.
 \end{itemize}
+}
 \end{frame}
 
 \begin{frame}{DrMMD: An interpolation of MMD and $\chi^2$}
@@ -458,6 +455,7 @@ There exists a constant $M>0$ such that, for every $x\in\R^d$,
 \end{align*}
 \end{ass}
 
+\uncover<2->{%
 \begin{ass}[Local Boundedness]
 For $R>0$, let $\mathcal K=B(0,R)\subset\R^d$. There exists a constant $B_R>0$ such that, for every $i,j\in[d]$,
 \begin{align*}
@@ -467,9 +465,9 @@ For $R>0$, let $\mathcal K=B(0,R)\subset\R^d$. There exists a constant $B_R>0$ s
 \end{align*}
 \end{ass}
 \begin{itemize}
-    \item Gaussian, Mat\'{e}rn, and inverse multiquadratic kernels. 
-    \item 
+    \item<2-> Gaussian, Mat\'{e}rn, and inverse multiquadratic kernels.
 \end{itemize}
+}
 \end{frame}
 
 \begin{frame}{Finite-sample implementation}
@@ -478,10 +476,12 @@ The Wasserstein gradient of $\calF_\dmmd(\cdot) = \dmmd(\cdot\|\pi)$ at $\mu$ is
 \begin{talign*}
     h_{\mu,\pi} = \left(T_\pi+\lambda \mathrm{I}\right)^{-1} T_\pi\left(\frac{\dd \mu}{\dd \pi}-1\right) .
 \end{talign*}
+\uncover<2->{%
 Given empirical distributions $\hat{\mu} = \frac{1}{N} \sum_{i=1}^N x_i$ and $\hat{\pi}=\frac{1}{M} \sum_{i=1}^M y_i$. Given the Gram matrices $K_{x x} \in \R^{N \times N}$, $K_{yy} \in \R^{M \times M}$, $K_{xy} \in \R^{N \times M}$. 
 \begin{talign*}
     h_{\hat{\mu}, \hat{\pi}}(\cdot) &= \frac{1}{N \lambda} k\left(\cdot, x_{1: N}\right) \one_N -\frac{1}{M\lambda} k\left(\cdot, y_{1: M}\right) \one_M - \frac{1}{M \lambda} k\left(\cdot, y_{1: M}\right)\left(M \lambda \mathrm{I}+K_{yy} \right)^{-1} K_{yx} \one_N \\ & + \frac{1}{M \lambda} k\left(\cdot, y_{1: M}\right)\left(M \lambda \mathrm{I}+K_{yy} \right)^{-1} K_{yy} \one_M . 
 \end{talign*}
+}
 \end{prop}
 \end{frame}
 

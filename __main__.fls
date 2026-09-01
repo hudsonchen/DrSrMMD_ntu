@@ -1514,8 +1514,8 @@ INPUT /home/zongchen/texmf/tex/latex/bbm/ubbm.fd
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm10.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm8.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm6.tfm
-INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm5.tfm
 INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm12.tfm
+INPUT /home/zongchen/texmf/fonts/tfm/public/bbm/bbm5.tfm
 INPUT ./figures/interpolation.png
 INPUT ./figures/interpolation.png
 INPUT figures/interpolation.png
