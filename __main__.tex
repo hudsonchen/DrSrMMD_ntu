@@ -436,6 +436,24 @@ $\kl\left(\mu_T \| \pi\right) \leq \exp \left(-2 C_P^{-1} T\right) \kl\left(\mu_
 
 
 
+\section{Convergence}
+\begin{frame}{Convergence of DrMMD gradient flow}
+\begin{thm}[Convergence of DrMMD gradient flow]
+Let $(\mu_t)_{t\geq0}$ be the Wasserstein gradient flow of $\calF_{\dmmd}$. Suppose the target distribution $\pi$ \text satisfies a Poincaré inequality with constant $C_P$. Suppose that \orange{$\frac{\dd \mu_t}{\dd \pi}-1 \in \operatorname{Ran}(T_\pi^r)$ with $r>0$}. Then for any $T \geq 0$,
+\begin{align*}
+    \kl\left(\mu_T \| \pi\right) \leq \exp \left(-\frac{2(1+\lambda)}{C_P} T\right) \kl\left(\mu_0 \| \pi\right)+ \calO(\blue{\lambda^r} C_P) .
+\end{align*}
+\end{thm}
+\begin{itemize}
+    \item When $\lambda = 0$, it recovers the exponential convergence of $\chi^2$ flow.
+    \begin{align*}
+        \kl\left(\mu_T \| \pi\right) \leq \exp \left(-\frac{2}{C_P} T\right) \kl\left(\mu_0 \| \pi\right) .
+    \end{align*}
+    \item \blue{Larger $r$ means more regularity of the trajectory and thus smaller bias}. 
+    \item Smaller Poincar\'{e} means faster convergence.
+    \item For continuous time DrMMD flow, we would want $\lambda\to0$ for `convexity', however, that is not the case for discrete time flow. 
+\end{itemize}
+\end{frame}
 
 
 \begin{frame}{Interpolation space $\operatorname{Ran}(T_\pi^r)$}
@@ -450,25 +468,6 @@ $\kl\left(\mu_T \| \pi\right) \leq \exp \left(-2 C_P^{-1} T\right) \kl\left(\mu_
 \end{itemize}
 \end{frame}
 
-\section{Convergence}
-\begin{frame}{Convergence of DrMMD gradient flow}
-\begin{thm}[Convergence of DrMMD gradient flow]
-In addition to the assumptions of the proposition of PL condition on $\calF_\dmmd$. If $\mathcal{J}_t \leq \mathcal{J}, \mathcal{I}_t \leq \mathcal{I}$ for all $0 \leq t \leq T$, then for any $T \geq 0$,
-\begin{align*}
-    \kl\left(\mu_T \| \pi\right) \leq \exp \left(-\frac{2(1+\lambda)}{C_P} T\right) \kl\left(\mu_0 \| \pi\right)+ \calO(\blue{\lambda^r} C_P) .
-\end{align*}
-\end{thm}
-\begin{itemize}
-    \item When $\lambda = 0$, it recovers the exponential convergence of $\chi^2$ flow.
-    \begin{align*}
-        \kl\left(\mu_T \| \pi\right) \leq \exp \left(-\frac{2}{C_P} T\right) \kl\left(\mu_0 \| \pi\right) .
-    \end{align*}
-    \item \blue{Larger $r$ means more regularity of the trajectory and thus smaller bias}. 
-    \item Smaller Poincar\'{e} ($C_P = 1/\alpha$) means faster convergence.
-    \item For continuous time DrMMD flow, we would want $\lambda\to0$ for `convexity', however, that is not the case for discrete time flow. 
-\end{itemize}
-\end{frame}
-
 \begin{frame}{DrMMD gradient descent}
 \begin{itemize}
     \item DrMMD gradient flow (continuity equation)
@@ -479,11 +478,6 @@ In addition to the assumptions of the proposition of PL condition on $\calF_\dmm
     \begin{align*}
         \mu_{n+1} = (\Id + \gamma (1+\lambda) \nabla h_{\mu_n, \pi})_\# \mu_n . 
     \end{align*}
-    \item Recall the Wasserstein Hessian of $\calF_\dmmd$
-    \begin{align*}
-        \left|\left\langle\operatorname{Hess} \mathcal{F}_{\mathrm{DrMMD} \mid \mu} T, T \right\rangle_{L^2(\mu)}\right| \leq 2(1+\lambda) \textcolor{blue}{\lambda^{-1}}  \|T\|_{L^2(\mu)}^2 , \quad \forall T\in \calT_\mu\calP_2(\R^d) .
-    \end{align*}
-    \item Taking $\lambda \to 0$ breaks the smoothness of $\calF_\dmmd$. 
 \end{itemize}
 \end{frame}
 
@@ -503,7 +497,7 @@ Suppose the step size $\gamma$ is small enough.
     \begin{talign*}
         \lambda_n \propto \chi^2\left(\mu_n \| \pi\right)^{\frac{1}{r+1}} 
     \end{talign*}
-    \item At the start, we want \green{a larger $\lambda$} to have more smoothness; when closer to the convergence, we want \green{a smaller $\lambda$} to operate in the $\chi^2$ regime to better catch the difference of the distributions.  
+    \item At the start, we want \green{a larger $\lambda$} to have more smoothness; when closer to the convergence, we want \green{a smaller $\lambda$} to operate in the $\chi^2$ regime to better catch the difference.  
 \end{itemize}
 \end{frame}
 
