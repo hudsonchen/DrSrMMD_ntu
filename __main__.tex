@@ -1,0 +1,711 @@
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{SimpleDarkBlue}
+
+\usepackage{hyperref}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{subcaption} 
+\usepackage{tikz}
+\usepackage{natbib}
+
+\usepackage{bbm}
+\usepackage[normalem]{ulem}
+
+\usetikzlibrary{arrows.meta, positioning, shapes, calc}
+
+%----------------------------------------------------------------------------------------
+%    TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{On Regularization of Maximum Mean Discrepancy \\ Gradient Flow}
+
+\author{
+Zonghao Chen \and
+Aratrika Mustafi \and
+Pierre Glaser \and Anna Korba \\
+\and Arthur Gretton \and Bharath K. Sriperumbudur 
+}
+
+\date[]{}
+% Date, can be changed to a custom date
+
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{rem}[theorem]{Remark}
+\newtheorem{defi}{Definition}
+\newtheorem{ass}{Assumption}
+
+
+
+\definecolor{definitionTitle}{RGB}{34, 102, 102}  % A deep teal color
+\definecolor{definitionBody}{RGB}{10, 10, 10}     % Near-black for text
+
+\setbeamercolor{block title alerted}{bg=brown, fg=white}
+\setbeamercolor{block body alerted}{fg=definitionBody}
+
+% Now redefine the 'defi' environment to use the 'alerted block' style:
+\setbeamertemplate{theorems}[numbered]
+\let\olddefi\defi
+\renewenvironment{defi}[1][]{%
+  \begin{alertblock}{Definition\ifx\\#1\\\else~(#1)\fi}%
+}{%
+  \end{alertblock}%
+}
+
+\definecolor{graytext}{gray}{0.5} % Customize the grey level if needed
+% Save the original versions
+\let\oldcitep\citep
+\let\oldcitet\citet
+
+% Redefine with grey color
+\renewcommand{\citep}[1]{\textcolor{graytext}{\oldcitep{#1}}}
+\renewcommand{\citet}[1]{\textcolor{graytext}{\oldcitet{#1}}}
+\renewcommand{\cite}[1]{\textcolor{graytext}{\oldcitep{#1}}} % you can choose oldcitet if preferred
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green!60!black}{#1}}
+\newcommand{\orange}[1]{\textcolor{orange}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\newenvironment{talign*}
+ {\let\displaystyle\textstyle\csname align*\endcsname}
+ {\endalign}
+\newenvironment{talign}
+ {\let\displaystyle\textstyle\csname align\endcsname}
+ {\endalign}
+ 
+%----------------------------------------------------------------------------------------
+%    PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\input{include/macros}
+
+\begin{frame}
+    % Print the title page as the first slide
+    \titlepage
+\end{frame}
+
+
+%------------------------------------------------
+\section{Background}
+%------------------------------------------------
+\begin{frame}{Background}
+\begin{exampleblock}{}
+\centering
+    \textbf{Problem}: How to learn a target probability distribution $\pi$ on $\R^d$.
+\end{exampleblock}
+\begin{itemize}
+    \item Sampling (e.g: $\pi\propto\exp(-V)$ is the posterior distribution in Bayesian inference). 
+    \item Generative models (e.g: $\pi$ is the distribution of an image dataset). 
+\end{itemize}
+% \begin{figure}
+% \centering
+% \begin{subfigure}[t]{0.45\linewidth}
+%     \centering
+%     \includegraphics[width=\linewidth]{figures/transport_1.png}
+% \end{subfigure}
+% \end{figure}
+\end{frame}
+
+
+\begin{frame}{Background: Optimization in the space of probability measures}
+    \begin{exampleblock}{}
+    \centering
+        \textbf{Problem}: How to learn a target probability distribution $\pi$ on $\R^d$.
+    \end{exampleblock}
+    \begin{itemize}
+        \item This problem can be written as an \blue{optimization} problem on $\calP_2(\R^d)$.
+        \begin{talign*}
+            \arg\min_{\mu \in \calP_2(\R^d)} D(\mu \mid \pi) . 
+        \end{talign*}
+        \item Here $D$ is a similarity metric or distance, e.g. Kullback–Leibler divergence. 
+        \begin{itemize}
+            \item $D(\mu | \pi) = 0$ if and only if $\mu=\pi$. 
+        \end{itemize}
+        \item \red{$\calP_2(\R^d)$ denotes the space of probability measures with a finite second moment}. 
+        \begin{itemize}
+            \item We primarily consider $\calP_2(\R^d)$ rather than $\calP(\R^d)$ for the nice geometrical properties. 
+        \end{itemize}
+        \item How to find the minimum? Gradient descent!
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Background: Euclidean gradient flow}
+    \begin{itemize}
+        \item Euclidean gradient flow of an objective $F:\R^d \to \R$ 
+        \begin{talign*}
+            \partial_t x_t = -v(x_t), \quad v = \nabla F .
+        \end{talign*}
+        \item $\nabla F$ denotes the gradient of $F$. 
+        \item This is the continuous-time analogue of gradient descent: \begin{talign*}
+            x_{n+1} = x_n - \gamma v(x_n),
+        \end{talign*} 
+        where $\gamma > 0$ is the step size. 
+        \item When $F$ is both \green{strongly convex and smooth}, Euclidean gradient \orange{descent} converges exponentially fast~\citep{boyd2004convex}. 
+    \end{itemize}
+\end{frame}
+
+
+
+
+% \begin{frame}{Background: Wasserstein gradient flow}
+%     \begin{exampleblock}{}
+%     \centering
+%         \textbf{Problem}: Transport an initial probability distribution $\mu_0$ on $\R^d$ \\
+%         to a target probability distribution $\pi$ on $\R^d$.
+%     \end{exampleblock}
+%     \begin{figure}
+%         \centering
+%         \includegraphics[width=0.6\linewidth]{figures/torus.png}
+%         \caption{Transporting from a source  (mixture of Gaussians) to a target  (torus)~\citep{carrillo2022primal}.}
+%     \end{figure}
+% \end{frame}
+
+\begin{frame}{Background: Wasserstein gradient flow}
+    \begin{exampleblock}{}
+    \centering
+        \textbf{Challenge}: How to find $\arg\min_{\mu \in \calP_2(\R^d)} D(\mu \mid \pi)$?
+    \end{exampleblock}
+    \begin{itemize}
+        \item Gradient descent! Wait... How do we define gradients in $\calP_2(\R^d)$? 
+        \item Endow $\calP_2(\R^d)$ with the Wasserstein-2 distance $W_2$.
+        \begin{talign*}
+            \red{W_2^2(\nu, \mu)} = \smallint \| T(x) - x\|^2 \dd \nu(x) = \| T - \Id\|_{L^2(\nu)}^2 . 
+        \end{talign*}
+        \vspace{-10pt}
+        \begin{itemize}
+            \item $W_2^2(\nu, \mu)$ means the \orange{minimal energy} takes to transport mass from $\nu$ to $\mu$. 
+            \item $T:\R^d\to\R^d$ is the \red{optimal transport map} from $\nu$ to $\mu$. 
+        \end{itemize}
+        \item $(\calP_2, W_2)$ can be 'treated` as a Riemann manifold under Otto's calculus~\citep{otto2001geometry}. 
+        \item The \green{tangent space} $\calT_\mu\calP_2(\R^d)$ at $\mu\in\calP_2(\R^d)$ is a dense subset of $L^2(\mu)$. 
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\linewidth]{figures/tangent.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Background: Wasserstein gradient flow}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.3\linewidth]{figures/tangent.png}
+    \end{figure}
+\begin{defi}[Wasserstein gradient]
+Let $\calF: \calP_2(\R^d) \rightarrow \R$.
+The \red{Wasserstein gradient of $\calF$} evaluated at $\mu \in \calP_2(\R^d)$ is the unique function \blue{$\nabla_{W_2} \calF(\mu): \R^d \rightarrow \R^d$}, s.t. for any $T\in \calT_\mu\calP_2(\R^d)$,
+\begin{align*}
+\lim _{\epsilon \rightarrow 0} \frac{1}{\epsilon}\left[\calF\left( (\Id+\epsilon T)_\# \mu \right) - \calF(\mu)\right] = \left\langle \nabla_{W_2} \calF, T \right\rangle_{L^2(\mu)} .
+\end{align*}
+\end{defi}
+\begin{itemize}
+    \item The gradient is defined along a `curve' $(\Id+\epsilon T)_\# \mu$ in $\calP_2(\R^d)$. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Background: Wasserstein gradient  flow}
+\begin{defi}[Wasserstein gradient  flow]
+\red{Wasserstein gradient flow} of $\calF:\calP_2(\R^d)\to\R$ is a sequence of distributions $(\mu_t)_{t\geq 0}$ that evolves according to the \red{continuity equation} $\partial_t \mu_t+\nabla \cdot \left(\mu_t v_t\right)=0$,
+where the vector field $v_t = -\nabla_{W_2}\calF(\mu_t)$. 
+Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$. 
+\end{defi}
+\begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Euclidean Gradient Flow}
+    \begin{itemize}
+        \item State space: $\R^d$
+        \item Objective $F: \R^d \to \R$.
+        \item Update scheme: $\dot{x}_t = v_t(x_t)$, with $v_t = -\nabla F$. 
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textbf{Wasserstein Gradient Flow}
+    \begin{itemize}
+        \item State space: $\calP_2(\R^d)$
+        \item Objective $\calF: \calP_2(\R^d) \to \R$:
+        \item Update scheme $\dot{x}_t = v_t(x_t)$, with $v_t = -\nabla_{W_2} \calF(\mu_t)$. 
+    \end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Examples of WGF}
+\begin{frame}{Example 1: Langevin diffusion~\citep{jordan1998variational}}
+    \begin{itemize}
+        \item Given the target distribution $\pi\propto \exp(-V)$ with $V: \R^d\to\R$.
+        \item The functional $\calF_\kl = \kl(\cdot \| \pi)$ and its Wasserstein gradient 
+        \begin{talign*}
+            \red{[\nabla_{W_2} \calF_\kl(\mu)](\cdot)} = \nabla V(\cdot) + \nabla \log \mu_t(\cdot) .
+        \end{talign*}
+        \item The Wasserstein gradient flow of $\calF_\kl$
+        \begin{talign*}
+            \partial_t \mu_t=\nabla \cdot \left(\mu_t \left( \nabla V + \nabla \log \mu_t\right) \right).
+        \end{talign*}
+        \item It is equivalent to the Fokker–Planck equation of the \green{Langevin diffusion}~\citep{sarkka2019applied}:
+        \begin{talign*}
+            \dd x_t = -\nabla V(x_t) \, \dd t + \sqrt{2} \, \dd W_t, \quad \mu_t = \mathrm{Law}(x_t).
+        \end{talign*}
+        \item A standard time-discretization (Euler--Maruyama scheme) is:
+        \[
+        x_{n+1} = x_n - \gamma \nabla V(x_n) + \sqrt{2\gamma} \, \xi_n, \quad \xi_n \sim \mathcal{N}(0, I_d).
+        \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Example 2: MMD gradient flow~\citep{arbel2019maximum}}
+\begin{itemize}
+    \item Given $M$ i.i.d samples $\{y_i\}_{i=1}^M$ from a target distribution $\pi$. 
+    \item The functional $\calF_\mmd = \frac{1}{2}\mmd^2(\cdot \| \pi)$ 
+    \begin{talign*}
+        \mmd(\mu \| \pi) := \left\| \smallint k(x,\cdot) \dd\mu(x) - \smallint k(x,\cdot) \dd\pi(x) \right\|_{\mathcal{H}},
+    \end{talign*}
+    where $\calH$ is the RKHS associated with a kernel $k:\R^d\times\R^d\to\R$. 
+    \item Its Wasserstein gradient 
+    \begin{talign*}
+        \red{[\nabla_{W_2} \calF_\mmd(\mu)](\cdot)} &= \nabla \left( \smallint k(x, \cdot) \; \dd \mu(x) - \smallint k(x, \cdot) \; \dd \pi(x) \right) \\
+        &\approx \smallint \nabla_2 k(x, \cdot) \; \dd \mu(x) - \frac{1}{M}\sum_{i=1}^M \nabla_2 k(y_i, \cdot).
+    \end{talign*}
+    \item The Wasserstein gradient flow of $\calF_\mmd$, 
+    \begin{talign*}
+        \partial_t \mu_t=\nabla \cdot \left(\mu_t \nabla_{W_2} \calF_\mmd(\mu_t) \right), \quad  \dd x_t = -[\nabla_{W_2} \calF_\mmd(\mu_t)](x_t) \, \dd t .
+    \end{talign*}
+    \item A standard time-discretization (Euler--Maruyama scheme) is:
+    \[
+    x_{n+1} = x_n - \gamma \nabla_{W_2} \calF_\mmd(\mu_n)(x_n) .
+    \]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Convexity and Smoothness}
+\begin{exampleblock}{}
+\centering
+    \textbf{Question}: When does Wasserstein gradient flow find $\arg\min_{\mu \in \calP_2(\R^d)} D(\mu \mid \pi)$?
+\end{exampleblock}
+\begin{defi}[Wasserstein Hessian~\citep{villani2009optimal}]
+Given any $T \in \calT_\mu\calP_2(\R^d)$ and a curve (constant-speed geodesic) $\rho_t=(\Id + t T)_{\#}\mu$ for $0 \leq t \leq 1$, the \red{Wasserstein Hessian} of a functional $\calF: \calP_2(\R^d) \rightarrow \R$ at $\mu$, \blue{denoted as Hess $\calF_{\mid \mu}$, is an operator from $L^2(\mu)$ to $L^2(\mu)$}: 
+\vspace{-15pt}
+\begin{talign*}
+    \left\langle \operatorname{Hess} \calF_{\mid \mu} T, T \right\rangle_{L^2(\mu)} = \left.\frac{d^2}{d t^2}\right|_{t=0} \calF\left(\rho_t\right) . 
+\end{talign*} 
+\end{defi}
+\begin{itemize}
+    \item A functional $\calF$ is said to be (geodesically) \orange{$M$-smooth} at $\mu$ if 
+    \begin{talign*}
+        \left\langle\operatorname{Hess} \mathcal{\mathcal { F } _ { | \mu }} T,  T\right\rangle_{L^2(\mu)} \leq M\|T \|_{L^2(\mu)}^2 . 
+    \end{talign*}
+    \item A functional $\calF$ is said to be (geodesically) \orange{$\Lambda$-convex} at $\mu$ if \begin{talign*}
+        \left\langle\operatorname{Hess} \calF_{\mid \mu} T, T \right\rangle_{L^2(\mu)} \geq \Lambda \|T\|_{L^2(\mu)}^2 .
+    \end{talign*} 
+    \item If $\calF$ is both (geodesically) $M$-smooth and $\Lambda$-convex, then $M \geq \Lambda$. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Convexity and Smoothness}
+    \begin{itemize}
+        \item Let $(\mu_t)_{t\geq 0}$ be the Wasserstein gradient \orange{flow} of $\calF$ 
+        \item If $\calF$ is $\Lambda$-convex with $\Lambda > 0$, 
+        \begin{talign*}
+            \calF(\mu_t) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu)  \leq \exp(-2 \Lambda t) \Big(\calF(\mu_0) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu) \Big) . 
+        \end{talign*}
+        \item Let $(\mu_n)_{n\in \N}$ be the Wasserstein gradient \orange{descent} of $\calF$. 
+        \item If $\calF$ is $\Lambda$-convex with $\Lambda > 0$ and $M$-smooth, and the step size $0 < \gamma \leq \frac{1}{M}$, 
+        \begin{talign*}
+            \calF(\mu_n) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu) \leq \exp(- \gamma \Lambda n) \Big(\calF(\mu_0) - \min_{\mu\in\calP_2(\R^d)}\calF(\mu) \Big) . 
+        \end{talign*}
+        \item This is the same as convex optimization in Euclidean space~\citep{boyd2004convex}. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Convexity and Smoothness}
+    \begin{columns}[T]
+    \column{0.48\textwidth}
+    \textbf{Wasserstein gradient flow of $\calF_\kl$}
+    \begin{itemize}
+        \item $\pi\propto\exp(-V)$ 
+        \item Sampling 
+        \item When $\pi\propto\exp(-V)$ is \red{strongly log-concave, i.e., $\bH V \geq \alpha\Id$}, then $\calF_\kl$ is \green{$\alpha$-convex}. 
+        \item Convergence in discrete time 
+        \begin{talign*}
+            \calF_\kl\left(\mu_n\| \pi\right) \leq \exp(-\alpha \gamma n) \calF_\kl\left(\mu_n\| \pi\right) + \frac{\gamma n \beta^2}{\alpha}.
+        \end{talign*}
+        \item $\beta$ is the Lipschitz continuity of $V$. 
+        \item It takes $\calO(\frac{1}{\alpha \delta} \log \frac{1}{\delta})$ to reach $\delta$ error.
+    \end{itemize}
+
+    \column{0.48\textwidth}
+    \textbf{Wasserstein gradient flow of $\calF_\mmd$}
+    \begin{itemize}
+        \item $\{y_i\}_{i=1}^M$ i.i.d samples from $\pi$ 
+        \item Generative modelling 
+        \item When $k$ is bounded and has bounded derivatives, then $\calF_\mmd$ is \green{$M$-smooth and $-M$-convex}. 
+        \item Convergence in discrete time
+        \begin{talign*}
+            \calF_\mmd(\mu_n, \pi) \leq \frac{W_2^2(\mu_0,\pi)}{\gamma n} + \bar{K}.
+        \end{talign*}
+        \item $\bar{K}$ is a positive barrier term that does not vanish. 
+        \item \blue{$\lim_{n\to\infty} \calF_\mmd(\mu_n, \pi) \neq 0$!}
+    \end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Non-convexity of MMD prevents global convergence}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/nonceonvxity_mmd.png}
+    \end{figure}
+    \vspace{-15pt}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\linewidth]{figures/blurry_images_mmd.png}
+        \caption{\citet{belhadji2025weighted}}
+    \end{figure}
+    \vspace{-10pt}
+    \begin{itemize}
+        \item \citet{arbel2019maximum} proves convergence of MMD flow, yet under noise injection and stringent conditions on the scale of noise. 
+        \item Disclaimer: There exists many papers where MMD flow \green{empirically} generate high-quality images on with adversarial training of kernels~\citep{galashov2024deep}, or with non-smooth kernels plus deep neural network distillation~\citep{hertrich2023generative,altekruger2023neural}. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Convexity and Smoothness}
+\begin{exampleblock}{}
+\centering
+    \textbf{Question}: Can we find a new objective $\calF$ such that it enjoys \blue{(geodesic) convexity}, similar to $\calF_\kl$, in the \blue{generative modelling} setting where only samples are available?
+\end{exampleblock}
+\begin{prop}[MMD and $\chi^2$-divergence]
+Suppose $\mu$ is absolutely continuous with respect to $\pi$, i.e., $\mu \ll \pi$. Then
+\vspace{-10pt}
+\begin{talign*}
+    \operatorname{MMD}^2(\mu \| \pi)=\left\|T_\pi^{\frac{1}{2}} \left(\frac{\dd \mu}{\dd \pi}-1\right)\right\|_{L^2(\pi)}^2 \text { and } \chi^2(\mu \| \pi)=\left\|\frac{\dd \mu}{\dd \pi}-1 \right\|_{L^2(\pi)}^2 .
+\end{talign*}
+\vspace{-5pt}
+Here, $T_\pi: L^2(\pi)\to L^2(\pi)$ is the kernel \red{integral operator} defined as
+\begin{talign*}
+    T_\pi f(\cdot)=\int k(x, \cdot) f(x) \; \dd \pi(x) . 
+\end{talign*}
+\end{prop}
+\begin{itemize}
+    \item Similar to $\calF_\kl$, $\calF_{\chi^2}(\cdot)=\chi^2(\cdot\|\pi)$ is (geodesic) strong convex when $\pi$ is strongly log-concave~\citep{ohta2011displacement}. 
+    \item An \green{interpolation} between $\mmd^2$ and $\chi^2$? 
+\end{itemize}
+\end{frame}
+
+\section{DrMMD}
+\begin{frame}{DrMMD: An interpolation of MMD and $\chi^2$-divergence}
+\begin{defi}[De-regularized Maximum Mean Discrepancy (DrMMD)]
+Suppose $\mu\ll\pi$ where $\mu, \pi \in \calP_2(\R^d)$. Then the (de)-regularized maximum mean discrepancy (DrMMD) between $\mu, \pi$ is defined as, for $\lambda>0$,
+\vspace{-5pt}
+\begin{talign*}
+\operatorname{DrMMD}(\mu \| \pi)=(1+\lambda)\left\|\left(\left(T_\pi + \lambda \Id\right)^{-1} T_\pi\right)^{\frac{1}{2}} \left(\frac{\dd \mu}{\dd \pi}-1\right)\right\|_{L^2(\pi)}^2.
+\end{talign*}
+\end{defi}
+
+\begin{prop}[Interpolation of $\mmd^2$ and $\chi^2$]
+Suppose $k$ is bounded, continuous, and $c_0$-universal.
+\begin{talign*}
+    \lim _{\lambda \rightarrow 0} \operatorname{DrMMD}(\mu \| \pi)=\chi^2(\mu \| \pi), \quad\quad \lim _{\lambda \rightarrow \infty} \operatorname{DrMMD}(\mu \| \pi)=\operatorname{MMD}^2(\mu \| \pi) .
+\end{talign*}
+\end{prop}
+\begin{itemize}
+    \item Similar idea of spectral regularization has been done for kernel hypothesis testing~\citep{mika99fisher, eric2007testing, hagrass2022spectral}. 
+    \item This is known as Tikhonov regularization.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{DrMMD: An interpolation of MMD and $\chi^2$}
+    \begin{exampleblock}{}
+\centering
+    \textbf{Question}: Does $\dmmd$ inherit the advantages of $\mmd^2$ and $\chi^2$?
+    \begin{itemize}
+        \item Does $\calF_\dmmd$ admit \blue{finite sample implementation} of its Wasserstein gradient flow?
+        \item Is $\calF_\dmmd$ \blue{(geodesic) strongly convex} when $\pi$ is strongly log-concave? 
+    \end{itemize}
+\end{exampleblock}
+\begin{ass}
+    $k: \R^d \times \R^d \rightarrow \R$ is a continuous and $c_0$-universal kernel. The kernel is bounded by $K$, its first order derivatives bounded by $K_{1d}$ and second order derivatives bounded by $K_{2d}$. 
+\end{ass}
+\begin{itemize}
+    \item This condition is satisfied by Gaussian kernels, Mat\'{e}rn kernels and inverse multiquadratic kernels. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Finite-sample estimate}
+\begin{prop}[Finite-sample estimate of the Wasserstein gradient of $\calF_\dmmd$]
+The Wasserstein gradient of $\calF_\dmmd(\cdot) = \dmmd(\cdot\|\pi)$ at $\mu$ is \blue{$(1+\lambda)\nabla h_{\mu,\pi}(\cdot) : \R^d\to\R^d$}, where 
+\begin{talign*}
+    h_{\mu,\pi} = \left(T_\pi+\lambda \mathrm{I}\right)^{-1} T_\pi\left(\frac{\dd \mu}{\dd \pi}-1\right) .
+\end{talign*}
+Given empirical distributions $\hat{\mu} = \frac{1}{N} \sum_{i=1}^N x_i$ and $\hat{\pi}=\frac{1}{M} \sum_{i=1}^M y_i$. Given the Gram matrices $K_{x x} \in \R^{N \times N}$, $K_{yy} \in \R^{M \times M}$, $K_{xy} \in \R^{N \times M}$. 
+\begin{talign*}
+    h_{\hat{\mu}, \hat{\pi}}(\cdot) &= \frac{1}{N \lambda} k\left(\cdot, x_{1: N}\right) \one_N -\frac{1}{M\lambda} k\left(\cdot, y_{1: M}\right) \one_M - \frac{1}{M \lambda} k\left(\cdot, y_{1: M}\right)\left(M \lambda \mathrm{I}+K_{yy} \right)^{-1} K_{yx} \one_N \\ & + \frac{1}{M \lambda} k\left(\cdot, y_{1: M}\right)\left(M \lambda \mathrm{I}+K_{yy} \right)^{-1} K_{yy} \one_M . 
+\end{talign*}
+\end{prop}
+\end{frame}
+
+\begin{frame}{Wasserstein Hessian and convexity}
+\begin{prop}[Wasserstein Hessian of  $\calF_{\chi^2}$]
+Suppose $k$ satisfies Assumption 1. Let $\mu, \pi \in \calP_2(\R^d)$. 
+\begin{talign*}
+    \left|\left\langle\operatorname{Hess} \mathcal{F}_{\mathrm{DrMMD} \mid \mu} T, T \right\rangle_{L^2(\mu)}\right| \leq 2(1+\lambda) \blue{\lambda^{-1}} \|T\|_{L^2(\mu)}^2 , \quad \forall T\in \calT_\mu\calP_2(\R^d) . 
+\end{talign*}
+Let $\pi$ be $\alpha$-strongly log-concave, i.e., $\pi \propto \exp (-V)$, $\mathbf{H} V \succeq \alpha \mathrm{I}$. Then for all $\mu$ such that $x \mapsto \nabla \log \mu(x)$ is continuous and \orange{$\frac{\dd \mu}{\dd \pi}-1 \in \mathcal{H}$}, 
+\vspace{-5pt}
+\begin{talign*}
+    \left\langle\operatorname{Hess} \mathcal{F}_{\mathrm{DrMMD} \mid \mu} T, T \right\rangle_{L^2(\mu)} \geq \alpha(1+\lambda) \int \frac{\dd \mu}{\dd \pi}(x) \|T(x)\|^2 \dd \mu - o(\lambda),
+\end{talign*}
+\end{prop}
+\begin{itemize}
+    \item $\dmmd$ is \orange{more convex when $\lambda\to 0$ and more smooth when $\lambda\to\infty$}. 
+    \item Unfortunately, \green{$\frac{\dd \mu}{\dd \pi}-1 \in \mathcal{H}$ is too strong} in practice. 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Poincar\'{e} inequality}
+\begin{itemize}
+    \item Exponential convergence to the global minima (not necessarily unique) still hold under a \red{Polyak-Łojasiewicz inequality}, \blue{a strict relaxation of strong convexity}.
+    \item $\calF_{\chi^2}=\chi^2(\cdot\|\pi)$  satisfies a (modified) PL inequality with $\alpha$ if, for all $\mu\in\calP_2(\R^d)$,  
+    \begin{talign*}
+        \chi^2(\mu \|\pi) \leq \frac{1}{2 \alpha} \left\|\nabla_{W_2} \calF_{\chi^2} (\cdot) \right\|_{\blue{L^2(\pi)}}^2 = \frac{1}{2 \alpha} \left\|\nabla \left(\frac{\dd \mu}{\dd \pi} \right)(x) \right\|_{\blue{L^2(\pi)}}^2 . 
+    \end{talign*}
+    \item It is implied by $\pi$ satisfying the  Poincar\'{e} inequality ($f=\frac{\dd \mu}{\dd \pi} - 1$). 
+\end{itemize}
+\begin{defi}[Poincar\'{e} inequality]
+    We say that $\pi$ satisfies a \red{Poincaré inequality} with constant $C_{P}$ if for all $f , \nabla f \in L^2(\pi)$,
+    \begin{talign*}
+        \operatorname{Var}_\pi [f] \leq C_P \mathbb{E}_\pi \left[\|\nabla f\|^2\right] .
+    \end{talign*} 
+    Furthermore, $\pi$ satisfies a Poincar\'{e} with constant $\alpha$ if $\pi$ is $\alpha$-log concave. 
+\end{defi}
+\begin{itemize}
+    \item Poincar\'{e} inequality is a \blue{strict relaxation of strong log concavity}. It is satisfied by mixture of Gaussians~\citep{bakry2014analysis}. 
+\end{itemize}
+\end{frame}
+
+% \begin{frame}{Poincar\'{e} inequality}
+% \begin{prop}[Exponential convergence of $\calF_{\chi^2}$ gradient flow~\citep{chewi2020svgd}]
+%     Suppose that $\pi$ satisfies a Poincar\'{e} inequality with constant $C_P$. Let $(\mu_t)_{t\geq 0}$ be the Wasserstein gradient flow of $\calF_{\chi^2}$. Then, for any $T\geq 0$,
+%     \begin{talign*}
+%         \kl\left(\mu_T \| \pi\right) \leq \exp \left(-\frac{2 T}{C_P}\right) \kl\left(\mu_0 \| \pi\right) .
+%     \end{talign*}
+% \end{prop}
+% For any $t>0$, 
+% \begin{align*}
+%     \partial_t \kl\left(\mu_t \| \pi\right) &= -2 \mathbb{E}_{\mu_t}\left\langle\nabla \log \frac{\dd \mu_t}{\dd \pi}, \nabla \frac{\dd \mu_t}{\dd \pi}\right\rangle=-2 \mathbb{E}_\pi\left[\left\|\nabla \frac{\dd \mu_t}{\dd \pi}\right\|^2\right] \\
+%     &\stackrel{(\ast)}{\leq} -\frac{2}{C_P} \chi^2\left(\mu_t \| \pi\right) \leq-\frac{2}{C_P} \kl \left(\mu_t \| \pi\right) .
+% \end{align*}
+% \begin{itemize}
+%     \item $(\ast)$ holds by the Poincar\'{e} inequality. 
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}{DrMMD: An interpolation of MMD and $\chi^2$}
+\begin{exampleblock}{}
+\centering
+    \textbf{Question}: Does $\dmmd$ inherit the advantages of $\mmd^2$ and $\chi^2$ ?
+    \begin{itemize}
+        \item Does $\calF_\dmmd$ admit finite sample implementation of its Wasserstein gradient flow?
+        \item \sout{Is $\calF_\dmmd$ (geodesic) convex when $\pi$ is log-concave?} 
+        \item Does $\calF_\dmmd$ satisfy a (modified) PL condition when $\pi$ satisfies a Poincar\'{e} inequality? 
+    \end{itemize}
+\end{exampleblock}
+\begin{itemize}
+    \item Let $(\mu_t)_{t\geq 0}$ be the Wasserstein gradient flow of $\calF_{\dmmd}$ with a \red{continuity equation} 
+    \begin{align*}
+        \partial_t \mu_t+\nabla \cdot\left(\mu_t (1+\lambda) \nabla h_{\mu_t,\pi} \right)=0 , \quad h_{\mu_t,\pi} = \left(T_\pi+\lambda \mathrm{I}\right)^{-1} T_\pi\left(\frac{\dd \mu_t}{\dd \pi}-1\right) . 
+    \end{align*} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{PL condition of $\calF_{\dmmd}$}
+\begin{align*}
+& \frac{\dd}{\dd t} \kl\left(\mu_t \| \pi\right) \\
+= & -\int \nabla h_{\mu_t, \pi}(x)^{\top} \nabla \log \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \mu_t \\
+= & -\int \nabla h_{\mu_t, \pi}(x)^{\top} \nabla \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \pi \\
+= & -\int\left(\nabla h_{\mu_t, \pi}(x)- \nabla \frac{\dd \mu_t}{\dd \pi}(x)\right)^{\top} \nabla \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \pi - \int \left\|\nabla \frac{\dd \mu_t}{\dd \pi}(x)\right\|^2 \; \dd \pi \\
+= & - \int\left(\nabla h_{\mu_t, \pi}(x)- \nabla\left(\frac{\dd \mu_t}{\dd \pi}(x)-1\right)\right)^{\top} \nabla \frac{\dd \mu_t}{\dd \pi}(x) \; \dd \pi - \int \left\|\nabla \frac{\dd \mu_t}{\dd \pi}(x)\right\|^2 \; \dd \pi .
+\end{align*}
+Apply integration by parts for the first term.
+\end{frame}
+
+\begin{frame}{PL condition of $\calF_{\dmmd}$}
+\begin{talign*}
+    &\quad \frac{\dd}{\dd t} \kl\left(\mu_t \| \pi\right) \\
+    &= \int\left(h_{\mu_t, \pi}(x)-\left(\frac{\dd \mu_t}{\dd \pi}(x)-1\right)\right) \nabla \cdot\left(\pi(x) \nabla \frac{\dd \mu_t}{\dd \pi}(x)\right) \dd x - \int \left\|\nabla \frac{\dd \mu_t}{\dd \pi}(x)\right\|^2 \; \dd \pi \\
+    &\leq \left\|h_{\mu_t, \pi} - \left(\frac{\dd \mu_t}{\dd \pi} -1 \right) \right\|_{L^2(\pi)} \left\|\frac{\nabla \cdot\left(\pi \nabla \frac{\dd \mu_t}{\dd \pi}\right)}{\pi}\right\|_{L^2(\pi)}-\frac{1}{C_P} \kl\left(\mu_t \| \pi\right),
+\end{talign*}
+\begin{itemize}
+    \item The first term is bounded by Cauchy-Schwartz inequality, and the second term is bounded by the Poincar\'{e} inequality with $C_P$. 
+    \item Suppose $\frac{\dd \mu_t}{\dd \pi}-1 \in \operatorname{Ran}(T_\pi^r)$ with $r>0$. 
+    \begin{talign*}
+        \left\|h_{\mu_t, \pi}- \left(\frac{\dd \mu_t}{\dd \pi}-1\right)\right\|_{L^2(\pi)} \leq \blue{\lambda^r} \left\|q_t\right\|_{L^2(\pi)} , \text{ where } h_{\mu_t, \pi} = T_\pi^r q_t . 
+    \end{talign*}
+    \item $h_{\mu_t, \pi}=(T_\pi+\lambda \mathrm{I})^{-1} T_\pi(\frac{\dd \mu_t}{\dd \pi}-1)$
+    % \item Similar results have been established in kernel ridge regression~\citep{cucker2007learning}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{PL condition of $\calF_{\dmmd}$}
+\begin{prop}[PL condition of $\calF_{\dmmd}$]
+    Let $(\mu_t)_{t\geq0}$ be the Wasserstein gradient flow of $\calF_{\dmmd}$. 
+    Suppose the kernel satisfied Assumption 1. Suppose the target distribution $\pi$ \text satisfies a Poincaré inequality with constant $C_P$. Suppose that \orange{$\frac{\dd \mu_t}{\dd \pi}-1 \in \operatorname{Ran}(T_\pi^r)$ with $r>0$}. 
+    Then, we have \begin{align*}
+        \frac{\dd}{\dd t} \kl\left(\mu_t \| \pi\right) \leq -\frac{1}{C_P} \kl\left(\mu_t \| \pi\right) + \calO(\lambda^r) . 
+    \end{align*}
+\end{prop}
+\begin{itemize}
+    \item When $\lambda=0$, we recover the PL condition of $\chi^2$ divergence. 
+    \item Compared with the initial regularity condition $\frac{\dd \mu_t}{\dd \pi}-1 \in \calH$ required for the (geodesic) convexity of $\calF_{\dmmd}$, \orange{$\frac{\dd \mu_t}{\dd \pi}-1 \in \operatorname{Ran}(T_\pi^r)$ is a strict relaxation when $0< r < \frac{1}{2}$}. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolation space $\operatorname{Ran}(T_\pi^r)$}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figures/interpolation.png}
+    \caption{Visualization of $\operatorname{Ran}(T_\pi^r)$.}
+\end{figure}
+\begin{itemize}
+    \item \green{Large $r$ indicates larger smoothness.} 
+    \item $\operatorname{Ran}(T_\pi^0) \cong L^2(\pi)$ and $\operatorname{Ran}(T_\pi^{\frac{1}{2}}) \cong \calH$.  
+\end{itemize}
+\end{frame}
+
+\section{Convergence}
+\begin{frame}{Convergence of DrMMD gradient flow}
+\begin{thm}[Convergence of DrMMD gradient flow]
+In addition to the assumptions of the proposition of PL condition on $\calF_\dmmd$. If $\mathcal{J}_t \leq \mathcal{J}, \mathcal{I}_t \leq \mathcal{I}$ for all $0 \leq t \leq T$, then for any $T \geq 0$,
+\begin{align*}
+    \kl\left(\mu_T \| \pi\right) \leq \exp \left(-\frac{2(1+\lambda)}{C_P} T\right) \kl\left(\mu_0 \| \pi\right)+ \calO(\blue{\lambda^r} C_P) .
+\end{align*}
+\end{thm}
+\begin{itemize}
+    \item When $\lambda = 0$, it recovers the exponential convergence of $\chi^2$ flow.
+    \begin{align*}
+        \kl\left(\mu_T \| \pi\right) \leq \exp \left(-\frac{2}{C_P} T\right) \kl\left(\mu_0 \| \pi\right) .
+    \end{align*}
+    \item \blue{Larger $r$ means more regularity of the trajectory and thus smaller bias}. 
+    \item Smaller Poincar\'{e} ($C_P = 1/\alpha$) means faster convergence.
+    \item For continuous time DrMMD flow, we would want $\lambda\to0$ for `convexity', however, that is not the case for discrete time flow. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{DrMMD gradient descent}
+\begin{itemize}
+    \item DrMMD gradient flow (continuity equation)
+    \begin{align*}
+        \partial_t \mu_t+\nabla \cdot\left(\mu_t(1+\lambda) \nabla h_{\mu_t, \pi}\right)=0
+    \end{align*}
+    \item DrMMD gradient descent: for step size $\gamma > 0$, 
+    \begin{align*}
+        \mu_{n+1} = (\Id + \gamma (1+\lambda) \nabla h_{\mu_n, \pi})_\# \mu_n . 
+    \end{align*}
+    \item Recall the Wasserstein Hessian of $\calF_\dmmd$
+    \begin{align*}
+        \left|\left\langle\operatorname{Hess} \mathcal{F}_{\mathrm{DrMMD} \mid \mu} T, T \right\rangle_{L^2(\mu)}\right| \leq 2(1+\lambda) \textcolor{blue}{\lambda^{-1}}  \|T\|_{L^2(\mu)}^2 , \quad \forall T\in \calT_\mu\calP_2(\R^d) .
+    \end{align*}
+    \item Taking $\lambda \to 0$ breaks the smoothness of $\calF_\dmmd$. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Convergence of DrMMD gradient descent}
+\begin{prop}[Descent lemma of DrMMD gradient descent]
+Let $(\mu_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. 
+Suppose $\pi\propto\exp(-V)$ with $\bH V \preceq \beta \mathrm{I}$. 
+Suppose all assumptions in the proposition of the PL condition on $\calF_\dmmd$ hold. 
+Suppose the step size $\gamma$ is small enough. 
+\begin{talign*}
+\kl\left(\mu_{n+1} \| \pi\right)-\kl\left(\mu_n \| \pi\right) & \leq-\frac{2}{C_P} \chi^2\left(\mu_n \| \pi\right) \gamma +\underbrace{\gamma \blue{\lambda^r}}_{\red{\text {Approximation error }} } + \underbrace{\gamma^2 \beta \chi^2\left(\mu_n \| \pi\right) \frac{1}{\blue{\lambda} }}_{\red{\text {Discretization error }} } 
+\end{talign*}
+\end{prop}
+\begin{itemize}
+    \item A \blue{trade-off} between the approximation error and the time-discretization error. 
+    \item Optimal choice of \orange{adaptive} $\lambda_n$ at each iterate $n$: 
+    \begin{talign*}
+        \lambda_n \propto \chi^2\left(\mu_n \| \pi\right)^{\frac{1}{r+1}} 
+    \end{talign*}
+    \item At the start, we want \green{a larger $\lambda$} to have more smoothness; when closer to the convergence, we want \green{a smaller $\lambda$} to operate in the $\chi^2$ regime to better catch the difference of the distributions.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Convergence of DrMMD gradient descent}
+\begin{thm}[Convergence of DrMMD gradient descent]
+Let $(\mu_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. Suppose all conditions from the descent lemma hold. Then, for any $n_{\max}\in\N$, 
+\begin{align*}
+    \kl\left(\mu_{n_{\max}} \| \pi\right) & \leq \exp \left(-\frac{ 2 n_{\max } \gamma}{C_P}\right) \kl\left(\mu_0 \| \pi\right) + \calO( \blue{\gamma^{\frac{r}{r+1}}} C_P \beta^{\frac{r}{r+1}} ). 
+\end{align*}
+\end{thm}
+\begin{itemize}
+    \item To reach error $\kl\left(\mu_{n_{\max}} \| \pi\right)\leq \delta$, it takes $\mathcal{O}(\blue{(\frac{1}{\delta})^{\frac{r+1}{r}}} \log \frac{1}{\delta})$ iterations.
+    \item By comparison, for Langevin Monte Carlo, it takes $\mathcal{O}(\blue{\frac{1}{\delta}} \log \frac{1}{\delta})$~\citep{chewi2024analysis}. 
+    \item DrMMD gradient descent takes more iterations due to the additional approximation error $\calO(\lambda^r)$, but it \blue{operates without the knowledge of potential $V$} and only requires $\Sigma_\pi=\int k(x,\cdot) \otimes k(x,\cdot) \; \dd \pi$ and the embedding $\int k(x,\cdot) \; \dd \pi$.  
+\end{itemize}
+\end{frame}
+
+
+% \begin{frame}{Particle DrMMD gradient descent}
+% \begin{itemize}
+%     \item To operate in the setting of generative models, we only have access to samples. 
+%     \item We are given $N$ samples from the initial distribution $\{x_i^{(0)}\}_{i=1}^N \sim \mu_0$ and $M$ samples from the target distribution $\left\{y_i\right\}_{i=1}^M \sim \pi$. 
+%     \item The DrMMD particle descent from time $n$ to time $n+1$, is defined as
+%     \begin{align*}
+%         x_{i}^{(n+1)} = x_i^{(n)} - \gamma\left(1 + \lambda_n\right) \nabla h_{\hat{\mu}_n, \hat{\pi}} (x_i^{(n)}), \quad i=1,\ldots, N.
+%     \end{align*} 
+%     \item $h_{\hat{\mu}_n, \hat{\pi}}$ admits a closed-form expression with Gram matrices.
+%     \item $\lambda_n$ is taken to be proportionate to $\dmmd(\hat{\mu}_n \| \hat{\pi})^{\frac{1}{r+1}}$.   
+%     \item $r$ is selected from a set $\{0.1, 0.2, \ldots, 1.0\}$. 
+% \end{itemize}
+% \end{frame}
+
+\section{Conclusions}
+\begin{frame}{Conclusions}
+\begin{itemize}
+    \item We propose DrMMD gradient flow as an interpolation of MMD gradient flow and $\chi^2$ gradient flow.
+    \item DrMMD gradient flow / descent has \green{global convergence} results, compared to MMD flow, under an adaptive regularization parameter $\lambda$. 
+    \item This justifies the application of \blue{adaptive kernels} in recent MMD flow (MMD GAN) papers that achieve SOTA empirical performances.
+    \item More in the paper \url{https://arxiv.org/pdf/2409.14980}.
+    \begin{itemize}
+        \item Empirical results on synthetic datasets.
+        \item An example of DrMMD flow with a Gaussian target distribution $\pi$ which satisfies all conditions in the theorems. 
+        \item Finite-particle convergence results with propagation of chaos bound. 
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{Personal}
+\begin{frame}{About Me}
+  \begin{columns}[c] % 'c' aligns vertically center
+    % Left column with image
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/personal.png} 
+    \column{0.6\textwidth}
+    \begin{itemize}
+        \item Zonghao Chen 
+        \item 4th year PhD Student at University College London (UCL)
+        \begin{itemize}
+            \item Foundational AI Centre 
+            \item Gatsby Computational Neuroscience Unit 
+        \end{itemize} 
+        \item Graduated from Tsinghua University in 2022
+        \begin{itemize}
+            \item Department of EE 
+        \end{itemize}
+        \item Kernel (nonparametric) methods, causal inference, statistical learning theory
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+
+\bibliographystyle{abbrvnat}
+\bibliography{reference}
+
+\end{document}
