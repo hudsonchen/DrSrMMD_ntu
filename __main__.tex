@@ -168,7 +168,13 @@ Pierre Glaser \and Anna Korba \\
     \end{itemize}
     \begin{figure}
         \centering
-        \includegraphics[width=0.28\linewidth]{figures/tangent.png}
+        \includegraphics[
+            height=0.24\textheight,
+            trim=0 0 315bp 0,
+            clip
+        ]{figures/ot_wasserstein_gradient_illustration.pdf}
+        \hspace{0.04\linewidth}
+        \includegraphics[height=0.24\textheight]{figures/tangent.png}
     \end{figure}
 \end{frame}
 
@@ -178,7 +184,7 @@ Pierre Glaser \and Anna Korba \\
         \centering
         \includegraphics[
             width=0.27\linewidth,
-            trim=315bp 0 0 0,
+            trim=315bp 60bp 0 0,
             clip
         ]{figures/ot_wasserstein_gradient_illustration.pdf}
     \end{figure}
@@ -294,14 +300,13 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \setbeamercolor{normal text}{fg=black!25}
     \hypersetup{citecolor=black!25}
     \color{black!25}
-    \begin{theorem*}
-        MMD admits a closed-form expression:
+    \begin{block}{MMD admits a closed-form expression}
         \begin{align*}
             \mathrm{MMD}^2(\Pb, \Qb)
             = \E_{X,X'\sim\Pb}[k(X,X')]
             + \E_{Y,Y'\sim\Qb}[k(Y,Y')] - 2\E_{X\sim\Pb,\,Y\sim\Qb}[k(X,Y)] .
         \end{align*}
-    \end{theorem*}
+    \end{block}
     \begin{itemize}
         \item \textcolor{black!25}{MMD is a probability divergence ($\mathrm{MMD}(\Pb, \Qb)=0 \iff \Pb=\Qb$) if $k$ is characteristic (Gaussian)~{\scriptsize\oldcitep{sriperumbudur2011universality}}.}
     \end{itemize}

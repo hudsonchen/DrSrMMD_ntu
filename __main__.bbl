@@ -57,6 +57,12 @@ Alexandre Galashov, Valentin~De Bortoli, and Arthur Gretton.
 \newblock In {\em The Thirteenth International Conference on Learning
   Representations}, 2025.
 
+\bibitem[GBR{\etalchar{+}}12]{gretton2012kernel}
+Arthur Gretton, Karsten~M. Borgwardt, Malte~J. Rasch, Bernhard Sch{\"o}lkopf,
+  and Alexander Smola.
+\newblock A kernel two-sample test.
+\newblock {\em Journal of Machine Learning Research}, 13(1):723--773, 2012.
+
 \bibitem[HBM07]{eric2007testing}
 Za{\"\i}d Harchaoui, Francis Bach, and Eric Moulines.
 \newblock Testing for homogeneity with kernel {F}isher discriminant analysis.
@@ -98,6 +104,12 @@ Felix Otto.
 \newblock The geometry of dissipative evolution equations: the porous medium
   equation.
 \newblock 2001.
+
+\bibitem[SFL11]{sriperumbudur2011universality}
+Bharath~K. Sriperumbudur, Kenji Fukumizu, and Gert R.~G. Lanckriet.
+\newblock Universality, characteristic kernels and {RKHS} embedding of
+  measures.
+\newblock {\em Journal of Machine Learning Research}, 12(7):2389--2410, 2011.
 
 \bibitem[SNRS26]{stein2026wasserstein}
 Viktor Stein, Sebastian Neumayer, Nicolaj Rux, and Gabriele Steidl.

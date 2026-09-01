@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.6.14)  1 SEP 2026 05:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.6.14)  1 SEP 2026 06:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1101,138 +1101,150 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] [4
 
 ]
-<figures/tangent.png, id=122, 461.725pt x 262.9825pt>
-File: figures/tangent.png Graphic file (type png)
-<use figures/tangent.png>
-Package pdftex.def Info: figures/tangent.png  used on input line 173.
-(pdftex.def)             Requested size: 115.2038pt x 65.61304pt.
- [5
-
- <./figures/tangent.png>]
-<figures/ot_wasserstein_gradient_illustration.pdf, id=132, 633.30174pt x 255.81
+<figures/ot_wasserstein_gradient_illustration.pdf, id=122, 633.30174pt x 255.81
 642pt>
 File: figures/ot_wasserstein_gradient_illustration.pdf Graphic file (type pdf)
 <use figures/ot_wasserstein_gradient_illustration.pdf>
 Package pdftex.def Info: figures/ot_wasserstein_gradient_illustration.pdf  used
- on input line 195.
-(pdftex.def)             Requested size: 111.09163pt x 89.61514pt.
- [6
+ on input line 179.
+(pdftex.def)             Requested size: 72.6168pt x 58.57928pt.
+<figures/tangent.png, id=124, 461.725pt x 262.9825pt>
+File: figures/tangent.png Graphic file (type png)
+<use figures/tangent.png>
+Package pdftex.def Info: figures/tangent.png  used on input line 179.
+(pdftex.def)             Requested size: 102.84798pt x 58.57928pt.
+ [5
 
- <./figures/ot_wasserstein_gradient_illustration.pdf>]
-[7
+ <./figures/ot_wasserstein_gradient_illustration.pdf> <./figures/tangent.png>]
+File: figures/ot_wasserstein_gradient_illustration.pdf Graphic file (type pdf)
+<use figures/ot_wasserstein_gradient_illustration.pdf>
+Package pdftex.def Info: figures/ot_wasserstein_gradient_illustration.pdf  used
+ on input line 201.
+(pdftex.def)             Requested size: 111.09163pt x 68.51772pt.
+
+[6
+
+] [7
 
 ] [8
 
-] [9
+]
+Overfull \hbox (5.67862pt too wide) in paragraph at lines 314--314
+ [][] 
+ []
+
+[9
+
+] [10
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 302.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 369.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 302.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 369.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 302.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 369.
 
 
-Overfull \hbox (36.562pt too wide) detected at line 302
+Overfull \hbox (36.562pt too wide) detected at line 369
 []
  []
 
-[10
+[11
 
 ]
-<figures/nonceonvxity_mmd.png, id=234, 1130.2225pt x 245.91875pt>
+<figures/nonceonvxity_mmd.png, id=260, 1130.2225pt x 245.91875pt>
 File: figures/nonceonvxity_mmd.png Graphic file (type png)
 <use figures/nonceonvxity_mmd.png>
-Package pdftex.def Info: figures/nonceonvxity_mmd.png  used on input line 322.
+Package pdftex.def Info: figures/nonceonvxity_mmd.png  used on input line 389.
 (pdftex.def)             Requested size: 246.86888pt x 53.71204pt.
-<figures/blurry_images_mmd.png, id=235, 853.1875pt x 175.65625pt>
+<figures/blurry_images_mmd.png, id=261, 853.1875pt x 175.65625pt>
 File: figures/blurry_images_mmd.png Graphic file (type png)
 <use figures/blurry_images_mmd.png>
-Package pdftex.def Info: figures/blurry_images_mmd.png  used on input line 322.
+Package pdftex.def Info: figures/blurry_images_mmd.png  used on input line 389.
 
 (pdftex.def)             Requested size: 246.86888pt x 50.82643pt.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 322.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 389.
 
- [11
+ [12
 
  <./figures/nonceonvxity_mmd.png> <./figures/blurry_images_mmd.png>]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 348.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 415.
 
-
-[12
-
-]
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 370.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 370.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 370.
-
-
-Overfull \vbox (0.37804pt too high) detected at line 370
- []
 
 [13
 
-] [14
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <14.4> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 437.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 437.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 437.
+
+
+Overfull \vbox (0.37804pt too high) detected at line 437
+ []
+
+[14
 
 ] [15
 
+] [16
+
 ]
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 419
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 486
 .
  (/home/zongchen/texmf/tex/latex/bbm/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [16
-
-] [17
+) [17
 
 ] [18
 
+] [19
+
 ]
-<figures/interpolation.png, id=444, 1233.60875pt x 597.23125pt>
+<figures/interpolation.png, id=471, 1233.60875pt x 597.23125pt>
 File: figures/interpolation.png Graphic file (type png)
 <use figures/interpolation.png>
-Package pdftex.def Info: figures/interpolation.png  used on input line 489.
+Package pdftex.def Info: figures/interpolation.png  used on input line 556.
 (pdftex.def)             Requested size: 288.00952pt x 139.42894pt.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 489.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 556.
 
 
-[19
+[20
 
- <./figures/interpolation.png>] [20
-
-] [21
+ <./figures/interpolation.png>] [21
 
 ] [22
 
 ] [23
 
+] [24
+
 ]
-<figures/personal.png, id=503, 1284.8pt x 1713.40125pt>
+<figures/personal.png, id=529, 1284.8pt x 1713.40125pt>
 File: figures/personal.png Graphic file (type png)
 <use figures/personal.png>
-Package pdftex.def Info: figures/personal.png  used on input line 591.
+Package pdftex.def Info: figures/personal.png  used on input line 658.
 (pdftex.def)             Requested size: 148.11655pt x 197.52066pt.
- [24
+ [25
 
  <./figures/personal.png>] (./__main__.bbl
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\translate ' on input line 2.
 
-[25
+[26
 
-] [26] [27]) [28]
+] [27] [28]) [29]
 \tf@nav=\write6
 \openout6 = `__main__.nav'.
 
@@ -1247,13 +1259,13 @@ Package rerunfilecheck Info: File `__main__.out' has not changed.
 (rerunfilecheck)             Checksum: 08D446C08DB5CC6B1C945CEF39A8B27C;657.
  ) 
 Here is how much of TeX's memory you used:
- 29379 strings out of 479727
- 606942 string characters out of 5884998
- 871541 words of memory out of 5000000
- 46782 multiletter control sequences out of 15000+600000
+ 29448 strings out of 479727
+ 608573 string characters out of 5884998
+ 872587 words of memory out of 5000000
+ 46847 multiletter control sequences out of 15000+600000
  490874 words of font info for 112 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
- 99i,20n,104p,413b,669s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,20n,104p,413b,1015s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/zongchen/texmf/fonts/pk/ljfour/public/bbm/bbm10.657pk></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
@@ -1274,13 +1286,13 @@ ype1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
-pfb>
-Output written on __main__.pdf (28 pages, 1064565 bytes).
+/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on __main__.pdf (29 pages, 1081147 bytes).
 PDF statistics:
- 642 PDF objects out of 1000 (max. 8388607)
- 426 compressed objects within 5 object streams
- 82 named destinations out of 1000 (max. 500000)
- 825 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 673 PDF objects out of 1000 (max. 8388607)
+ 446 compressed objects within 5 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 873 words of extra memory for PDF output out of 10000 (max. 10000000)
 

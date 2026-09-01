@@ -5,45 +5,45 @@ The style file: alpha.bst
 Database file #1: reference.bib
 Warning--empty journal in chen2025stationary
 Warning--empty journal in otto2001geometry
-You've used 18 entries,
+You've used 20 entries,
             2543 wiz_defined-function locations,
-            664 strings with 7915 characters,
-and the built_in function-call counts, 8025 in all, are:
-= -- 752
-> -- 520
+            678 strings with 8308 characters,
+and the built_in function-call counts, 9013 in all, are:
+= -- 851
+> -- 580
 < -- 9
-+ -- 187
-- -- 185
-* -- 612
-:= -- 1379
-add.period$ -- 57
-call.type$ -- 18
-change.case$ -- 127
-chr.to.int$ -- 18
-cite$ -- 20
-duplicate$ -- 293
-empty$ -- 520
-format.name$ -- 200
-if$ -- 1600
++ -- 210
+- -- 207
+* -- 701
+:= -- 1546
+add.period$ -- 63
+call.type$ -- 20
+change.case$ -- 143
+chr.to.int$ -- 20
+cite$ -- 22
+duplicate$ -- 321
+empty$ -- 582
+format.name$ -- 223
+if$ -- 1791
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 21
-newline$ -- 94
-num.names$ -- 60
-pop$ -- 135
+missing$ -- 23
+newline$ -- 104
+num.names$ -- 66
+pop$ -- 145
 preamble$ -- 1
-purify$ -- 148
+purify$ -- 166
 quote$ -- 0
-skip$ -- 245
+skip$ -- 268
 stack$ -- 0
-substring$ -- 304
-swap$ -- 50
+substring$ -- 375
+swap$ -- 52
 text.length$ -- 9
 text.prefix$ -- 1
 top$ -- 0
-type$ -- 132
+type$ -- 148
 warning$ -- 2
-while$ -- 72
-width$ -- 21
-write$ -- 232
+while$ -- 82
+width$ -- 23
+write$ -- 258
 (There were 2 warnings)
