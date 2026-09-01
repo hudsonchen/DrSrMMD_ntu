@@ -1,5 +1,5 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{MRW{\etalchar{+}}99}
+\begin{thebibliography}{KAFMA21}
 
 \bibitem[AHS23]{altekruger2023neural}
 Fabian Altekr{\"u}ger, Johannes Hertrich, and Gabriele Steidl.
@@ -85,6 +85,12 @@ Johannes Hertrich, Christian Wald, Fabian Altekr{\"u}ger, and Paul Hagemann.
 Richard Jordan, David Kinderlehrer, and Felix Otto.
 \newblock The variational formulation of the {F}okker--{P}lanck equation.
 \newblock {\em SIAM Journal on Mathematical Analysis}, 29(1):1--17, 1998.
+
+\bibitem[KAFMA21]{korba2021kernel}
+Anna Korba, Pierre-Cyril Aubin-Frankowski, Szymon Majewski, and Pierre Ablin.
+\newblock Kernel {S}tein discrepancy descent.
+\newblock In M.~Meila and T.~Zhang, editors, {\em International Conference on
+  Machine Learning}, pages 5719--5730. PMLR, 2021.
 
 \bibitem[MRW{\etalchar{+}}99]{mika99fisher}
 Sebastian Mika, Gunnar R{\"a}tsch, Jason Weston, Bernhard Sch{\"o}lkopf, and
