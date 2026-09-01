@@ -223,7 +223,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
 \begin{frame}{Example 1: Langevin diffusion~\citep{jordan1998variational}}
     \begin{itemize}
         \item Given the target distribution $\pi\propto \exp(-V)$ with $V: \R^d\to\R$.
-        \item The functional $\calF_\kl = \kl(\cdot \| \pi)$ and its Wasserstein gradient 
+        \item The functional \textcolor{blue}{$\calF_\kl = \kl(\cdot \| \pi)$} and its Wasserstein gradient 
         \begin{talign*}
             \red{[\nabla_{W_2} \calF_\kl(\mu)](\cdot)} = \nabla V(\cdot) + \nabla \log \mu_t(\cdot) .
         \end{talign*}
@@ -242,14 +242,76 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Background: Maximum Mean Discrepancy (MMD)~\citep{gretton2012kernel}}
+    \begin{columns}[c]
+        \column{0.8\textwidth}
+        \begin{itemize}
+            \item $\calH$ is a reproducing kernel Hilbert space (RKHS) with kernel $k$.
+            \begin{align*}
+                \text{MMD}(\Pb, \Qb)
+                := \sup_{f \in \calH}
+                |\E_{\Pb}[f(X)] - \E_{\Qb}[f(X)]|.
+            \end{align*}
+            \item The RKHS contains functions that are linear combinations of the feature maps $\phi:\calX\to\calH$, $f=\sum_{i=1}^n \alpha_i \phi(x_i)$.
+
+        \end{itemize}
+
+        \column{0.2\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.72, every node/.style={font=\scriptsize}]
+            \begin{scope}
+                \draw[->, thick] (-1.55,0) -- (1.75,0) node[right] {$x$};
+                \node[above] at (0.1,0.38) {input space};
+
+                \foreach \x in {-0.9,-0.65,-0.35,-0.1} {
+                    \fill[blue!80!black] (\x,0) circle (2pt);
+                }
+                \foreach \x in {0.45,0.7,1.0,1.25} {
+                    \fill[orange!90!black] (\x,0) circle (2pt);
+                }
+                \node[blue!80!black] at (-0.55,-0.35) {$\Pb$};
+                \node[orange!90!black] at (0.95,-0.35) {$\Qb$};
+            \end{scope}
+            \vspace{0.2cm}
+            \begin{scope}[shift={(0,-2.55)}]
+                \draw[->, thick] (-1.55,0) -- (1.75,0) node[right] {$\phi_1$};
+                \draw[->, thick] (-1.35,-1.1) -- (-1.35,1.25) node[above] {$\phi_2$};
+                \node[above] at (0.15,1.25) {feature space};
+
+                \foreach \p in {(-1.0,0.55),(-0.72,0.82),(-0.35,0.48),(-0.05,0.9)} {
+                    \fill[blue!80!black] \p circle (2pt);
+                }
+                \foreach \p in {(0.25,-0.45),(0.58,-0.2),(0.95,-0.52),(1.25,-0.05)} {
+                    \fill[orange!90!black] \p circle (2pt);
+                }
+            \end{scope}
+        \end{tikzpicture}
+    \end{columns}
+    \begingroup
+    \setbeamercolor{block title}{fg=black!25,bg=black!5}
+    \setbeamercolor{block body}{fg=black!25,bg=black!2}
+    \setbeamercolor{itemize item}{fg=black!25}
+    \setbeamercolor{normal text}{fg=black!25}
+    \hypersetup{citecolor=black!25}
+    \color{black!25}
+    \begin{theorem*}
+        MMD admits a closed-form expression:
+        \begin{align*}
+            \mathrm{MMD}^2(\Pb, \Qb)
+            = \E_{X,X'\sim\Pb}[k(X,X')]
+            + \E_{Y,Y'\sim\Qb}[k(Y,Y')] - 2\E_{X\sim\Pb,\,Y\sim\Qb}[k(X,Y)] .
+        \end{align*}
+    \end{theorem*}
+    \begin{itemize}
+        \item \textcolor{black!25}{MMD is a probability divergence ($\mathrm{MMD}(\Pb, \Qb)=0 \iff \Pb=\Qb$) if $k$ is characteristic (Gaussian)~{\scriptsize\oldcitep{sriperumbudur2011universality}}.}
+    \end{itemize}
+    \endgroup
+\end{frame}
+
 \begin{frame}{Example 2: MMD gradient flow~\citep{arbel2019maximum}}
 \begin{itemize}
     \item Given $M$ i.i.d samples $\{y_i\}_{i=1}^M$ from a target distribution $\pi$. 
-    \item The functional $\calF_\mmd = \frac{1}{2}\mmd^2(\cdot \| \pi)$ 
-    \begin{talign*}
-        \mmd(\mu \| \pi) := \left\| \smallint k(x,\cdot) \dd\mu(x) - \smallint k(x,\cdot) \dd\pi(x) \right\|_{\mathcal{H}},
-    \end{talign*}
-    where $\calH$ is the RKHS associated with a kernel $k:\R^d\times\R^d\to\R$. 
+    \item The functional \textcolor{blue}{$\calF_\mmd = \frac{1}{2}\mmd^2(\cdot \| \pi)$}  
     \item Its Wasserstein gradient 
     \begin{talign*}
         \red{[\nabla_{W_2} \calF_\mmd(\mu)](\cdot)} &= \nabla \left( \smallint k(x, \cdot) \; \dd \mu(x) - \smallint k(x, \cdot) \; \dd \pi(x) \right) \\
@@ -261,7 +323,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \end{talign*}
     \item A standard time-discretization (Euler--Maruyama scheme) is:
     \[
-    x_{n+1} = x_n - \gamma \nabla_{W_2} \calF_\mmd(\mu_n)(x_n) .
+    x_{n+1} = x_n - \gamma \nabla_{W_2} \calF_\mmd(\mu_n)(x_n) , \quad \text{Law}(x_n)=\mu_n. 
     \]
 \end{itemize}
 \end{frame}
