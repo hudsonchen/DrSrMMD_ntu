@@ -118,6 +118,7 @@ Pierre Glaser \and Anna Korba \\
 \section{Background}
 %------------------------------------------------
 \begin{frame}{Background}
+\large
 \begin{exampleblock}{}
 \centering
     \textbf{Problem}: How to learn a target probability distribution $\pi$ on $\R^d$.
@@ -126,16 +127,20 @@ Pierre Glaser \and Anna Korba \\
     \item Sampling (e.g: $\pi\propto\exp(-V)$ is the posterior distribution in Bayesian inference). 
     \item Generative models (e.g: $\pi$ is the distribution of an image dataset). 
 \end{itemize}
-\begin{columns}[T,onlytextwidth]
-    \column{0.48\textwidth}
+\begin{columns}[T,totalwidth=0.86\textwidth]
+    \column{0.29\textwidth}
     \vspace{0pt}
-    \centering
-    \includegraphics[height=0.35\textheight]{figures/sampling.png}
+    \raggedleft
+    \includegraphics[height=0.29\textheight,trim=0 25bp 15bp 25bp,clip]{figures/sampling.png}
 
-    \column{0.48\textwidth}
+    \column{0.55\textwidth}
     \vspace{0pt}
-    \centering
-    \includegraphics[height=0.35\textheight,trim=0 313.5bp 0 313.5bp,clip]{figures/generative_noise_to_face.png}
+    \raggedright
+    \includegraphics[height=0.29\textheight,trim=0 313.5bp 627bp 313.5bp,clip]{figures/generative_noise_to_face.png}
+    \hspace{0.10cm}
+    \raisebox{0.115\textheight}{\LARGE$\rightarrow$}
+    \hspace{0.10cm}
+    \includegraphics[height=0.29\textheight]{figures/generative_transforming_robot.png}
 \end{columns}
 \end{frame}
 

@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex __main__"] 1788331407 "__main__.aux" "__main__.bbl" "__main__" 1788331409
+["bibtex __main__"] 1788331738 "__main__.aux" "__main__.bbl" "__main__" 1788332568
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/alpha.bst" 1292289607 23907 a5f93555796fb564b924339521f10a7c ""
-  "__main__.aux" 1788331409 12059 4f6b5cc641358d3ff152a75fab820bad "pdflatex"
+  "__main__.aux" 1788332568 12059 4f6b5cc641358d3ff152a75fab820bad "pdflatex"
   "reference.bib" 1788328506 62187 8dcb9812847fa2473b23098360decd14 ""
   (generated)
   "__main__.bbl"
   "__main__.blg"
-["pdflatex"] 1788331407 "__main__.tex" "__main__.pdf" "__main__" 1788331409
+["pdflatex"] 1788332567 "__main__.tex" "__main__.pdf" "__main__" 1788332568
   "/etc/texmf/web2c/texmf.cnf" 1691084906 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/zongchen/texmf/tex/latex/bbm/bbm.sty" 1784623077 1644 1e0d54b051369c3f457872824cac219f ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -38,6 +38,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm" 1136768653 1520 ca2bb4b78ac9800bd686e30c6d19ef95 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi12.tfm" 1136768653 1532 48589e216c7fb787d0f3ee1a3047705d ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi17.tfm" 1136768653 1528 2c5d869860212c53326a9895b1bca677 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm" 1136768653 1500 7f49257eca65a87057f17452e9fe3ef5 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi9.tfm" 1136768653 1524 db4bb1dddb7b51420776d94a5c70c2a5 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
@@ -274,11 +275,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1781392677 412563 db61d7d2177dee6340dcfa89b660dbf6 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1781392682 1503855 bb3b237899f15e72fded17b9c951fbf4 ""
-  "__main__.aux" 1788331409 12059 4f6b5cc641358d3ff152a75fab820bad "pdflatex"
-  "__main__.bbl" 1788331407 12075 95516c01a6884d941bc98d036fc8bf64 "bibtex __main__"
-  "__main__.nav" 1788331409 5102 d034a14cb13a9911a020642c289fe666 "pdflatex"
-  "__main__.out" 1788331409 822 d7941df9d8e7f6c67a95467ac157b3a9 "pdflatex"
-  "__main__.tex" 1788331401 46935 10a3cfbef234d0aa453ae5277146dc42 ""
+  "__main__.aux" 1788332568 12059 4f6b5cc641358d3ff152a75fab820bad "pdflatex"
+  "__main__.bbl" 1788331738 12075 95516c01a6884d941bc98d036fc8bf64 "bibtex __main__"
+  "__main__.nav" 1788332568 5102 d034a14cb13a9911a020642c289fe666 "pdflatex"
+  "__main__.out" 1788332568 822 d7941df9d8e7f6c67a95467ac157b3a9 "pdflatex"
+  "__main__.tex" 1788332559 47169 ecb13e6efbf85cbd979ed75f6510bf01 ""
   "beamercolorthemeSimpleDarkBlue.sty" 1788234685 1519 0fb483013d61269173c77458b49f793b ""
   "beamerfontthemeSimpleDarkBlue.sty" 1788234685 1415 7f3c6b511b7db0d7ad2ec03af90863b5 ""
   "beamerinnerthemeSimpleDarkBlue.sty" 1788234685 2393 f22e69a0c8325624047edfa537865049 ""
@@ -294,6 +295,7 @@
   "figures/authors/zonghao.jpg" 1788271352 23527 c42ec6dc52bb5e2187a4114c44f3d256 ""
   "figures/blurry_images_mmd.png" 1788234685 34217 208a5f8491bd55b3bc9501e896e2f739 ""
   "figures/generative_noise_to_face.png" 1788331203 3060032 ad43b907e359aeb25332f7c5afd0f246 ""
+  "figures/generative_transforming_robot.png" 1788331718 2177218 c36ab5267588a3dbdc68309ca6008bea ""
   "figures/imagenet256_riesz_cfg2p5_step19999.jpg" 1788328074 219982 f6b697bce3e00c390228229399b1edec ""
   "figures/mdf_al_lotka_volterra_summary.pdf" 1788325111 1048328 9b195ea65d34f21dbb336eab15ff3699 ""
   "figures/nonceonvxity_mmd.png" 1788234685 64645 f9298164690ea07f7cff8e5c1a0ac988 ""
