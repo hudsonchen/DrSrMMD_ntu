@@ -921,38 +921,48 @@ $\alpha$ denotes the regularity parameter of the flow.}
 
 \begin{frame}{Part III: Statistical inference}
     \begin{exampleblock}{}
-        \centering \textbf{Question:} How to reliably find $\theta_{\mathrm{MMD}}$?
+        \centering \textbf{Question:} How can we reliably find $\theta_{\mathrm{MMD}}$?
     \end{exampleblock}
-    \begin{columns}[T,onlytextwidth]
-        \column{0.66\textwidth}
-        \small
-        \begin{itemize}
-            \setlength\itemsep{0.06cm}
-            \item MMD flow:
-            \[
-                \Pb_{t+1}
-                =
-                (\Id - \gamma \nabla f_{\Pb_t,\Qb})_{\#}\Pb_t .
-            \]
-            \item Consider $\Pb_\theta=(T_\theta)_{\#}\rho$:
-            \[
-                \Pb_{\theta_{t+1}} = (T_{\theta_t - \gamma \Delta \theta_t})_\# \rho .
-            \]
-            \item Choose $\Pb_{\theta_{t+1}}$ closest to the MMD flow iterate $\Pb_{t+1}$.
-            \item $\lim_{t\to\infty} \mmd(\Pb_{\theta_t}, \Qb) = \min_{\theta} \mmd(\Pb_{\theta}, \Qb)$. 
-        \end{itemize}
+
+    \small
+    \begin{enumerate}
+        \setlength\itemsep{0.10cm}
+        \item \textbf{Follow the MMD flow} in the space of probability measures:
         \begin{align*}
-            \Delta \theta_t^{\mathrm{PGD}}=\left\{\mathbb{E}_{z \sim \rho}\left[\mathbf{J}_\theta G_{\theta_t}(z)^{\top} \mathbf{J}_\theta G_{\theta_t}(z)\right] \right\}^{-1} \nabla_\theta \mmd^2(\Pb_{\theta_t},\Qb) .
+            \Pb_{t+1}
+            &=
+            (\Id - \gamma \nabla f_{\Pb_t,\Qb})_{\#}\Pb_t .
         \end{align*}
-        \column{0.33\textwidth}
-        \begin{minipage}[c][0.60\textheight][c]{\linewidth}
-            \centering
-            \includegraphics[
-                width=\linewidth,
-                keepaspectratio
-            ]{../plotting/figures/illustration_simple.pdf}
-        \end{minipage}
-    \end{columns}
+        \item \textbf{Restrict the iterate to the model family} $\Pb_\theta=(T_\theta)_{\#}\rho$:
+        \begin{align*}
+            \Pb_{\theta_{t+1}}
+            &=
+            (T_{\theta_t - \gamma \Delta \theta_t})_\# \rho .
+        \end{align*}
+        \item \textbf{Project back onto the model family} by choosing $\Pb_{\theta_{t+1}}$ closest to the MMD flow iterate $\Pb_{t+1}$.
+    \end{enumerate}
+
+    \vspace{0.05cm}
+    \begin{answerblock}
+        \centering
+        \textbf{Resulting preconditioned gradient direction}
+        \begin{align*}
+            \Delta \theta_t^{\mathrm{PGD}}
+            =
+            \left\{
+                \E_{z \sim \rho}\!\left[
+                    \mathbf{J}_\theta G_{\theta_t}(z)^{\top}
+                    \mathbf{J}_\theta G_{\theta_t}(z)
+                \right]
+            \right\}^{-1}
+            \nabla_\theta \mmd^2(\Pb_{\theta_t},\Qb) .
+        \end{align*}
+    \end{answerblock}
+
+    \vspace{-0.05cm}
+    \centering
+    $\displaystyle \lim_{t\to\infty} \mmd(\Pb_{\theta_t},\Qb)
+    = \min_{\theta} \mmd(\Pb_\theta,\Qb)$.
 \end{frame}
 
 

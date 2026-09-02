@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.6.14)  2 SEP 2026 06:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.6.14)  2 SEP 2026 06:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1245,27 +1245,27 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
 [28
 
 ]
-<figures/authors/francois_xavier_briol.png, id=594, 271.0125pt x 271.0125pt>
+<figures/authors/francois_xavier_briol.png, id=593, 271.0125pt x 271.0125pt>
 File: figures/authors/francois_xavier_briol.png Graphic file (type png)
 <use figures/authors/francois_xavier_briol.png>
 Package pdftex.def Info: figures/authors/francois_xavier_briol.png  used on inp
-ut line 879.
+ut line 877.
 (pdftex.def)             Requested size: 40.96854pt x 40.96854pt.
-<figures/authors/sophia_kang.jpg, id=595, 271.0125pt x 271.0125pt>
+<figures/authors/sophia_kang.jpg, id=594, 271.0125pt x 271.0125pt>
 File: figures/authors/sophia_kang.jpg Graphic file (type jpg)
 <use figures/authors/sophia_kang.jpg>
 Package pdftex.def Info: figures/authors/sophia_kang.jpg  used on input line 87
-9.
+7.
 (pdftex.def)             Requested size: 40.96854pt x 40.96854pt.
-<figures/authors/louis_sharrock.jpg, id=596, 271.0125pt x 271.0125pt>
+<figures/authors/louis_sharrock.jpg, id=595, 271.0125pt x 271.0125pt>
 File: figures/authors/louis_sharrock.jpg Graphic file (type jpg)
 <use figures/authors/louis_sharrock.jpg>
 Package pdftex.def Info: figures/authors/louis_sharrock.jpg  used on input line
- 879.
+ 877.
 (pdftex.def)             Requested size: 40.96854pt x 40.96854pt.
 File: figures/authors/arthur.png Graphic file (type png)
 <use figures/authors/arthur.png>
-Package pdftex.def Info: figures/authors/arthur.png  used on input line 879.
+Package pdftex.def Info: figures/authors/arthur.png  used on input line 877.
 (pdftex.def)             Requested size: 40.97021pt x 40.97021pt.
  [29
 
@@ -1282,40 +1282,43 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
 
  [30
 
+] [31
+
 ]
-<figures/mdf_al_lotka_volterra_summary.pdf, id=689, 1806.75282pt x 514.77347pt>
+<figures/mdf_al_lotka_volterra_summary.pdf, id=718, 1806.75282pt x 514.77347pt>
 
 File: figures/mdf_al_lotka_volterra_summary.pdf Graphic file (type pdf)
 <use figures/mdf_al_lotka_volterra_summary.pdf>
 Package pdftex.def Info: figures/mdf_al_lotka_volterra_summary.pdf  used on inp
-ut line 932.
+ut line 978.
 (pdftex.def)             Requested size: 407.33179pt x 116.05467pt.
- [31
+
+[32
 
  <./figures/mdf_al_lotka_volterra_summary.pdf>]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 953.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 998.
 
- [32
+ [33
 
-] [33
+] [34
 
 ]
-<figures/personal.png, id=725, 1284.8pt x 1713.40125pt>
+<figures/personal.png, id=753, 1284.8pt x 1713.40125pt>
 File: figures/personal.png Graphic file (type png)
 <use figures/personal.png>
-Package pdftex.def Info: figures/personal.png  used on input line 996.
+Package pdftex.def Info: figures/personal.png  used on input line 1041.
 (pdftex.def)             Requested size: 148.11655pt x 197.52066pt.
- [34
+ [35
 
  <./figures/personal.png>] (./__main__.bbl
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\translate ' on input line 2.
 
-[35
+[36
 
-] [36] [37] [38] [39] [40] [41] [42]) [43]
+] [37] [38] [39] [40] [41] [42] [43]) [44]
 \tf@nav=\write6
 \openout6 = `__main__.nav'.
 
@@ -1330,11 +1333,11 @@ Package rerunfilecheck Info: File `__main__.out' has not changed.
 (rerunfilecheck)             Checksum: 95A68CA35C42BE3C79F52DF2CED6932A;627.
  ) 
 Here is how much of TeX's memory you used:
- 29744 strings out of 479727
- 616030 string characters out of 5884998
- 877426 words of memory out of 5000000
- 47087 multiletter control sequences out of 15000+600000
- 489856 words of font info for 104 fonts, out of 8000000 for 9000
+ 29761 strings out of 479727
+ 616566 string characters out of 5884998
+ 877462 words of memory out of 5000000
+ 47103 multiletter control sequences out of 15000+600000
+ 489688 words of font info for 103 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
  99i,20n,104p,413b,1016s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
@@ -1343,31 +1346,32 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on __main__.pdf (43 pages, 2518939 bytes).
+type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on __main__.pdf (44 pages, 2529777 bytes).
 PDF statistics:
- 924 PDF objects out of 1000 (max. 8388607)
- 624 compressed objects within 7 object streams
- 140 named destinations out of 1000 (max. 500000)
- 1122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 955 PDF objects out of 1000 (max. 8388607)
+ 641 compressed objects within 7 object streams
+ 142 named destinations out of 1000 (max. 500000)
+ 1188 words of extra memory for PDF output out of 10000 (max. 10000000)
 
