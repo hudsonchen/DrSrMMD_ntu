@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex __main__"] 1788328973 "__main__.aux" "__main__.bbl" "__main__" 1788328975
+["bibtex __main__"] 1788331407 "__main__.aux" "__main__.bbl" "__main__" 1788331409
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/alpha.bst" 1292289607 23907 a5f93555796fb564b924339521f10a7c ""
-  "__main__.aux" 1788328974 12068 cd72132d3752897557ad8b2d46577d35 "pdflatex"
+  "__main__.aux" 1788331409 12059 4f6b5cc641358d3ff152a75fab820bad "pdflatex"
   "reference.bib" 1788328506 62187 8dcb9812847fa2473b23098360decd14 ""
   (generated)
   "__main__.bbl"
   "__main__.blg"
-["pdflatex"] 1788328973 "__main__.tex" "__main__.pdf" "__main__" 1788328975
+["pdflatex"] 1788331407 "__main__.tex" "__main__.pdf" "__main__" 1788331409
   "/etc/texmf/web2c/texmf.cnf" 1691084906 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/zongchen/texmf/tex/latex/bbm/bbm.sty" 1784623077 1644 1e0d54b051369c3f457872824cac219f ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -68,6 +68,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb" 1248133631 25168 33771b85f45c82138dd7745db7092d1c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb" 1248133631 25029 6f2cec9646ca278302ed7d604e506e3e ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1248133631 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1248133631 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
@@ -75,6 +76,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1248133631 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm5.pfb" 1248133631 35457 884c5a936fbb3fae6a4c18058662d654 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1248133631 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -272,11 +274,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1781392677 412563 db61d7d2177dee6340dcfa89b660dbf6 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1781392682 1503855 bb3b237899f15e72fded17b9c951fbf4 ""
-  "__main__.aux" 1788328974 12068 cd72132d3752897557ad8b2d46577d35 "pdflatex"
-  "__main__.bbl" 1788328973 12075 95516c01a6884d941bc98d036fc8bf64 "bibtex __main__"
-  "__main__.nav" 1788328974 5102 d034a14cb13a9911a020642c289fe666 "pdflatex"
-  "__main__.out" 1788328974 822 d7941df9d8e7f6c67a95467ac157b3a9 "pdflatex"
-  "__main__.tex" 1788328962 46249 1e1e6a6ec72089ea78e7b8476d7bd872 ""
+  "__main__.aux" 1788331409 12059 4f6b5cc641358d3ff152a75fab820bad "pdflatex"
+  "__main__.bbl" 1788331407 12075 95516c01a6884d941bc98d036fc8bf64 "bibtex __main__"
+  "__main__.nav" 1788331409 5102 d034a14cb13a9911a020642c289fe666 "pdflatex"
+  "__main__.out" 1788331409 822 d7941df9d8e7f6c67a95467ac157b3a9 "pdflatex"
+  "__main__.tex" 1788331401 46935 10a3cfbef234d0aa453ae5277146dc42 ""
   "beamercolorthemeSimpleDarkBlue.sty" 1788234685 1519 0fb483013d61269173c77458b49f793b ""
   "beamerfontthemeSimpleDarkBlue.sty" 1788234685 1415 7f3c6b511b7db0d7ad2ec03af90863b5 ""
   "beamerinnerthemeSimpleDarkBlue.sty" 1788234685 2393 f22e69a0c8325624047edfa537865049 ""
@@ -291,11 +293,13 @@
   "figures/authors/sophia_kang.jpg" 1780858621 14347 ebb33df994f3db2f99c4ba5f9883abc5 ""
   "figures/authors/zonghao.jpg" 1788271352 23527 c42ec6dc52bb5e2187a4114c44f3d256 ""
   "figures/blurry_images_mmd.png" 1788234685 34217 208a5f8491bd55b3bc9501e896e2f739 ""
+  "figures/generative_noise_to_face.png" 1788331203 3060032 ad43b907e359aeb25332f7c5afd0f246 ""
   "figures/imagenet256_riesz_cfg2p5_step19999.jpg" 1788328074 219982 f6b697bce3e00c390228229399b1edec ""
   "figures/mdf_al_lotka_volterra_summary.pdf" 1788325111 1048328 9b195ea65d34f21dbb336eab15ff3699 ""
   "figures/nonceonvxity_mmd.png" 1788234685 64645 f9298164690ea07f7cff8e5c1a0ac988 ""
   "figures/ot_wasserstein_gradient_illustration.pdf" 1788235288 272517 a00bcd36a64e85357b78c68f8bf9c43b ""
   "figures/personal.png" 1788234685 324645 6daa4b18f32390d21f65d06ec5765ed8 ""
+  "figures/sampling.png" 1788234685 86067 b332aefe78657b0873c208c78d6b27c5 ""
   "figures/tangent.png" 1788234685 47494 b8ae39762894b084b626bc2fbc1c655a ""
   "include/macros.tex" 1788249992 1473 c1311e05f98fec0e13ee59bb750c9873 ""
   (generated)
