@@ -839,8 +839,8 @@ Algorithm & Metric & Iteration complexity \\
 LMC~\citep{chewi2024analysis,vempala2019rapid} & KL / $\chi^2$ & $\tilde{\calO}(\delta^{-1} \beta)$ \\
 SVGD~\citep{balasubramanian2024improved} & $\mathrm{KSD}^2$ & $\calO(\delta^{-1})$ \\
 R-SVGD~\citep{he2022regularized} & Fisher & $\calO(\delta^{-1})$ \\
-DrMMD & $\kl$ & $\tilde{\calO}(\delta^{-(\alpha+1)/\alpha} \beta)$ \\
-SrMMD & $\mmd^2$ / $\mathrm{KSD}^2$ & $\tilde{\calO}(\delta^{-1/\alpha})$ \\
+\green{DrMMD} & $\kl$ & $\tilde{\calO}(\delta^{-(\alpha+1)/\alpha} \beta)$ \\
+\textcolor{blue}{SrMMD} & $\mmd^2$ / $\mathrm{KSD}^2$ & $\tilde{\calO}(\delta^{-1/\alpha})$ \\
 \bottomrule
 \end{tabular}
 \caption{Here, $\beta$ denotes the isoperimetric constant of $\pi$.\\
@@ -853,6 +853,7 @@ $\alpha$ denotes the regularity parameter of the flow.}
     \item SrMMD rate is \red{independent} of isoperimetric constant of $\pi$. 
 \end{itemize}
 \end{frame}
+
 
 
 \section{Conclusions}
