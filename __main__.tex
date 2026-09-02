@@ -919,7 +919,7 @@ $\alpha$ denotes the regularity parameter of the flow.}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Part III: Statistical inference}
+\begin{frame}{Application: Statistical inference}
     \begin{exampleblock}{}
         \centering \textbf{Question:} How can we reliably find $\theta_{\mathrm{MMD}}$?
     \end{exampleblock}
@@ -927,25 +927,14 @@ $\alpha$ denotes the regularity parameter of the flow.}
     \small
     \begin{enumerate}
         \setlength\itemsep{0.10cm}
-        \item \textbf{Follow the MMD flow} in the space of probability measures:
-        \begin{align*}
-            \Pb_{t+1}
-            &=
-            (\Id - \gamma \nabla f_{\Pb_t,\Qb})_{\#}\Pb_t .
-        \end{align*}
-        \item \textbf{Restrict the iterate to the model family} $\Pb_\theta=(T_\theta)_{\#}\rho$:
-        \begin{align*}
-            \Pb_{\theta_{t+1}}
-            &=
-            (T_{\theta_t - \gamma \Delta \theta_t})_\# \rho .
-        \end{align*}
-        \item \textbf{Project back onto the model family} by choosing $\Pb_{\theta_{t+1}}$ closest to the MMD flow iterate $\Pb_{t+1}$.
+        \item MMD gradient flow $\Pb_{t+1} = (\Id - \gamma \nabla f_{\Pb_t,\Qb})_{\#} \Pb_t$. 
+        \item Consider the model family: $\Pb_\theta=(T_\theta)_{\#}\rho$: $\Pb_{\theta_{t+1}} = (T_{\theta_t - \gamma \Delta \theta_t})_\# \rho$. 
+        \item Choose $\Pb_{\theta_{t+1}}$ closest to the MMD flow iterate $\Pb_{t+1}$. 
     \end{enumerate}
 
     \vspace{0.05cm}
     \begin{answerblock}
         \centering
-        \textbf{Resulting preconditioned gradient direction}
         \begin{align*}
             \Delta \theta_t^{\mathrm{PGD}}
             =
