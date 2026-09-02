@@ -1,5 +1,35 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{KAFMA21}
+\begin{thebibliography}{ACADF23b}
+
+\bibitem[ACADF23a]{cherief2020mmd}
+Pierre Alquier, Badr-Eddine Ch{\'e}rief-Abdellatif, Alexis Derumigny, and
+  Jean-David Fermanian.
+\newblock Estimation of copulas via maximum mean discrepancy.
+\newblock {\em Journal of the American Statistical Association},
+  118(543):1997--2012, 2023.
+
+\bibitem[ACADF23b]{alquier2023estimation}
+Pierre Alquier, Badr-Eddine Ch{\'e}rief-Abdellatif, Alexis Derumigny, and
+  Jean-David Fermanian.
+\newblock Estimation of copulas via maximum mean discrepancy.
+\newblock {\em Journal of the American Statistical Association},
+  118(543):1997--2012, 2023.
+
+\bibitem[AFP26]{alquier2026timeseries}
+Pierre Alquier, Jean-David Fermanian, and Benjamin Poignard.
+\newblock Estimation of time series by maximum mean discrepancy.
+\newblock {\em arXiv preprint arXiv:2601.11233}, 2026.
+
+\bibitem[AG24]{alquier2024universal}
+Pierre Alquier and Mathieu Gerber.
+\newblock Universal robust regression via maximum mean discrepancy.
+\newblock {\em arXiv preprint arXiv:2006.00840}, 2024.
+
+\bibitem[AG25]{alquier2025package}
+Pierre Alquier and Mathieu Gerber.
+\newblock {regMMD}: A package for parametric estimation and regression with
+  maximum mean discrepancy.
+\newblock {\em arXiv preprint arXiv:2503.05297}, 2025.
 
 \bibitem[AHS23]{altekruger2023neural}
 Fabian Altekr{\"u}ger, Johannes Hertrich, and Gabriele Steidl.
@@ -14,12 +44,24 @@ Michael Arbel, Anna Korba, Adil Salim, and Arthur Gretton.
   E.~Fox, and R.~Garnett, editors, {\em Advances in Neural Information
   Processing Systems}, volume~32. Curran Associates, Inc., 2019.
 
+\bibitem[BBDG19]{briol2019statistical}
+Francois-Xavier Briol, Alessandro Barp, Andrew~B Duncan, and Mark Girolami.
+\newblock Statistical inference for generative models with maximum mean
+  discrepancy.
+\newblock {\em arXiv preprint arXiv:1906.05944}, 2019.
+
 \bibitem[BBG25]{balasubramanian2024improved}
 Sayan Banerjee, Krishna Balasubramanian, and Promit Ghosal.
 \newblock Improved finite-particle convergence rates for {S}tein variational
   gradient descent.
 \newblock In {\em The Thirteenth International Conference on Learning
   Representations}, 2025.
+
+\bibitem[BFM25]{bruck2025distribution}
+Florian Br{\"u}ck, Jean-David Fermanian, and Aleksey Min.
+\newblock Distribution free {MMD} tests for model selection with estimated
+  parameters.
+\newblock {\em arXiv preprint arXiv:2305.07549}, 2025.
 
 \bibitem[BGL{\etalchar{+}}14]{bakry2014analysis}
 Dominique Bakry, Ivan Gentil, Michel Ledoux, et~al.
@@ -38,6 +80,23 @@ Stephen~P. Boyd and Lieven Vandenberghe.
 \newblock {\em Convex Optimization}.
 \newblock Cambridge University Press, 2004.
 
+\bibitem[CAA22]{cherief2022finite}
+Badr-Eddine Ch{'e}rief-Abdellatif and Pierre Alquier.
+\newblock Finite sample properties of parametric mmd estimation: robustness to
+  misspecification and dependence.
+\newblock {\em Bernoulli}, 28(1):181--213, 2022.
+
+\bibitem[CAN25]{cherief2025parametric}
+Badr-Eddine Ch{\'e}rief-Abdellatif and Jeffrey N{\"a}f.
+\newblock Parametric {MMD} estimation with missing values: Robustness to
+  missingness and data model misspecification.
+\newblock {\em arXiv preprint arXiv:2503.00448}, 2025.
+
+\bibitem[CDB25]{chen2025total}
+Zonghao Chen, Charita Dellaporta, and Fran{\c{c}}ois-Xavier Briol.
+\newblock Total variation generalized {B}ayesian inference.
+\newblock {\em arXiv preprint}, 2025.
+
 \bibitem[CEL{\etalchar{+}}24]{chewi2024analysis}
 Sinho Chewi, Murat~A. Erdogdu, Mufan Li, Ruoqi Shen, and Matthew~S. Zhang.
 \newblock Analysis of {L}angevin {M}onte {C}arlo from {P}oincare to
@@ -49,6 +108,32 @@ Zonghao Chen, Toni Karvonen, Heishiro Kanagawa, Fran{\c{c}}ois-Xavier Briol,
   and Chris Oates.
 \newblock Stationary {MMD} points for cubature.
 \newblock 2025.
+
+\bibitem[DD23]{dellaporta2023robust}
+Charita Dellaporta and Theodoros Damoulas.
+\newblock Robust {B}ayesian inference for {B}erkson and classical measurement
+  error models.
+\newblock {\em arXiv preprint arXiv:2306.01468}, 2023.
+
+\bibitem[DKDB22]{dellaporta2022robust}
+Charita Dellaporta, Jeremias Knoblauch, Theodoros Damoulas, and
+  Fran{\c{c}}ois-Xavier Briol.
+\newblock Robust {B}ayesian inference for simulator-based models via the {MMD}
+  posterior bootstrap.
+\newblock {\em arXiv preprint arXiv:2202.04744}, 2022.
+
+\bibitem[DOD25]{dellaporta2025decision}
+Charita Dellaporta, Patrick O'Hara, and Theodoros Damoulas.
+\newblock Decision making under model misspecification: {DRO} with robust
+  {B}ayesian ambiguity sets.
+\newblock {\em arXiv preprint arXiv:2505.03585}, 2025.
+
+\bibitem[FAZL23]{fazeli2023semi}
+Forough Fazeli-Asl, Michael~Minyi Zhang, and Lizhen Lin.
+\newblock A semi-{B}ayesian nonparametric estimator of the maximum mean
+  discrepancy measure: Applications in goodness-of-fit testing and generative
+  adversarial networks.
+\newblock {\em arXiv preprint arXiv:2303.02637}, 2023.
 
 \bibitem[GAG21]{glaser2021kale}
 Pierre Glaser, Michael Arbel, and Arthur Gretton.
@@ -115,6 +200,16 @@ Heishiro Kanagawa, Alessandro Barp, Arthur Gretton, and Lester Mackey.
 \newblock Controlling moments with kernel {S}tein discrepancies.
 \newblock {\em The Annals of Applied Probability}, 35(6):3818--3843, 2025.
 
+\bibitem[KGBF25]{key2025composite}
+Oscar Key, Arthur Gretton, Fran{\c{c}}ois-Xavier Briol, and Tamara Fernandez.
+\newblock Composite goodness-of-fit tests with kernels.
+\newblock {\em Journal of Machine Learning Research}, 26(51):1--60, 2025.
+
+\bibitem[KPLB26]{khoo2026minimum}
+Sherman Khoo, Dennis Prangle, Song Liu, and Mark Beaumont.
+\newblock Minimum distance summaries for robust neural posterior estimation.
+\newblock {\em arXiv preprint arXiv:2602.09161}, 2026.
+
 \bibitem[MRW{\etalchar{+}}99]{mika99fisher}
 Sebastian Mika, Gunnar R{\"a}tsch, Jason Weston, Bernhard Sch{\"o}lkopf, and
   Klaus-Robert M{\"u}ller.
@@ -147,6 +242,18 @@ Bharath~K. Sriperumbudur, Kenji Fukumizu, and Gert R.~G. Lanckriet.
 \newblock Universality, characteristic kernels and {RKHS} embedding of
   measures.
 \newblock {\em Journal of Machine Learning Research}, 12(7):2389--2410, 2011.
+
+\bibitem[SK25]{su2025differentiable}
+Ziwei Su and Diego Klabjan.
+\newblock Differentiable calibration of inexact stochastic simulation models
+  via kernel score minimization.
+\newblock {\em arXiv preprint arXiv:2411.05315}, 2025.
+
+\bibitem[SKA{\etalchar{+}}23]{schrab2023mmd}
+Antonin Schrab, Ilmun Kim, M{\'e}lisande Albert, B{\'e}atrice Laurent, Benjamin
+  Guedj, and Arthur Gretton.
+\newblock {MMD} aggregated two-sample test.
+\newblock {\em arXiv preprint arXiv:2110.15073}, 2023.
 
 \bibitem[SNRS26]{stein2026wasserstein}
 Viktor Stein, Sebastian Neumayer, Nicolaj Rux, and Gabriele Steidl.

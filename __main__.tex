@@ -46,9 +46,11 @@ Pierre Glaser \and Anna Korba \\
 
 \definecolor{definitionTitle}{RGB}{34, 102, 102}  % A deep teal color
 \definecolor{definitionBody}{RGB}{10, 10, 10}     % Near-black for text
+\definecolor{answerBody}{RGB}{225, 244, 244}
 
 \setbeamercolor{block title alerted}{bg=brown, fg=white}
 \setbeamercolor{block body alerted}{fg=definitionBody}
+\setbeamercolor{answer box}{bg=answerBody, fg=black}
 
 % Now redefine the 'defi' environment to use the 'alerted block' style:
 \setbeamertemplate{theorems}[numbered]
@@ -57,6 +59,12 @@ Pierre Glaser \and Anna Korba \\
   \begin{alertblock}{Definition\ifx\\#1\\\else~(#1)\fi}%
 }{%
   \end{alertblock}%
+}
+
+\newenvironment{answerblock}{%
+  \begin{beamercolorbox}[wd=\linewidth, sep=0.15em, rounded=true, shadow=true]{answer box}%
+}{%
+  \end{beamercolorbox}%
 }
 
 \definecolor{graytext}{gray}{0.5} % Customize the grey level if needed
@@ -856,9 +864,17 @@ $\alpha$ denotes the regularity parameter of the flow.}
 
 \begin{frame}{Applications}
     \begin{center}
-        {\Large In the following, we turn to applications \par}
+        {\Large In the following, we turn to applications\par}
+        \vspace{0.20cm}
+        {\Large\orange{\textbf{1) Minimum MMD estimation \quad 2) Generative models}}}
+
         \vspace{0.35cm}
-        {\Large\orange{\textbf{1) minimum MMD estimation \quad  2) generative models.}}}
+        {\small Joint work with\par}
+        \vspace{0.12cm}
+        \authorportrait{figures/authors/francois_xavier_briol.png}{Fran\c{c}ois-Xavier\\Briol}\hspace{0.55cm}
+        \authorportrait{figures/authors/sophia_kang.jpg}{Sophia\\Kang}\hspace{0.55cm}
+        \authorportrait{figures/authors/louis_sharrock.jpg}{Louis\\Sharrock}\hspace{0.55cm}
+        \authorportrait{figures/authors/arthur.png}{Arthur\\Gretton}
     \end{center}
 \end{frame}
 
@@ -879,7 +895,7 @@ $\alpha$ denotes the regularity parameter of the flow.}
     \end{itemize}
 
     \begin{itemize}
-        \item Applications: \citet{key2025composite,schrab2023mmd,bruck2025distribution,fazeli2023semi,alquier2024universal,alquier2026timeseries,dellaporta2025decision,dellaporta2022robust,dellaporta2023robust,chen2025total,su2025differentiable,alquier2023estimation,cherief2025parametric,khoo2026minimum}.
+        \item Applications: \citep{key2025composite,schrab2023mmd,bruck2025distribution,fazeli2023semi,alquier2024universal,alquier2026timeseries,dellaporta2025decision,dellaporta2022robust,dellaporta2023robust,chen2025total,su2025differentiable,alquier2023estimation,cherief2025parametric,khoo2026minimum}.
     \end{itemize}
 
     \vspace{0.10cm}
@@ -901,6 +917,39 @@ $\alpha$ denotes the regularity parameter of the flow.}
             \centering {\Large\checkmark} Bounded effects under bounded kernels. \\
         \end{answerblock}
     \end{columns}
+\end{frame}
+
+
+\begin{frame}{Experiment: Lotka--Volterra inference}
+    \centering
+    \includegraphics[width=0.99\linewidth]{figures/mdf_al_lotka_volterra_summary.pdf}
+    \vspace{0.08cm}
+    \begin{itemize}
+        \small
+        \item We compare gradient descent (GD), natural gradient descent (NGD), and preconditioned gradient descent (PGD) for $\theta^\star=(100,120)$ over $10$ seeds.
+        \item The clean experiment uses two initializations; the right panels compare the parameter trajectories under $0\%$, $15\%$, and $35\%$ data corruption.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Experiment: composite goodness-of-fit testing~\citep{key2025composite}}
+    \begin{table}
+        \centering
+        \renewcommand{\arraystretch}{1.15}
+        \begin{tabular}{lcc|cc}
+            \toprule
+            Method & Type-I error ($\downarrow$) & Time & Power ($\uparrow$) & Time \\
+            \midrule
+            PGD ($\mathcal{I}=1$) & 0.050 $\pm$ 0.018 & 8.6s & 0.829 $\pm$ 0.032 & 3.6s \\
+            \midrule
+            GD ($\mathcal{I}=400$) & 0.107 $\pm$ 0.026 & 10.4s & 0.600 $\pm$ 0.041 & 4.9s \\
+            GD ($\mathcal{I}=1$) & 0.071 $\pm$ 0.022 & 2.6s & 0.279 $\pm$ 0.038 & 1.1s \\
+            \bottomrule
+        \end{tabular}
+        \caption{\textit{Composite goodness-of-fit test.} Critical values are computed by parametric bootstrap with $B=50$ bootstrap samples. The nominal Type-I error is $\alpha=0.05$; lower Type-I error and higher power indicate better performance. All experiments are repeated over $140$ random seeds; results report the mean $\pm$ standard error.}
+    \end{table}
+    \vspace{-0.15cm}
+    {\scriptsize Source: \url{https://arxiv.org/abs/2607.03871}, Table 1.}
 \end{frame}
 
 
