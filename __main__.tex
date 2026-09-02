@@ -114,6 +114,30 @@ Pierre Glaser \and Anna Korba \\
 \end{frame}
 
 
+\section{Personal}
+\begin{frame}{About Me}
+  \begin{columns}[c] % 'c' aligns vertically center
+    % Left column with image
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/personal.png}
+    \column{0.6\textwidth}
+    \begin{itemize}
+        \item Zonghao Chen
+        \item 4th year PhD Student at University College London (UCL)
+        \begin{itemize}
+            \item Foundational AI Centre
+            \item Gatsby Computational Neuroscience Unit
+        \end{itemize}
+        \item Graduated from Tsinghua University in 2022
+        \begin{itemize}
+            \item Department of EE
+        \end{itemize}
+        \item Kernel (nonparametric) methods, causal inference, statistical learning theory
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
 %------------------------------------------------
 \section{Background}
 %------------------------------------------------
@@ -124,10 +148,10 @@ Pierre Glaser \and Anna Korba \\
     \textbf{Problem}: How to learn a target probability distribution $\pi$ on $\R^d$.
 \end{exampleblock}
 \begin{itemize}
-    \item Sampling (e.g: $\pi\propto\exp(-V)$ is the posterior distribution in Bayesian inference). 
-    \item Generative models (e.g: $\pi$ is the distribution of an image dataset). 
+    \item Sampling $\pi\propto\exp(-V)$ (e.g: Bayesian inference). 
+    \item Generative models (e.g: $\pi$ is an image dataset). 
 \end{itemize}
-\begin{columns}[T,totalwidth=0.86\textwidth]
+\begin{columns}[T,totalwidth=1.0\textwidth]
     \column{0.29\textwidth}
     \vspace{0pt}
     \raggedleft
@@ -194,25 +218,25 @@ Pierre Glaser \and Anna Korba \\
         \item Gradient descent! Wait... How do we define gradients in $\calP_2(\R^d)$?
         \item Endow $\calP_2(\R^d)$ with the Wasserstein-2 distance $W_2$.
         \begin{talign*}
-            \red{W_2^2(\nu, \Pb)} = \smallint \| T(x) - x\|^2 \dd \nu(x) = \| T - \Id\|_{L_2(\nu)}^2 .
+            \red{W_2^2(\Pb_0, \Pb)} = \smallint \| T(x) - x\|^2 \dd \Pb_0(x) = \| T - \Id\|_{L_2(\Pb_0)}^2 .
         \end{talign*}
         \vspace{-10pt}
         \begin{itemize}
-            \item $W_2^2(\nu, \Pb)$ means the \orange{minimal energy} takes to transport mass from $\nu$ to $\Pb$.
-            \item $T:\R^d\to\R^d$ is the \red{optimal transport map} from $\nu$ to $\Pb$.
+            \item $W_2^2(\Pb_0, \Pb)$ means the \orange{minimal energy} takes to transport mass from $\Pb_0$ to $\Pb$.
+            \item $T:\R^d\to\R^d$ is the \red{optimal transport map} from $\Pb_0$ to $\Pb$.
         \end{itemize}
-        \item $(\calP_2, W_2)$ can be 'treated` as a Riemann manifold under Otto's calculus~\citep{otto2001geometry}.
-        \item The \green{tangent space} $\calT_\Pb\calP_2(\R^d)$ at $\Pb\in\calP_2(\R^d)$ is a dense subset of $L_2(\Pb)$.
+        \item $(\calP_2, W_2)$ can be 'treated` as a Riemann manifold under Otto's calculus~\citep{otto2001geometry}. 
+        \item The \green{tangent space} $\Pb\in\calP_2(\R^d)$ is a dense subset of $L_2(\Pb)$.
     \end{itemize}
     \begin{figure}
         \centering
         \includegraphics[
-            height=0.24\textheight,
+            height=0.30\textheight,
             trim=0 0 315bp 0,
             clip
         ]{figures/ot_wasserstein_gradient_illustration.pdf}
         \hspace{0.04\linewidth}
-        \includegraphics[height=0.24\textheight]{figures/tangent.png}
+        \includegraphics[height=0.30\textheight]{figures/tangent.png}
     \end{figure}
 \end{frame}
 
@@ -226,9 +250,10 @@ Pierre Glaser \and Anna Korba \\
             clip
         ]{figures/ot_wasserstein_gradient_illustration.pdf}
     \end{figure}
+    \vspace{-0.18cm}
 \begin{defi}[Wasserstein gradient]
 Let $\calF: \calP_2(\R^d) \rightarrow \R$.
-The \red{Wasserstein gradient of $\calF$} evaluated at $\Pb \in \calP_2(\R^d)$ is the unique function \blue{$\nabla_{W_2} \calF(\Pb): \R^d \rightarrow \R^d$}, s.t. for any $T\in \calT_\Pb\calP_2(\R^d)$,
+The \red{Wasserstein gradient of $\calF$} evaluated at $\Pb \in \calP_2(\R^d)$ is the unique function \blue{$\nabla_{W_2} \calF(\Pb): \R^d \rightarrow \R^d$}, s.t. for any $T\in L_2(\Pb)$, 
 \begin{align*}
 \lim _{\epsilon \rightarrow 0} \frac{1}{\epsilon}\left[\calF\left( (\Id+\epsilon T)_\# \Pb \right) - \calF(\Pb)\right] = \left\langle \nabla_{W_2} \calF, T \right\rangle_{L_2(\Pb)} .
 \end{align*}
@@ -288,7 +313,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\Pb_t = \mathrm{Law}(x_t)$.
 
 \begin{frame}{Background: Maximum Mean Discrepancy (MMD)~\citep{gretton2012kernel}}
     \begin{columns}[c,onlytextwidth]
-        \column{0.72\textwidth}
+        \column{0.77\textwidth}
         \begin{itemize}
             \item $\calH$ is a reproducing kernel Hilbert space (RKHS) with kernel $k$.
             \begin{align*}
@@ -300,7 +325,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\Pb_t = \mathrm{Law}(x_t)$.
 
         \end{itemize}
 
-        \column{0.27\textwidth}
+        \column{0.2\textwidth}
         \centering
         \begin{tikzpicture}[scale=0.72, every node/.style={font=\scriptsize}]
             \begin{scope}
@@ -424,7 +449,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\Pb_t = \mathrm{Law}(x_t)$.
         \textbf{Question}: How can we overcome the non-convexity of $\calF_\mmd$?
     \end{exampleblock}
     \begin{itemize}
-        \item In this talk, I will present three complementary routes.
+        \item In this talk, I will present two complementary routes.
     \end{itemize}
     \vspace{0.18cm}
     \begin{center}
@@ -1097,29 +1122,6 @@ R-SVGD~\citep{he2022regularized} & Fisher & $\calO(\delta^{-1})$ \\
 \end{frame}
 
 
-\section{Personal}
-\begin{frame}{About Me}
-  \begin{columns}[c] % 'c' aligns vertically center
-    % Left column with image
-    \column{0.4\textwidth}
-    \centering
-    \includegraphics[width=0.9\linewidth]{figures/personal.png}
-    \column{0.6\textwidth}
-    \begin{itemize}
-        \item Zonghao Chen
-        \item 4th year PhD Student at University College London (UCL)
-        \begin{itemize}
-            \item Foundational AI Centre
-            \item Gatsby Computational Neuroscience Unit
-        \end{itemize}
-        \item Graduated from Tsinghua University in 2022
-        \begin{itemize}
-            \item Department of EE
-        \end{itemize}
-        \item Kernel (nonparametric) methods, causal inference, statistical learning theory
-    \end{itemize}
-  \end{columns}
-\end{frame}
 
 
 \bibliographystyle{alpha}
