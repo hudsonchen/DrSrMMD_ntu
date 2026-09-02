@@ -108,16 +108,9 @@ Pierre Glaser \and Anna Korba \\
 
 \begin{frame}[plain]
     \centering
-    \vspace{0.35cm}
+    \vfill
     {\usebeamerfont{title}\color{DarkBlue}\inserttitle\par}
-    \vspace{0.75cm}
-
-    \authorportrait{figures/authors/zonghao.jpg}{Zonghao\\Chen}\hfill
-    \authorportrait{figures/authors/aratrika.jpg}{Aratrika\\Mustafi}\hfill
-    \authorportrait{figures/authors/pierre.jpg}{Pierre\\Glaser}\hfill
-    \authorportrait{figures/authors/anna.jpg}{Anna\\Korba}\hfill
-    \authorportrait{figures/authors/arthur.png}{Arthur\\Gretton}\hfill
-    \authorportrait{figures/authors/bharath.jpg}{Bharath K.\\Sriperumbudur}
+    \vfill
 \end{frame}
 
 
@@ -425,6 +418,22 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \end{center}
 \end{frame}
 
+\subsection{DrMMD flow and SrMMD flow}
+\begin{frame}[plain]
+    \centering
+    \vfill
+    {\usebeamerfont{title}\color{DarkBlue}DrMMD flow and SrMMD flow\par}
+    \vspace{0.75cm}
+
+    \authorportrait{figures/authors/zonghao.jpg}{Zonghao\\Chen}\hfill
+    \authorportrait{figures/authors/aratrika.jpg}{Aratrika\\Mustafi}\hfill
+    \authorportrait{figures/authors/pierre.jpg}{Pierre\\Glaser}\hfill
+    \authorportrait{figures/authors/anna.jpg}{Anna\\Korba}\hfill
+    \authorportrait{figures/authors/arthur.png}{Arthur\\Gretton}\hfill
+    \authorportrait{figures/authors/bharath.jpg}{Bharath K.\\Sriperumbudur}
+    \vfill
+\end{frame}
+
 \begin{frame}{Kernel assumptions}
 \begin{ass}[Growth I]
 There exists a constant $M>0$ such that, for every $x\in\R^d$,
@@ -633,7 +642,7 @@ Suppose the target distribution $\pi$ \text satisfies a Poincaré inequality wit
 
         \node[DarkBlue, inner xsep=3pt, inner ysep=1pt] at (-6.12,0.32)
             {$L_2(\pi)\cong\operatorname{Ran}(T_\pi^0)$};
-        \node[DarkBlue, fill=DarkBlue!8, inner sep=2pt] at (4.75,0.72) {$0<r<\frac12$};
+        \node[DarkBlue, fill=DarkBlue!8, inner sep=2pt] at (4.75,0.12) {$0<r<\frac12$};
 
         \node[darkgreen, inner xsep=3pt, inner ysep=1pt] at (-3.65,-0.26)
             {$\mathcal H\cong\operatorname{Ran}(T_\pi^{1/2})$};
@@ -945,17 +954,17 @@ $\alpha$ denotes the regularity parameter of the flow.}
                         \mathbf{J}_\theta G_{\theta_t}(z)
                     \right]
                 \right\}^{-1}
-            }_{\text{preconditioner}}
+            }_{\text{\normalsize\color{darkgreen} preconditioner}}
             \underbrace{
                 \nabla_\theta \mmd^2(\Pb_{\theta_t},\Qb)
-            }_{\text{standard gradient}} .
+            }_{\text{\normalsize\color{brown} standard gradient}} .
         \end{align*}
     \end{answerblock}
-
-    \vspace{-0.05cm}
-    \centering
-    $\displaystyle \lim_{t\to\infty} \mmd(\Pb_{\theta_t},\Qb)
+    \begin{itemize}
+        \item Convergence:
+    $\lim_{t\to\infty} \mmd(\Pb_{\theta_t},\Qb)
     = \min_{\theta} \mmd(\Pb_\theta,\Qb)$.
+    \end{itemize}
 \end{frame}
 
 
@@ -991,20 +1000,73 @@ $\alpha$ denotes the regularity parameter of the flow.}
 \end{frame}
 
 
+\begin{frame}{Application: Generative models}
+    \centering
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={0 1536 512 256},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize wing}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={0 1280 512 512},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize hammerhead shark}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={512 1280 0 512},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize Irish terrier}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={0 1024 512 768},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize coyote}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={256 1024 256 768},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize schooner}
+    \end{minipage}
 
+    \vspace{0.14cm}
+
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={512 1024 0 768},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize water buffalo}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={0 768 512 1024},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize manhole cover}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={512 768 0 1024},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize fire engine}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={256 512 256 1280},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize vending machine}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.185\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={512 0 0 1792},clip]{figures/imagenet256_riesz_cfg2p5_step19999.jpg}\\[-0.02cm]
+        {\scriptsize dining table}
+    \end{minipage}
+
+    \vspace{0.12cm}
+
+    \begin{itemize}
+        \item ResNet-style encoder pre-trained with masked autoencoding (MAE)~\citep{deng2026generative}.
+    \end{itemize}
+\end{frame}
 
 \section{Conclusions}
 \begin{frame}{Conclusions}
 \begin{itemize}
-    \item We propose DrMMD gradient flow as an interpolation of MMD gradient flow and $\chi^2$ gradient flow.
-    \item DrMMD gradient flow / descent has \green{global convergence} results, compared to MMD flow, under an adaptive regularization parameter $\lambda$. 
-    \item This justifies the application of \blue{adaptive kernels} in recent MMD flow (MMD GAN) papers that achieve SOTA empirical performances.
-    \item More in the paper \url{https://arxiv.org/pdf/2409.14980}.
-    \begin{itemize}
-        \item Empirical results on synthetic datasets.
-        \item An example of DrMMD flow with a Gaussian target distribution $\pi$ which satisfies all conditions in the theorems. 
-        \item Finite-particle convergence results with propagation of chaos bound. 
-    \end{itemize}
+    \item Minimization of MMD
 \end{itemize}
 \end{frame}
 

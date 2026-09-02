@@ -122,6 +122,11 @@ Charita Dellaporta, Jeremias Knoblauch, Theodoros Damoulas, and
   posterior bootstrap.
 \newblock {\em arXiv preprint arXiv:2202.04744}, 2022.
 
+\bibitem[DLL{\etalchar{+}}26]{deng2026generative}
+Mingyang Deng, He~Li, Tianhong Li, Yilun Du, and Kaiming He.
+\newblock Generative modeling via drifting.
+\newblock {\em arXiv preprint arXiv:2602.04770}, 2026.
+
 \bibitem[DOD25]{dellaporta2025decision}
 Charita Dellaporta, Patrick O'Hara, and Theodoros Damoulas.
 \newblock Decision making under model misspecification: {DRO} with robust
