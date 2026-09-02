@@ -856,11 +856,53 @@ $\alpha$ denotes the regularity parameter of the flow.}
 
 \begin{frame}{Applications}
     \begin{center}
-        {\Large In the following, we turn to\par}
+        {\Large In the following, we turn to applications \par}
         \vspace{0.35cm}
-        {\Large\orange{\textbf{minimum MMD estimation and generative models.}}}
+        {\Large\orange{\textbf{1) minimum MMD estimation \quad  2) generative models.}}}
     \end{center}
 \end{frame}
+
+
+\begin{frame}{Part III: Statistical inference}
+    \begin{itemize}
+        \item Minimum MMD estimator~\citep{briol2019statistical,cherief2022finite,cherief2020mmd,alquier2025package}
+        \begin{align*}
+            \theta_{\mathrm{MMD}}
+            &= \arg\min_{\theta\in\Theta} \mathrm{MMD}^2(\Pb_\theta, \Qb) \\
+            &= \arg\min_{\theta\in\Theta}
+            \Big\{
+            \E_{x,x'\sim\Pb_\theta}[k(x,x')]
+            -2\E_{x\sim\Pb_\theta, y\sim\Qb}[k(x,y)]
+            + \mathrm{const}
+            \Big\}.
+        \end{align*}
+    \end{itemize}
+
+    \begin{itemize}
+        \item Applications: \citet{key2025composite,schrab2023mmd,bruck2025distribution,fazeli2023semi,alquier2024universal,alquier2026timeseries,dellaporta2025decision,dellaporta2022robust,dellaporta2023robust,chen2025total,su2025differentiable,alquier2023estimation,cherief2025parametric,khoo2026minimum}.
+    \end{itemize}
+
+    \vspace{0.10cm}
+    \begin{columns}[T,onlytextwidth]
+        \column{0.48\textwidth}
+        \begin{exampleblock}{}
+            \centering \textbf{Challenge 1:} Likelihood-free inference?
+        \end{exampleblock}
+        
+        \begin{answerblock}
+            \centering {\Large\checkmark} Only requires samples from $\Pb_\theta$ and $\Qb$.\\
+        \end{answerblock}
+
+        \column{0.48\textwidth}
+        \begin{exampleblock}{}
+            \centering \textbf{Challenge 2:} Robustness to outliers?
+        \end{exampleblock}
+        \begin{answerblock}
+            \centering {\Large\checkmark} Bounded effects under bounded kernels. \\
+        \end{answerblock}
+    \end{columns}
+\end{frame}
+
 
 
 
