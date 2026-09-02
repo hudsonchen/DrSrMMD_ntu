@@ -417,10 +417,10 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\mu_t = \mathrm{Law}(x_t)$.
     \vspace{0.18cm}
     \begin{center}
         {\Large\blue{\textbf{1. De-regularized MMD gradient flow}}}\\[0.08cm]
-        {\scriptsize\href{https://arxiv.org/abs/2409.14980}{\texttt{arXiv:2409.14980}}}\\[0.38cm]
+        {\href{https://arxiv.org/abs/2409.14980}{\texttt{arXiv:2409.14980}}}\\[0.38cm]
         {\Large\green{\textbf{2. Sobolev-regularized MMD gradient flow}}}\\[0.08cm]
-        {\scriptsize\href{https://arxiv.org/abs/2605.11884}{\texttt{arXiv:2605.11884}}}\\[0.38cm]
-        {\Large\orange{\textbf{3. Applications: 1) Minimum MMD estimation; 2) Generative model}}}\\[0.08cm]
+        {\href{https://arxiv.org/abs/2605.11884}{\texttt{arXiv:2605.11884}}}\\[0.38cm]
+        {\Large\orange{\textbf{3. Applications: 1) Statistical inference; 2) Generative model}}}\\[0.08cm]
         {\scriptsize}{\texttt{arXiv:2607.03871}, \emph{Work in progress}}
     \end{center}
 \end{frame}
@@ -868,9 +868,7 @@ $\alpha$ denotes the regularity parameter of the flow.}
         \vspace{0.20cm}
         {\Large\orange{\textbf{1) Minimum MMD estimation \quad 2) Generative models}}}
 
-        \vspace{0.35cm}
-        {\small Joint work with\par}
-        \vspace{0.12cm}
+        \vspace{0.3cm}
         \authorportrait{figures/authors/francois_xavier_briol.png}{Fran\c{c}ois-Xavier\\Briol}\hspace{0.55cm}
         \authorportrait{figures/authors/sophia_kang.jpg}{Sophia\\Kang}\hspace{0.55cm}
         \authorportrait{figures/authors/louis_sharrock.jpg}{Louis\\Sharrock}\hspace{0.55cm}
@@ -879,8 +877,10 @@ $\alpha$ denotes the regularity parameter of the flow.}
 \end{frame}
 
 
-\begin{frame}{Part III: Statistical inference}
+\begin{frame}{Application: Statistical inference}
     \begin{itemize}
+        \item $\Pb_\theta$ is the model; and $\Qb$ is the data distribution. 
+        \item Maximum Likelihood estimator: $\arg\min_{\theta\in\Theta} \kl(\Qb, \Pb_\theta)$. 
         \item Minimum MMD estimator~\citep{briol2019statistical,cherief2022finite,cherief2020mmd,alquier2025package}
         \begin{align*}
             \theta_{\mathrm{MMD}}
@@ -898,11 +898,11 @@ $\alpha$ denotes the regularity parameter of the flow.}
         \item Applications: \citep{key2025composite,schrab2023mmd,bruck2025distribution,fazeli2023semi,alquier2024universal,alquier2026timeseries,dellaporta2025decision,dellaporta2022robust,dellaporta2023robust,chen2025total,su2025differentiable,alquier2023estimation,cherief2025parametric,khoo2026minimum}.
     \end{itemize}
 
-    \vspace{0.10cm}
+    % \vspace{0.10cm}
     \begin{columns}[T,onlytextwidth]
         \column{0.48\textwidth}
         \begin{exampleblock}{}
-            \centering \textbf{Challenge 1:} Likelihood-free inference?
+            \centering \textbf{Advantage 1:} Likelihood-free inference?
         \end{exampleblock}
         
         \begin{answerblock}
@@ -911,11 +911,47 @@ $\alpha$ denotes the regularity parameter of the flow.}
 
         \column{0.48\textwidth}
         \begin{exampleblock}{}
-            \centering \textbf{Challenge 2:} Robustness to outliers?
+            \centering \textbf{Advantage 2:} Robustness to outliers?
         \end{exampleblock}
         \begin{answerblock}
             \centering {\Large\checkmark} Bounded effects under bounded kernels. \\
         \end{answerblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Part III: Statistical inference}
+    \begin{exampleblock}{}
+        \centering \textbf{Question:} How to reliably find $\theta_{\mathrm{MMD}}$?
+    \end{exampleblock}
+    \begin{columns}[T,onlytextwidth]
+        \column{0.66\textwidth}
+        \small
+        \begin{itemize}
+            \setlength\itemsep{0.06cm}
+            \item MMD flow:
+            \[
+                \Pb_{t+1}
+                =
+                (\Id - \gamma \nabla f_{\Pb_t,\Qb})_{\#}\Pb_t .
+            \]
+            \item Consider $\Pb_\theta=(T_\theta)_{\#}\rho$:
+            \[
+                \Pb_{\theta_{t+1}} = (T_{\theta_t - \gamma \Delta \theta_t})_\# \rho .
+            \]
+            \item Choose $\Pb_{\theta_{t+1}}$ closest to the MMD flow iterate $\Pb_{t+1}$.
+            \item $\lim_{t\to\infty} \mmd(\Pb_{\theta_t}, \Qb) = \min_{\theta} \mmd(\Pb_{\theta}, \Qb)$. 
+        \end{itemize}
+        \begin{align*}
+            \Delta \theta_t^{\mathrm{PGD}}=\left\{\mathbb{E}_{z \sim \rho}\left[\mathbf{J}_\theta G_{\theta_t}(z)^{\top} \mathbf{J}_\theta G_{\theta_t}(z)\right] \right\}^{-1} \nabla_\theta \mmd^2(\Pb_{\theta_t},\Qb) .
+        \end{align*}
+        \column{0.33\textwidth}
+        \begin{minipage}[c][0.60\textheight][c]{\linewidth}
+            \centering
+            \includegraphics[
+                width=\linewidth,
+                keepaspectratio
+            ]{../plotting/figures/illustration_simple.pdf}
+        \end{minipage}
     \end{columns}
 \end{frame}
 
@@ -926,8 +962,8 @@ $\alpha$ denotes the regularity parameter of the flow.}
     \vspace{0.08cm}
     \begin{itemize}
         \small
-        \item We compare gradient descent (GD), natural gradient descent (NGD), and preconditioned gradient descent (PGD) for $\theta^\star=(100,120)$ over $10$ seeds.
-        \item The clean experiment uses two initializations; the right panels compare the parameter trajectories under $0\%$, $15\%$, and $35\%$ data corruption.
+        \item We compare gradient descent (GD), natural gradient descent (NGD)~\citep{briol2019statistical}, and preconditioned gradient descent (PGD, ours).
+        \item First row: Close initialization. Second row: Far initialization. 
     \end{itemize}
 \end{frame}
 
@@ -946,10 +982,9 @@ $\alpha$ denotes the regularity parameter of the flow.}
             GD ($\mathcal{I}=1$) & 0.071 $\pm$ 0.022 & 2.6s & 0.279 $\pm$ 0.038 & 1.1s \\
             \bottomrule
         \end{tabular}
-        \caption{\textit{Composite goodness-of-fit test.} Critical values are computed by parametric bootstrap with $B=50$ bootstrap samples. The nominal Type-I error is $\alpha=0.05$; lower Type-I error and higher power indicate better performance. All experiments are repeated over $140$ random seeds; results report the mean $\pm$ standard error.}
+        \caption{\textit{Composite goodness-of-fit test.} $\mathcal{I}$ represents the number of restarts. }
     \end{table}
     \vspace{-0.15cm}
-    {\scriptsize Source: \url{https://arxiv.org/abs/2607.03871}, Table 1.}
 \end{frame}
 
 
