@@ -938,13 +938,17 @@ $\alpha$ denotes the regularity parameter of the flow.}
         \begin{align*}
             \Delta \theta_t^{\mathrm{PGD}}
             =
-            \left\{
-                \E_{z \sim \rho}\!\left[
-                    \mathbf{J}_\theta G_{\theta_t}(z)^{\top}
-                    \mathbf{J}_\theta G_{\theta_t}(z)
-                \right]
-            \right\}^{-1}
-            \nabla_\theta \mmd^2(\Pb_{\theta_t},\Qb) .
+            \underbrace{
+                \left\{
+                    \E_{z \sim \rho}\!\left[
+                        \mathbf{J}_\theta G_{\theta_t}(z)^{\top}
+                        \mathbf{J}_\theta G_{\theta_t}(z)
+                    \right]
+                \right\}^{-1}
+            }_{\text{preconditioner}}
+            \underbrace{
+                \nabla_\theta \mmd^2(\Pb_{\theta_t},\Qb)
+            }_{\text{standard gradient}} .
         \end{align*}
     \end{answerblock}
 
