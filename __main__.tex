@@ -145,11 +145,11 @@ Pierre Glaser \and Anna Korba \\
 \large
 \begin{exampleblock}{}
 \centering
-    \textbf{Problem}: How to learn a target probability distribution $\pi$ on $\R^d$.
+    \textbf{Problem}: How to learn a target probability distribution $\Qb$ on $\R^d$.
 \end{exampleblock}
 \begin{itemize}
-    \item Sampling $\pi\propto\exp(-V)$ (e.g: Bayesian inference). 
-    \item Generative models (e.g: $\pi$ is an image dataset). 
+    \item Sampling $\Qb\propto\exp(-V)$ (e.g: Bayesian inference). 
+    \item Generative models (e.g: $\Qb$ is an image dataset). 
 \end{itemize}
 \begin{columns}[T,totalwidth=1.0\textwidth]
     \column{0.29\textwidth}
@@ -177,13 +177,13 @@ Pierre Glaser \and Anna Korba \\
     \begin{itemize}
         \item This problem can be written as an \blue{optimization} problem on $\calP_2(\R^d)$.
         \begin{talign*}
-            \arg\min_{\Pb \in \calP_2(\R^d)} D(\Pb \mid \Qb) .
+            \arg\min_{\Pb \in \calP_2(\R^d)} D(\Pb, \Qb) .
         \end{talign*}
-        \item Here $D$ is a similarity metric or distance, e.g. Kullback–Leibler divergence.
+        \item Here $D$ is a metric or distance, e.g. Kullback–Leibler divergence.
         \begin{itemize}
-            \item $D(\Pb | \Qb) = 0$ if and only if $\Pb=\Qb$.
+            \item $D(\Pb, \Qb) = 0$ if and only if $\Pb=\Qb$.
         \end{itemize}
-        \item \red{$\calP_2(\R^d)$ denotes the space of probability measures with a finite second moment}.
+        \item \red{$\calP_2(\R^d)$} denotes the space of probability measures with a \red{finite second moment}.
         \begin{itemize}
             \item We primarily consider $\calP_2(\R^d)$ rather than $\calP(\R^d)$ for the nice geometrical properties.
         \end{itemize}
@@ -192,40 +192,24 @@ Pierre Glaser \and Anna Korba \\
 \end{frame}
 
 
-\begin{frame}{Background: Euclidean gradient flow}
-    \begin{itemize}
-        \item Euclidean gradient flow of an objective $F:\R^d \to \R$
-        \begin{talign*}
-            \partial_t x_t = -v(x_t), \quad v = \nabla F .
-        \end{talign*}
-        \item $\nabla F$ denotes the gradient of $F$.
-        \item This is the continuous-time analogue of gradient descent: \begin{talign*}
-            x_{n+1} = x_n - \gamma v(x_n),
-        \end{talign*}
-        where $\gamma > 0$ is the step size.
-        \item When $F$ is both \green{strongly convex and smooth}, Euclidean gradient \orange{descent} converges exponentially fast~\citep{boyd2004convex}.
-    \end{itemize}
-\end{frame}
-
-
 
 \begin{frame}{Background: Wasserstein gradient flow}
     \begin{exampleblock}{}
     \centering
-        \textbf{Challenge}: How to find $\arg\min_{\Pb \in \calP_2(\R^d)} D(\Pb \mid \Qb)$?
+        \textbf{Challenge}: How to find $\arg\min_{\Pb \in \calP_2(\R^d)} D(\Pb, \Qb)$?
     \end{exampleblock}
     \begin{itemize}
         \item Gradient descent! Wait... How do we define gradients in $\calP_2(\R^d)$?
         \item Endow $\calP_2(\R^d)$ with the Wasserstein-2 distance $W_2$.
         \begin{talign*}
-            \red{W_2^2(\Pb_0, \Pb)} = \smallint \| T(x) - x\|^2 \dd \Pb_0(x) = \| T - \Id\|_{L_2(\Pb_0)}^2 .
+            \red{W_2^2(\Pb_0, \Pb_1)} = \smallint \| T(x) - x\|^2 \dd \Pb_0(x) = \| T - \Id\|_{L_2(\Pb_0)}^2 .
         \end{talign*}
         \vspace{-10pt}
         \begin{itemize}
-            \item $W_2^2(\Pb_0, \Pb)$ means the \orange{minimal energy} takes to transport mass from $\Pb_0$ to $\Pb$.
-            \item $T:\R^d\to\R^d$ is the \red{optimal transport map} from $\Pb_0$ to $\Pb$.
+            \item $W_2(\Pb_0, \Pb_1)$ means the \orange{minimal energy} takes to transport mass from $\Pb_0$ to $\Pb_1$.
+            \item $T:\R^d\to\R^d$ is the \red{optimal transport map} from $\Pb_0$ to $\Pb_1$.
         \end{itemize}
-        \item $(\calP_2, W_2)$ can be 'treated` as a Riemann manifold under Otto's calculus~\citep{otto2001geometry}. 
+        \item $(\calP_2, W_2)$ can be 'treated` as a Riemann \green{manifold} under Otto's calculus~\citep{otto2001geometry}. 
         \item The \green{tangent space} $\Pb\in\calP_2(\R^d)$ is a dense subset of $L_2(\Pb)$.
     \end{itemize}
     \begin{figure}
@@ -240,7 +224,7 @@ Pierre Glaser \and Anna Korba \\
     \end{figure}
 \end{frame}
 
-\begin{frame}{Background: Wasserstein gradient flow}
+\begin{frame}{Background: Wasserstein gradient}
     \vspace{-0.18cm}
     \begin{figure}
         \centering
@@ -253,7 +237,7 @@ Pierre Glaser \and Anna Korba \\
     \vspace{-0.18cm}
 \begin{defi}[Wasserstein gradient]
 Let $\calF: \calP_2(\R^d) \rightarrow \R$.
-The \red{Wasserstein gradient of $\calF$} evaluated at $\Pb \in \calP_2(\R^d)$ is the unique function \blue{$\nabla_{W_2} \calF(\Pb): \R^d \rightarrow \R^d$}, s.t. for any $T\in L_2(\Pb)$, 
+The \red{Wasserstein gradient of $\calF$} evaluated at $\Pb \in \calP_2(\R^d)$ is the unique function \blue{$\nabla_{W_2} \calF(\Pb): \R^d \rightarrow \R^d$}, s.t. for any tranport map $T\in L_2(\Pb)$, 
 \begin{align*}
 \lim _{\epsilon \rightarrow 0} \frac{1}{\epsilon}\left[\calF\left( (\Id+\epsilon T)_\# \Pb \right) - \calF(\Pb)\right] = \left\langle \nabla_{W_2} \calF, T \right\rangle_{L_2(\Pb)} .
 \end{align*}
@@ -269,6 +253,9 @@ The \red{Wasserstein gradient of $\calF$} evaluated at $\Pb \in \calP_2(\R^d)$ i
 where the vector field $v_t = -\nabla_{W_2}\calF(\Pb_t)$.
 Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\Pb_t = \mathrm{Law}(x_t)$.
 \end{defi}
+\begin{itemize}
+    \item Wasserstein gradient flow of $\calF$ decreases $\calF$ in the steepest direction. 
+\end{itemize}
 \begin{columns}[T]
     \column{0.48\textwidth}
     \textbf{Euclidean Gradient Flow}
@@ -277,7 +264,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\Pb_t = \mathrm{Law}(x_t)$.
         \item Objective $F: \R^d \to \R$.
         \item Update scheme: $\dot{x}_t = v_t(x_t)$, with $v_t = -\nabla F$.
     \end{itemize}
-
+    
     \column{0.48\textwidth}
     \textbf{Wasserstein Gradient Flow}
     \begin{itemize}
@@ -294,17 +281,17 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\Pb_t = \mathrm{Law}(x_t)$.
         \item Given the target distribution $\Qb\propto \exp(-V)$ with $V: \R^d\to\R$.
         \item The functional \textcolor{blue}{$\calF_\kl = \kl(\cdot, \Qb)$} and its Wasserstein gradient
         \begin{talign*}
-            \red{[\nabla_{W_2} \calF_\kl(\Pb)](\cdot)} = \nabla V(\cdot) + \nabla \log \Pb_t(\cdot) .
+            \red{[\nabla_{W_2} \calF_\kl(\Pb)](\cdot)} = \nabla V(\cdot) + \nabla \log \Pb(\cdot) .
         \end{talign*}
         \item The Wasserstein gradient flow of $\calF_\kl$
         \begin{talign*}
-            \partial_t \Pb_t=\nabla \cdot \left(\Pb_t \left( \nabla V + \nabla \log \Pb_t\right) \right).
+            \partial_t \Pb_t=\nabla \cdot \left(\Pb_t \left( \nabla V + \nabla \log \Pb_t \right) \right).
         \end{talign*}
         \item It is equivalent to the Fokker–Planck equation of the \green{Langevin diffusion}~\citep{sarkka2019applied}:
         \begin{talign*}
             \dd x_t = -\nabla V(x_t) \, \dd t + \sqrt{2} \, \dd W_t, \quad \Pb_t = \mathrm{Law}(x_t).
         \end{talign*}
-        \item A standard time-discretization (Euler--Maruyama scheme) is:
+        \item A standard time-discretization gives \textcolor{brown}{ULA} (unadjusted Langevin):
         \[
         x_{n+1} = x_n - \gamma \nabla V(x_n) + \sqrt{2\gamma} \, \xi_n, \quad \xi_n \sim \mathcal{N}(0, \Id_d).
         \]
@@ -384,7 +371,7 @@ Or equivalently, $\dot{x}_t = v_t(x_t)$ with $\Pb_t = \mathrm{Law}(x_t)$.
     \[
     x_{n+1} = x_n - \gamma \nabla_{W_2} \calF_\mmd(\Pb_n)(x_n) , \quad \text{Law}(x_n)=\Pb_n.
     \]
-    \item The same holds for $\calF_\ksd = \frac{1}{2}\mmd^2(\cdot, \Qb)$ with a Stein kernel $k_\Qb$~\citep{korba2021kernel}.
+    \item The same holds for $\calF_\ksd = \frac{1}{2}\mmd^2(\cdot, \Qb)$ with a Stein kernel~\citep{korba2021kernel}.
 \end{itemize}
 \end{frame}
 
@@ -702,13 +689,16 @@ Suppose the target distribution $\Qb$ satisfies a Poincaré inequality with cons
 
 \begin{frame}{DrMMD: DrMMD gradient descent}
 \begin{itemize}
-    \item DrMMD gradient flow (continuity equation)
+    \item DrMMD gradient flow 
     \begin{align*}
-        \partial_t \Pb_t+\nabla \cdot\left(\Pb_t(1+\lambda) \nabla h_{\Pb_t, \Qb}\right)=0
+        &\partial_t \Pb_t+\nabla \cdot\left(\Pb_t(1+\lambda) \nabla h_{\Pb_t, \Qb}\right)=0, \\ 
+        &\frac{\dd}{\dd t} X_t
+        = (1+\lambda)\nabla h_{\Pb_t,\Qb}(X_t), \quad \Pb_t = \text{Law}(X_t) .  
     \end{align*}
     \item DrMMD gradient descent: for step size $\gamma > 0$,
     \begin{align*}
-        \Pb_{n+1} = (\Id + \gamma (1+\lambda) \nabla h_{\Pb_n, \Qb})_\# \Pb_n .
+        &\Pb_{n+1} = (\Id + \gamma (1+\lambda) \nabla h_{\Pb_n, \Qb})_\# \Pb_n \\
+        & X_{n+1} = X_n + \gamma (1+\lambda)\nabla h_{\Pb_n,\Qb}(X_n) , \quad \Pb_n = \text{Law}(X_n).
     \end{align*}
 \end{itemize}
 \end{frame}
@@ -716,10 +706,10 @@ Suppose the target distribution $\Qb$ satisfies a Poincaré inequality with cons
 \begin{frame}{DrMMD: Convergence of DrMMD gradient descent}
 \begin{prop}[Descent lemma of DrMMD gradient descent]
 Let $(\Pb_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$.
-Suppose $\Qb\propto\exp(-V)$ with $\bH V \preceq L \Id$.
+Suppose $\Qb\propto\exp(-V)$ with $\bH V \preceq L \cdot \Id$.
 Suppose the step size $\gamma$ is small enough.
 \begin{talign*}
-\kl\left(\Pb_{n+1}, \Qb\right)-\kl\left(\Pb_n, \Qb\right) & \leq-\frac{2}{C_P} \chi^2\left(\Pb_n, \Qb\right) \gamma +\underbrace{\gamma \blue{\lambda^r}}_{\red{\text {Approximation error }} } + \underbrace{\gamma^2 L \chi^2\left(\Pb_n, \Qb\right) \frac{1}{\blue{\lambda} }}_{\red{\text {Discretization error }} }
+\kl\left(\Pb_{n+1}, \Qb\right)-\kl\left(\Pb_n, \Qb\right) & \leq-\frac{2}{C_P} \kl\left(\Pb_n, \Qb\right) \gamma +\underbrace{\gamma \blue{\lambda^r}}_{\red{\text {Approximation}} } + \underbrace{\gamma^2 L \cdot \chi^2\left(\Pb_n, \Qb\right) \frac{1}{\blue{\lambda} }}_{\red{\text {Discretization}} }
 \end{talign*}
 \end{prop}
 \begin{itemize}
@@ -742,7 +732,7 @@ Let $(\Pb_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
 \begin{itemize}
     \item To reach error $\kl\left(\Pb_{n_{\max}}, \Qb\right)\leq \delta$, it takes $\mathcal{O}(\blue{(\frac{1}{\delta})^{\frac{r+1}{r}}} \log \frac{1}{\delta})$ iterations.
     \item By comparison, for Langevin Monte Carlo, it takes $\mathcal{O}(\blue{\frac{1}{\delta}} \log \frac{1}{\delta})$~\citep{chewi2024analysis}.
-    \item DrMMD gradient descent takes more iterations due to the additional approximation error $\calO(\lambda^r)$, but it \blue{operates without the knowledge of potential $V$} and only requires $\Sigma_\Qb=\int k(x,\cdot) \otimes k(x,\cdot) \; \dd \Qb$ and the embedding $\int k(x,\cdot) \; \dd \Qb$.
+    \item DrMMD gradient descent takes more iterations due to the additional approximation error $\calO(\lambda^r)$, but it \blue{operates without the knowledge of potential $V$} and only requires $T_\Qb=\int k(x,\cdot) \otimes k(x,\cdot) \; \dd \Qb$ and the embedding $m_{\Qb} = \int k(x,\cdot) \; \dd \Qb$.
 \end{itemize}
 \end{frame}
 
@@ -760,7 +750,8 @@ Let $(\Pb_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
     \end{align*}
     \end{defi}
     \begin{itemize}
-        \item This was first proposed in \citep{mroueh2019sobolev}.
+        \item This was first proposed in \citep{mroueh2019sobolev}. 
+        \item Gradient regularization is used in generative models (both GANs and flows)~\citep{galashov2024deep,arbel2018gradient,gulrajani2017improved,finlay2020train,tao2026strain}. 
     \end{itemize}
 \end{frame}
 
@@ -877,14 +868,14 @@ Let $(\Pb_n)_{n\in\N}$ be the Wasserstein gradient descent of $\calF_{\dmmd}$. S
         For step size $\gamma>0$, take $\lambda\propto d \gamma$.
         Then, for any $n_{\max} \geq 0$,
         \begin{align*}
-            \mmd^2\left(\Pb_{n_{\max}}, \Qb\right) \leq \exp{(-2 n_{\max} \gamma)} \mmd^2\left(\Pb_0, \Qb\right)+ \calO(\gamma^r) .
+            \mmd^2\left(\Pb_{n_{\max}}, \Qb\right) \leq \exp{(-2 n_{\max} \gamma)} \mmd^2\left(\Pb_0, \Qb\right)+ \textcolor{red}{\calO(\gamma^r)} .
         \end{align*}
     \end{thm}
-    \vspace{-0.12cm}
+    % \vspace{-0.12cm}
     \begin{itemize}
         \small
         \item On a torus, $\operatorname{Ran}(S_\Pb^{r / 2}) \cong H^{s(r+1)-r}$, where $s$ is the kernel order.
-        \item $\lambda\propto d \gamma$ balances \red{regularity error $\calO(\lambda^r \gamma)$} and \green{discretization error $\calO(\lambda^{r-1} \gamma^2)$}.
+        \item $\lambda\propto d \gamma$ balances \blue{regularity error $\calO(\lambda^r \gamma)$} and \green{discretization error $\calO(\lambda^{r-1} \gamma^2)$}.
     \end{itemize}
 \end{frame}
 
